@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="Expires" content="0"/><!-- build: 09-24 12:40 v1-reveal-cards --><meta content="width=device-width,initial-scale=1" name="viewport"/><title>APCSP 备考手册 · Create Performance Task（创造性性能任务 · 30%）</title><style>
+:root{--ink:#1a2233;--muted:#5a6478;--accent:#0f4c81;--accent2:#c8a24a;--bg:#f7f8fb;--card:#ffffff;--line:#dde3ee;}
+*{box-sizing:border-box}
+body{font-family:"Segoe UI","Microsoft YaHei",PingFang SC,sans-serif;color:var(--ink);background:var(--bg);margin:0;line-height:1.75;font-size:15.5px}
+.wrap{max-width:960px;margin:0 auto;padding:32px 40px 80px}
+h1{font-size:1.9em;color:var(--accent);border-bottom:3px solid var(--accent2);padding-bottom:12px;margin-top:8px}
+h2{font-size:1.45em;color:var(--accent);border-left:6px solid var(--accent2);padding-left:12px;margin-top:2.2em;background:linear-gradient(90deg,#eef3fa,transparent)}
+h3{font-size:1.18em;color:#28405e;margin-top:1.8em}
+h4{font-size:1.05em;color:#3a5474}
+table{border-collapse:collapse;width:100%;margin:14px 0;background:var(--card);font-size:.95em}
+th{background:var(--accent);color:#fff;padding:9px 12px;text-align:left;font-weight:600}
+td{border:1px solid var(--line);padding:8px 12px;vertical-align:top}
+tr:nth-child(even) td{background:#f4f7fc}
+pre{background:#1f2937;color:#e5edf8;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:.9em;line-height:1.5}
+code{background:#eef1f7;padding:1px 6px;border-radius:4px;font-family:Consolas,Menlo,monospace;font-size:.92em;color:#8a2d2d}
+pre code{background:transparent;color:inherit;padding:0}
+blockquote{border-left:5px solid var(--accent2);background:#fdf9ef;margin:14px 0;padding:10px 18px;border-radius:0 8px 8px 0}
+blockquote strong{color:#8a6410}
+ul,ol{padding-left:1.6em}
+li{margin:4px 0}
+hr{border:none;border-top:1.5px dashed var(--line);margin:2em 0}
+strong{color:#0d3a66}
+em{color:var(--muted)}
+p code{color:#a03d3d}
+@media print{body{background:#fff}.wrap{padding:0}}
+
+/* ===== 左侧导航（可折叠子菜单） ===== */
+.sidenav{position:fixed;top:0;left:0;width:270px;height:100vh;background:linear-gradient(180deg,#0f4c81 0%,#1a3a66 100%);color:#eaf0fa;overflow-y:auto;padding:16px 14px 24px;box-shadow:3px 0 14px rgba(0,0,0,.12);z-index:100;font-size:14px}
+.sidenav .nav-title{font-weight:700;font-size:16px;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:10px;margin-bottom:6px;letter-spacing:.5px;line-height:1.4;color:#fff}
+.sidenav .nav-home{position:absolute;top:12px;right:12px;font-size:11.5px;color:#ffd98a;text-decoration:none;border:1px solid rgba(200,162,74,.6);border-radius:12px;padding:2px 10px;background:rgba(200,162,74,.14);font-weight:600;transition:background .15s,color .15s}
+.sidenav .nav-home:hover{background:rgba(200,162,74,.38);color:#fff}
+.sidenav .nav-ver{font-size:11.5px;color:#9aabcb;margin:0 0 10px;letter-spacing:.3px}
+.sidenav .rootnav,.sidenav .subnav{list-style:none;padding:0;margin:0}
+.sidenav .rootnav > li{margin:2px 0}
+.sidenav .rootnav a{color:#dce6f5;text-decoration:none;display:block;padding:6px 10px;border-radius:6px;line-height:1.4;transition:background .15s,color .15s}
+.sidenav .rootnav a:hover,.sidenav .rootnav a:focus{background:rgba(255,255,255,.14);color:#fff;outline:none}
+.sidenav .rootnav a.big{font-weight:600;background:rgba(255,255,255,.04);margin-top:4px;position:relative;padding-right:26px}
+.sidenav .rootnav a.big:hover{background:rgba(200,162,74,.25)}
+.sidenav .rootnav a.big .num{display:inline-block;background:#c8a24a;color:#1a2233;font-weight:700;border-radius:4px;padding:1px 7px;margin-right:8px;min-width:22px;text-align:center;font-size:13px}
+.sidenav .rootnav a.big:after{content:"\25B8";position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:12px;color:#c8a24a;transition:transform .2s}
+.sidenav li.open > a.big:after{content:"\25BE";transform:translateY(-50%)}
+.sidenav li.no-sub > a.big:after{display:none}
+.sidenav li.no-sub > a.big{padding-right:10px}
+.sidenav .subnav{display:none;margin:2px 0 6px 22px;border-left:2px solid rgba(255,255,255,.18)}
+.sidenav li.open > .subnav{display:block}
+.sidenav .subnav a{padding:4px 10px;font-size:13px;color:#b9c6dc;border-radius:4px}
+.sidenav .subnav a:before{content:"\2022";color:#c8a24a;margin-right:6px;font-size:11px;opacity:.8}
+.sidenav .subnav a:hover{color:#fff;background:rgba(255,255,255,.10)}
+.sidenav .nav-foot{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);font-size:12px;color:#9aabcb;line-height:1.5}
+.wrap{margin-left:310px !important}
+html{scroll-behavior:smooth}
+h2[id],h3[id]{scroll-margin-top:20px}
+.sidenav::-webkit-scrollbar{width:6px}
+.sidenav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:3px}
+@media (max-width:1100px){.sidenav{width:220px;font-size:13px;padding:14px 12px}.sidenav .rootnav a{padding:5px 8px}.sidenav .subnav{margin-left:16px}.sidenav .subnav a{font-size:12.5px;padding:4px 8px}.wrap{margin-left:250px !important}}
+@media (max-width:700px){.sidenav{width:180px;font-size:12.5px;padding:12px 10px}.sidenav .rootnav a.big{padding:5px 7px;padding-right:22px}.sidenav .rootnav a.big .num{padding:0 5px;min-width:18px;font-size:12px;margin-right:6px}.sidenav .subnav{margin-left:12px}.sidenav .subnav a{font-size:12px;padding:3px 6px}.sidenav .nav-ver,.sidenav .nav-foot{display:none}.wrap{margin-left:200px !important;padding:24px 20px 60px}}
+@media (max-width:560px){.sidenav{position:static;height:auto;width:100%;padding:10px 14px}.wrap{margin-left:0 !important}.sidenav .rootnav > li{margin:0}.sidenav .subnav{margin:4px 0 8px 10px;border-left:none}}
+@media print{.sidenav{display:none}.wrap{margin-left:0 !important}}
+
+/* ===== 点击展开的参考回答卡（reveal） ===== */
+.reveal{background:#fbfcfe;border:1px solid #dfe6f0;border-left:4px solid #c8a24a;border-radius:10px;padding:12px 14px;margin:16px 0 24px;box-shadow:0 1px 4px rgba(15,76,129,.06)}
+.reveal-btn{font:inherit;font-size:13.5px;font-weight:600;color:#0f4c81;background:#fff;border:1px solid #c9d7e8;border-radius:16px;padding:5px 16px;cursor:pointer;transition:all .15s}
+.reveal-btn:before{content:"\25B8 ";color:#c8a24a;font-size:12px}
+.reveal-btn:hover{background:#0f4c81;color:#fff;border-color:#0f4c81}
+.reveal-btn:hover:before{color:#fff}
+.reveal-btn.open:before{content:"\25BE "}
+.reveal-body{margin-top:12px;padding:12px 15px;background:#f6f9fd;border:1px solid #dce7f4;border-radius:8px;animation:quizIn .22s ease-out}
+.reveal-body[hidden]{display:none}
+.reveal-body ul{margin:6px 0}
+.reveal-body li{margin:6px 0}
+.reveal-body blockquote{margin:10px 0 0;padding:0 0 0 13px;border-left:3px solid #c8a24a;background:none;color:#33475f}
+.reveal-body blockquote p{margin:0}
+@keyframes quizIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media print{.reveal{break-inside:avoid}.reveal-btn{display:none}.reveal-body[hidden]{display:block}}
+</style></head><body>
+<nav class="sidenav" aria-label="章节目录"><a class="nav-home" href="index.html" title="返回国际考备考手册主页">⌂ 主页</a><div class="nav-title">Create PT<br>章节目录</div><div class="nav-ver">v1 · 英文题目 · 点击展开参考回答 · 更新于 09-24 12:40</div><ul class="rootnav"><li><a class="big" href="#0"><span class="num">0</span>本章定位：Create PT 占多少分</a><ul class="subnav empty"></ul></li><li><a class="big" href="#1"><span class="num">1</span>课堂提交：三大组件与红线</a><ul class="subnav"><li><a href="#1-1">Component A：Program Code（程序代码 PDF）</a></li><li><a href="#1-2">Component B：Video（视频，独立完成）</a></li><li><a href="#1-3">Component C：Personalized Project Reference（PPR，独立完成）</a></li><li><a href="#1-4">学术诚信与 Generative AI 使用边界（CED 2023 新增，必读）</a></li></ul></li><li><a class="big" href="#2"><span class="num">2</span>Program Requirements：程序六要素 checklist</a><ul class="subnav empty"></ul></li><li><a class="big" href="#3"><span class="num">3</span>考试日 Written Response 总览</a><ul class="subnav empty"></ul></li><li><a class="big" href="#4"><span class="num">4</span>Q1 攻略：Program Design, Function, and Purpose（Row 3）</a><ul class="subnav empty"></ul></li><li><a class="big" href="#5"><span class="num">5</span>Q2(a) 攻略：Algorithm Implementation（Row 4）</a><ul class="subnav empty"></ul></li><li><a class="big" href="#6"><span class="num">6</span>Q2(b) 攻略：Errors and Testing（Row 5）</a><ul class="subnav empty"></ul></li><li><a class="big" href="#7"><span class="num">7</span>Q2(c) 攻略：Data and Procedural Abstraction（Row 6）</a><ul class="subnav"><li><a href="#7-1">Row 6 之 Data Abstraction：list 的存储与使用（3b.i–iv）</a></li><li><a href="#7-2">Row 6 之 Managing Complexity：list 如何管理复杂度（3b.v）</a></li><li><a href="#7-3">Row 6 之 Procedural Abstraction：过程与调用（3c.i–iii）</a></li><li><a href="#7-4">两个高频变式（3 套 Practice Exam 里的 2(c) 问）</a></li></ul></li><li><a class="big" href="#8"><span class="num">8</span>三套官方 Practice Exam（考试日仿真题）</a><ul class="subnav"><li><a href="#8-1">Set 1</a></li><li><a href="#8-2">Set 2</a></li><li><a href="#8-3">Set 3</a></li></ul></li><li><a class="big" href="#9"><span class="num">9</span>AP Classroom「PT Formative」22 题自测清单</a><ul class="subnav empty"></ul></li><li><a class="big" href="#10"><span class="num">10</span>5 分范文精读</a><ul class="subnav empty"></ul></li><li><a class="big" href="#11"><span class="num">11</span>高频丢分点总表 + 万能句式</a><ul class="subnav empty"></ul></li><li><a class="big" href="#12"><span class="num">12</span>考前速查表</a><ul class="subnav empty"></ul></li></ul><div class="nav-foot">点击小节名<br>精准跳转</div></nav>
+
+<div class="wrap">
+<h1>Create Performance Task（创造性性能任务 · 30%）</h1>
+<h2 id="0">本章定位：Create PT 占多少分</h2>
+<p>Create Performance Task（下称 CPT）是 AP CSP <strong>唯一的非选择题计分部分，占总分 30%</strong>。它由两部分组成：<strong>课前在课堂完成并提交</strong>的程序作品（代码 + 视频 + 个性化项目参考），以及<strong>考试当天在 Bluebook 里作答的 4 道书面回答题</strong>（Written Responses，60 分钟）。考试当天答题时，监考系统会把你自己提交的 Personalized Project Reference 发回给你参照作答——<strong>这就是 CPT 的"开卷资料"</strong>。</p>
+<p><strong>官方考试结构（CED 2023, p163）：</strong></p>
+<table><tr><th>Section</th><th>内容</th><th>题量</th><th>权重</th><th>时长</th></tr><tr><td>I</td><td>选择题（57 单选 + 5 创新阅读 + 8 多选）</td><td>70</td><td>70%</td><td>120 分钟</td></tr><tr><td>II</td><td>CPT 作品提交（代码/视频/PPR，课堂 ≥9 小时完成）</td><td>—</td><td>30%（与下行合计）</td><td>课内 ≥9 小时</td></tr><tr><td>II</td><td>考试日书面回答（Written Response × 4）</td><td>4</td><td>30%（与上行合计）</td><td>60 分钟</td></tr></table>
+<p><strong>六个评分行（Rubric Rows，1 行 1 分，共 6 分）——Row 1/2 评提交的视频与程序，Row 3–6 评考试日的四道书面回答（CED 2023 p169；2024 与 2026 官方成绩报告同构）：</strong></p>
+<table><tr><th>Row</th><th>名称</th><th>评定载体</th><th>考查能力（Skill）</th></tr><tr><td>Row 1</td><td>Video</td><td>提交的视频（演示输入/功能/输出）</td><td>2.B 实现并应用算法</td></tr><tr><td>Row 2</td><td>Program Requirements</td><td>提交的代码（六要素齐全）</td><td>2.B 实现并应用算法</td></tr><tr><td>Row 3</td><td>Program Design, Function, and Purpose</td><td>考试日 WR1（=3a）</td><td>1.A 调查情境/任务</td></tr><tr><td>Row 4</td><td>Algorithm Development</td><td>考试日 WR2(a)（=3c.iv）</td><td>4.A 解释代码如何运行</td></tr><tr><td>Row 5</td><td>Errors and Testing</td><td>考试日 WR2(b)（=3d）</td><td>4.C 测试与纠错</td></tr><tr><td>Row 6</td><td>Data and Procedural Abstraction</td><td>考试日 WR2(c)（=3b 全部 + 3c.i–iii）</td><td>3.C 解释抽象</td></tr></table>
+<blockquote><p><strong>关键规则（官方原文）</strong>：On the AP Exam, to earn a point for a rubric row, responses will need to <strong>meet all criteria for that row</strong>. 每一行必须同时满足该行全部判据才得 1 分——<strong>部分满足 = 0 分</strong>，没有半分。</p></blockquote>
+<p><strong>与各章的联动</strong>：Q1 ↔ Big Idea 1（CRD-2.A–G）；Q2(a) ↔ Big Idea 3 算法三结构；Q2(b) ↔ 测试策略（Big Idea 1 开发过程）；Q2(c) ↔ Big Idea 3 的 list 与过程抽象。本手册 Big Idea 1/3 章的知识点在这里全部"变现"。</p>
+<hr>
+<h2 id="1">课堂提交：三大组件与红线</h2>
+<h3 id="1-1">Component A：Program Code（程序代码 PDF）</h3>
+<ul><li>提交<strong>一个 PDF</strong>，包含<strong>全部</strong>程序代码（含注释）。</li><li>任何非本人（及合作者）写的代码——老师给的 starter code、API/开源代码、AI 生成的代码——<strong>必须在注释中注明出处（acknowledge + credit）</strong>。环境不支持注释时，可在文档编辑器里贴代码后补注释。</li><li>文本代码可 print 为 PDF；<strong>图形化（block-based）代码用截图</strong>贴入文档转 PDF，截图必须清晰、字号 ≥10pt。</li></ul>
+<h3 id="1-2">Component B：Video（视频，独立完成）</h3>
+<table><tr><th>项目</th><th>要求</th></tr><tr><td>时长</td><td><strong>≤ 1 分钟</strong></td></tr><tr><td>大小</td><td><strong>≤ 30MB</strong></td></tr><tr><td>格式</td><td>.webm / .mp4 / .wmv / .avi / .mov</td></tr><tr><td>必须展示</td><td>① 程序的输入 ② 至少一个功能（functionality）③ 程序的输出</td></tr><tr><td>禁止出现</td><td>任何能识别你个人身份的信息；<strong>语音旁白</strong>（可以用字幕）</td></tr><tr><td>协作</td><td><strong>不允许</strong>（代码可以与 partner 合作，视频不行）</td></tr></table>
+<h3 id="1-3">Component C：Personalized Project Reference（PPR，独立完成）</h3>
+<p>PPR 是考试日的"开卷资料"，只含<strong>你自己写的两对代码截图</strong>（≥10pt、清晰、<strong>不得含任何注释</strong>）：</p>
+<p><strong>① Procedure 部分（两段代码）</strong></p>
+<ul><li>第一段：学生自开发过程（student-developed procedure），必须：</li><li>定义过程名与返回类型（如需要）；</li><li><strong>包含并使用 ≥1 个对过程功能有实际影响的参数</strong>；</li><li>过程体内实现含 <strong>sequencing + selection + iteration</strong> 三结构的算法。</li><li>第二段：该过程<strong>在程序中被调用的位置</strong>。</li></ul>
+<p><strong>② List 部分（两段代码）</strong></p>
+<ul><li>第一段：数据<strong>存入 list</strong> 的代码。</li><li>第二段：<strong>同一 list 的数据被使用</strong>的代码（由已有数据生成新数据、或访问多个元素），且是完成程序目的的一部分。</li></ul>
+<blockquote><p><strong>红线</strong>：PPR 不得包含 course content 或任何注释，违者 <strong>CPT 记 0 分（含考试日书面回答）</strong>；<strong>截止日前未提交 final</strong>，考试当天将<strong>没有 PPR 可用</strong>。事件处理器（event handler）、main 方法等<strong>内置/既有结构不算学生自开发过程</strong>。</p></blockquote>
+<h3 id="1-4">学术诚信与 Generative AI 使用边界（CED 2023 新增，必读）</h3>
+<ul><li><strong>Plagiarism = CPT 直接 0 分</strong>（连考试日的书面回答一起 0 分）：未经注明使用他人的代码、媒体、数据、信息，或 <strong>AI 生成的内容</strong>，都算。</li><li><strong>允许的 AI 用法</strong>：理解编程概念、辅助开发、调试——视同同伴协作。</li><li><strong>前提</strong>：你必须审查并<strong>完全理解</strong>与 AI 合写的代码；考试日会要求你<strong>详细解释自己的代码</strong>，解释不了就暴露了。</li><li>不得提交 AP Central 官方样例、课程供应商样例、或练习任务的作品作为最终提交。</li><li>提交时需在 AP Digital Portfolio 中<strong>三次 attestation（声明）</strong>遵守规则。</li></ul>
+<hr>
+<h2 id="2">Program Requirements：程序六要素 checklist</h2>
+<p>CPT 程序本体必须包含以下六项学生自开发代码（官方 checklist，逐条自查）：</p>
+<table><tr><th>#</th><th>要求</th><th>常见不满足情形</th></tr><tr><td>1</td><td><strong>输入</strong>：来自用户（含触发事件的用户行为）/ 设备 / 在线数据流 / 文件 之一</td><td>视频里看不到输入动作；输入写死在代码里</td></tr><tr><td>2</td><td><strong>至少一个 list（或其他集合类型）</strong>存储并使用数据，管理复杂度、服务于程序目的</td><td>只用 <code>len(list)</code> 计数；数据从未被读取使用</td></tr><tr><td>3</td><td><strong>至少一个学生自开发过程</strong>：自定义名字、返回类型（如需要）、<strong>≥1 个参数</strong></td><td>过程无参数；用的是内置函数或事件处理器</td></tr><tr><td>4</td><td>该过程体内实现含 <strong>sequencing、selection、iteration</strong> 的算法</td><td>缺循环；缺分支；三种结构散落在过程外</td></tr><tr><td>5</td><td>程序中<strong>调用</strong>该学生自开发过程</td><td>只定义未调用；调用的是别的东西</td></tr><tr><td>6</td><td><strong>输出</strong>（视觉/听觉/文字/触觉）基于输入与程序功能产生</td><td>输出与输入无关联</td></tr></table>
+<blockquote><p><strong>选题建议</strong>：程序规模不必大，但六要素要"一程序全占"。经典安全选题：测验/问答类、决策器类、数据统计类（含一个可以遍历的 list + 一个含三结构的过程）。<strong>避免</strong>：list 可被几个变量替代的伪抽象（见 §7）。</p></blockquote>
+<hr>
+<h2 id="3">考试日 Written Response 总览</h2>
+<p><strong>形式</strong>：2 道大题共 4 小问，60 分钟，Bluebook 上作答，PPR 随卷可查。官方近似字数：Q1 约 150 词；Q2 每小问约 100–200 词（现行 Bluebook 设 10000 词上限，不要真写满，按官方近似字数控制）。</p>
+<p><strong>题型与评分行映射：</strong></p>
+<table><tr><th>考题</th><th>名称</th><th>评分行</th><th>原始编号（2023 及以前提交制）</th></tr><tr><td>Q1</td><td>Program Design, Function, and Purpose</td><td>Row 3</td><td>3a.i / 3a.ii / 3a.iii</td></tr><tr><td>Q2(a)</td><td>Algorithm Implementation</td><td>Row 4</td><td>3c.iv</td></tr><tr><td>Q2(b)</td><td>Errors and Testing</td><td>Row 5</td><td>3d.i / 3d.ii / 3d.iii</td></tr><tr><td>Q2(c)</td><td>Data and Procedural Abstraction</td><td>Row 6</td><td>3b.i–v + 3c.i–iii</td></tr></table>
+<p><strong>提交物对应的两行（不在考试日作答，但决定 2 分）：</strong></p>
+<table><tr><th>提交物</th><th>评分行</th><th>判据</th></tr><tr><td>视频（演示输入 → 功能 → 输出）</td><td>Row 1 · Video</td><td>2.B 实现并应用算法</td></tr><tr><td>程序代码（六要素齐全）</td><td>Row 2 · Program Requirements</td><td>2.B 实现并应用算法</td></tr></table>
+<p><strong>四类 Prompt Category 与官方要求掌握的 LO（考题只会从这里出）：</strong></p>
+<table><tr><th>Prompt Category</th><th>Required Learning Objectives</th></tr><tr><td>WR1 Program Design, Function, and Purpose</td><td>CRD-2.A 描述计算创新的目的 · CRD-2.B 解释程序/代码段如何运行 · CRD-2.C 识别输入 · CRD-2.D 识别输出 · CRD-2.E 用开发过程开发程序 · CRD-2.F 设计程序与用户界面 · CRD-2.G 用文档描述代码段/程序目的</td></tr><tr><td>WR2(a) Algorithm Development</td><td>CRD-2.B · AAP-2.E.b 关系运算 · AAP-2.F.b 逻辑运算 · AAP-2.H.b 条件语句结果 · AAP-2.J 不用编程语言表达含迭代的算法 · AAP-2.K.b 迭代结果/副作用 · AAP-2.L 比较多个算法 · AAP-2.M.a/b 创建与组合算法</td></tr><tr><td>WR2(b) Errors and Testing</td><td>CRD-2.I.a 识别错误 · CRD-2.I.b 纠正错误 · CRD-2.J 找出检验算法/程序正确性的输入与期望输出</td></tr><tr><td>WR2(c) Data and Procedural Abstraction</td><td>AAP-1.D.a 用 list 存多元素做数据抽象 · AAP-1.D.b 解释数据抽象如何管理复杂度 · AAP-2.O.a 写迭代遍历 list · AAP-2.O.b 确定含 list 遍历算法的结果 · AAP-3.B 解释过程抽象如何管理复杂度</td></tr></table>
+<p><strong>任务动词（Task Verbs，官方定义，答错动词 = 丢分）：</strong></p>
+<table><tr><th>动词</th><th>官方含义</th><th>应答方式</th></tr><tr><td>Identify</td><td>说出名字/答案，无需展开</td><td>一句话点到即可，不解释</td></tr><tr><td>Describe</td><td>给出相关特征/特性</td><td>是什么，不必展开为什么</td></tr><tr><td>Explain</td><td>说明如何/为何发生</td><td>给出步骤、证据或推理（比 Describe 深）</td></tr><tr><td>Capture</td><td>选取程序代码中回应题意的部分</td><td>截/贴对代码</td></tr><tr><td>Demonstrate</td><td>提供充分证据</td><td>视频里演示到位</td></tr><tr><td>Design</td><td>制定实现计划</td><td>规划，不写码</td></tr><tr><td>Implement/Write</td><td>用正确语法落实设计</td><td>写出可运行的代码/调用</td></tr></table>
+<hr>
+<h2 id="4">Q1 攻略：Program Design, Function, and Purpose（Row 3）</h2>
+<p><strong>官方要求（3a，约 150 词，三小点全中才得 Row 3 这 1 分）：</strong></p>
+<ul><li><strong>i. Describes the overall purpose of the program</strong>——程序<strong>为什么存在</strong>；</li><li><strong>ii. Describes what functionality of the program is demonstrated in the video</strong>——视频里<strong>演示了什么功能</strong>；</li><li><strong>iii. Describes the input and output of the program demonstrated in the video</strong>——视频里体现的<strong>输入与输出</strong>。</li></ul>
+<p><strong>最高频丢分点（来自评分实践）：</strong></p>
+<p>1. <strong>把 purpose 写成 function</strong>。Purpose 是"为谁解决什么/带来什么价值"，表达词库：<em>entertainment / help the user … / lessen boredom / test the user's critical thinking skills / used to make decisions</em>。Function 是"程序做了什么"。</p>
+<p>2. <strong>没有针对"视频里演示的功能"作答</strong>——答了程序全部功能却没扣住视频。</p>
+<p>3. <strong>输入输出没写、或写反</strong>（把输出当输入）。自查：输入 = 用户/设备给程序的；输出 = 程序给用户的。</p>
+<p><strong>官方样题（WR1 类别）</strong>：</p>
+<p><strong>Q1-Sample（官方 Prompt Category 样题 · Program Design, Function, and Purpose）</strong></p>
+<p>Identify an expected user of your program. Describe one way your program's design meets the needs of this user.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示官方参考回答与点评</button><div class="reveal-body" hidden><ul><li><strong>官方 Sample Response</strong>：The user of my game would be children who are trying to learn their colors in another language. The program design is great for children because each color button is filled with the corresponding color for the word. This will make it easy for students who don't know how to read to still use the app to hear the colors in languages.</li><li><strong>点评</strong>：三句话三个采分点——第一句 <em>Identify</em>（谁用），第二句 <em>Describe</em>（哪个设计），第三句 <em>Explain</em>（为什么满足需求）。动词分层精准对应，没有一个废词。</li></ul></div></div>
+<hr>
+<h2 id="5">Q2(a) 攻略：Algorithm Implementation（Row 4）</h2>
+<p><strong>官方要求（3c.iv，约 100–200 词）</strong>：Explains in detailed steps how the algorithm implemented in the identified procedure works. Your explanation must be detailed enough <strong>for someone else to recreate it</strong>——详尽到<strong>别人能照着重新写出这段代码</strong>。</p>
+<p><strong>满分四步模板（把你的过程讲成"可复现食谱"）：</strong></p>
+<p>1. <strong>Initialize</strong>：哪些变量被创建、初值是什么；</p>
+<p>2. <strong>Iterate</strong>：循环怎么跑、遍历什么、边界在哪；</p>
+<p>3. <strong>Branch</strong>：判断什么条件、真/假各执行什么；</p>
+<p>4. <strong>Result</strong>：循环/过程结束时结果是什么、怎么返回或输出。</p>
+<p><strong>官方样题一（WR2(a) 类别 · 迭代执行次数 + 死循环）</strong>：</p>
+<p><strong>Q2a-Sample1（官方 Prompt Category 样题 · Algorithm Development）</strong></p>
+<p>Consider the first iteration statement included in the Procedure section of your Personalized Project Reference. Identify the number of times the body of your iteration statement will execute. Describe a condition or error that would cause your iteration statement to not terminate and cause an infinite loop. If no such condition or error exists, explain how the loop could be modified to cause an infinite loop.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示官方参考回答与点评</button><div class="reveal-body" hidden><ul><li><strong>官方样例代码</strong>：<code>for (int i : listOfValues) { System.out.println(i); }</code></li><li><strong>官方 Sample Response</strong>：The loop iterates for each element in <code>listOfValues</code>. An infinite loop is not possible since this for-each loop iterates over all the elements of the list. If the list does not contain any elements, it would iterate 0 times.</li><li><strong>点评</strong>：三问三答——执行次数（每元素一次）、是否存在死循环（for-each 不可能，理由充分）、若不存在就说明怎么改才会死循环（本题回答以"0 次"收尾补足 Identify）。注意"at least once"类问法的判据是 <strong>list 非空</strong>，不是"至少 2 个元素"。</li></ul></div></div>
+<p><strong>官方样题二（WR2(c) 类别 · 用给定过程写计数算法）</strong>：</p>
+<p><strong>Q2a-Sample2（官方 Prompt Category 样题 · Data and Procedural Abstraction）</strong></p>
+<p>Suppose you are provided with a procedure called <code>isEqual (value1, value2)</code>. The procedure returns <code>true</code> if the two parameters <code>value1</code> and <code>value2</code> are equal in value and returns <code>false</code> otherwise. Using the list you identified in the List section of your Personalized Project Reference, explain in detailed steps an algorithm that uses <code>isEqual</code> to count the number of times a certain value appears in your list. Your explanation must be detailed enough for someone else to write the program code.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示官方参考回答（满分四步模板的官方版）</button><div class="reveal-body" hidden><ul><li><strong>官方 Sample Response</strong>：</li><li>1. Set a counter variable <code>count</code> to 0.</li><li>2. Iterate over the elements of the list named <code>myList</code>.</li><li>3. For each element, call <code>isEqual</code> to compare the element from <code>myList</code> to the given value. If <code>isEqual</code> returns true, add 1 to <code>count</code>.</li><li>4. After iterating over every list value, print the value of <code>count</code>.</li><li><strong>点评</strong>：这就是"详细到别人能写出代码"的标准姿势——初始化 → 遍历 → 分支调用给定过程 → 输出结果，每一步都有变量名、有动作、有顺序。<strong>反面案例</strong>是只写"遍历列表，统计相等的个数，输出"——步骤缺失，无法重现，Row 4 直接 0 分。</li></ul></div></div>
+<p><strong>丢分点</strong>：描述不够详细、无法支撑重现（官方反面案例原文：There are not enough details described to support others to rebuild the code of the procedure）。策略：在字数内<strong>写满步骤</strong>，变量名用你代码里的真名。</p>
+<hr>
+<h2 id="6">Q2(b) 攻略：Errors and Testing（Row 5）</h2>
+<p><strong>官方要求（3d，约 200 词，三点全中才得这 1 分）：</strong></p>
+<ul><li><strong>i. Describes two calls</strong> to the procedure identified in written response 3c. Each call must pass <strong>a different argument(s) that causes a different segment of code in the algorithm to execute</strong>（两次调用实参不同，且<strong>走到算法的不同代码段</strong>）；</li><li><strong>ii. Describes what condition(s) is being tested by each call</strong>；</li><li><strong>iii. Identifies the result of each call</strong>。</li></ul>
+<p><strong>Argument（实参）vs Parameter（形参）——本小问第一概念坑：</strong></p>
+<table><tr><th></th><th>Parameter 形参</th><th>Argument 实参</th></tr><tr><td>出现场合</td><td><strong>声明</strong>过程时</td><td><strong>调用</strong>过程时</td></tr><tr><td>本质</td><td>过程内部使用的变量</td><td>传给过程的具体值（可以是变量中存的值）</td></tr></table>
+<pre><code>int k = 5;
+test(k);                     // k 是实参（调用处）
+public void test(int a) {    // a 是形参（声明处）
+    for (int i = 0; i &lt; a; i++) {
+        System.out.println(i);
+    }
+}</code></pre>
+<p><strong>两次调用标准句式</strong>（照抄骨架，换成你的过程）：</p>
+<blockquote><p><strong>First call</strong>: <code>calculate_diversity(area_1)</code> where <code>area_1 = [3, 5, 11, 6]</code>. <strong>Condition tested</strong>: whether the computed diversity value is ≥ 0.5. <strong>Result</strong>: 0.72 ≥ 0.5, so the program outputs "high".</p><p><strong>Second call</strong>: <code>calculate_diversity(area_2)</code> where <code>area_2 = [81, 2, 2, 2, 2]</code>. <strong>Condition tested</strong>: the same threshold with a low-diversity list, taking the <code>&lt; 0.5</code> branch. <strong>Result</strong>: 0.17 &lt; 0.5, so the program outputs "low".</p></blockquote>
+<p><strong>官方样题（WR2(b) 类别 · 运行时错误）</strong>：</p>
+<p><strong>Q2b-Sample（官方 Prompt Category 样题 · Errors and Testing）</strong></p>
+<p>Consider the procedure included in part (i) of the Procedure section of your Personalized Project Reference. Describe a change to your procedure that will result in a run-time error. Explain why this change will result in a run-time error.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示官方参考回答与点评</button><div class="reveal-body" hidden><ul><li><strong>官方样例代码</strong>：<code>Procedure printNums (int stop) { for (int i = 1; i &lt;= stop; i++) { System.out.println(i); } }</code></li><li><strong>官方 Sample Response</strong>：A run-time error would occur if instead of printing <code>i</code>, we printed <code>i / 0</code>, since this would cause a divide by 0 error.</li><li><strong>点评</strong>：Describe（改哪里：打印 <code>i / 0</code>）+ Explain（为什么：除以零在运行时崩溃）。一改一因，两句拿满。其他可选答案：访问越界下标、对非数字输入做算术等——<strong>运行时错误 ≠ 语法错误</strong>，别答"少个分号"。</li></ul></div></div>
+<p><strong>丢分点（评分实践原话级总结）</strong>：① 没写具体实参是什么（只说"传入不同值"）；② 两次调用的实参<strong>走的是同一段代码</strong>（哪怕结果不同也 0 分）；③ 把"调用后条件判断的结果"当成了"条件本身"来描述。可用测试策略（其他小问会考）：hand tracing、可视化、debugger、加输出语句、注释掉若干行。</p>
+<hr>
+<h2 id="7">Q2(c) 攻略：Data and Procedural Abstraction（Row 6）</h2>
+<p>Q2(c) 一道题同时覆盖数据抽象、管理复杂度、过程抽象三组判据，是分值最密的小问，也是"伪抽象"的重灾区。</p>
+<h3 id="7-1">Row 6 之 Data Abstraction：list 的存储与使用（3b.i–iv）</h3>
+<p>要求粘贴两段代码 + 文字回答四点：</p>
+<ul><li><strong>i.</strong> 数据<strong>如何存入</strong> list 的代码（含声明）；</li><li><strong>ii.</strong> <strong>同一 list 的数据被使用</strong>的代码（生成新数据或访问多元素，服务程序目的）；</li><li><strong>iii.</strong> <strong>Identify</strong> list 的名字；</li><li><strong>iv.</strong> <strong>Describe</strong> list 里的数据在程序中代表什么。</li></ul>
+<p><strong>官方反面案例</strong>：只用了 list 的<strong>长度</strong>而没用里面的数据（Just use the length of the list, not the data in the list）；代码里没有体现 list 的创建与元素初始化。</p>
+<h3 id="7-2">Row 6 之 Managing Complexity：list 如何管理复杂度（3b.v）</h3>
+<p><strong>官方要求</strong>：解释<strong>为什么不用这个 list 程序就写不出来 / 或者写出来会怎样不同</strong>。</p>
+<p><strong>满分句式骨架</strong>：</p>
+<blockquote><p>The list <code>[名字]</code> stores <code>[存什么]</code>. Without the list, I would need to <code>[替代方案：为每个元素单设一个变量 / 复制粘贴 N 段重复代码]</code>. For example, <code>[具体例子]</code>. This would make the program <code>[后果：longer / harder to maintain / less flexible — 新增数据要改代码，而 list 只需追加元素]</code>.</p></blockquote>
+<p><strong>官方反面案例（全是 0 分卷真话）</strong>：</p>
+<ul><li><strong>4 个常量就能替代</strong>的 list——根本没管理复杂度；</li><li>只实现<strong>计数功能</strong>、可用一个计数变量替代的 list；</li><li>前文说 list A、后文说 list B——<strong>前后不一致</strong>；</li><li>写得太笼统（"列表让程序更简单"），没有结合<strong>自己程序里的代码</strong>说清"没有它会怎样"。</li></ul>
+<h3 id="7-3">Row 6 之 Procedural Abstraction：过程与调用（3c.i–iii）</h3>
+<p>要求粘贴两段代码（过程定义 + 调用处）+ 文字回答：</p>
+<ul><li><strong>i.</strong> 过程：有名字、返回类型（如需要）、<strong>参数对功能有实际影响</strong>、过程体内实现<strong>三结构</strong>算法；</li><li><strong>ii.</strong> 调用处代码；</li><li><strong>iii.</strong> <strong>Describe</strong> 过程一般做什么 + <strong>它如何为程序整体功能做贡献</strong>（不能只孤立讲过程本身）。</li></ul>
+<p><strong>官方反面案例</strong>：过程缺参数（The procedure lacks parameters）；缺循环结构（Lack of loop structure）；没描述对整体程序的贡献（The contribution of procedure to the overall program functionality is not described）。</p>
+<h3 id="7-4">两个高频变式（3 套 Practice Exam 里的 2(c) 问）</h3>
+<ul><li><strong>List adjustment（Set 1）</strong>：Explain how you would need to adjust this part of your program <strong>if the list was not included</strong> in your code.</li></ul>
+<p>句式：The <code>[list]</code> stores <code>[内容]</code>. Without it, I would need to <code>[逐元素建变量/重复代码块]</code>. For example, <code>[具体化]</code>. This would make the code <code>[longer, harder to maintain, less flexible]</code>。</p>
+<p><strong>雷区</strong>：答成换一种仍用 list 的数据源（文件/数据库）；只说"程序跑不了"却没有替代方案。</p>
+<ul><li><strong>Parameter removal（Set 3）</strong>：Explain how your program could be written differently <strong>if one of your parameters was removed</strong>.</li></ul>
+<p>句式：If <code>[参数]</code> were removed from <code>[过程]</code>, I would need to <code>[hardcode 一个值/在过程内重新计算]</code>. The impact is <code>[失去灵活性/可复用性]</code>. For example, <code>[具体后果]</code>。</p>
+<p><strong>雷区</strong>：不指名哪个参数；只说"不能工作"不讲替代写法。</p>
+<hr>
+<h2 id="8">三套官方 Practice Exam（考试日仿真题）</h2>
+<p>以下 12 题为官方《2024 Written Response》给出的<strong>考试日仿真题</strong>（题型与真题同构）。自测方法：先盖住 reveal 区，对着 PPR 口述/笔写答案，再展开对照句式与易错点。</p>
+<h3 id="8-1">Set 1</h3>
+<p><strong>Set1-Q1（Documentation · 文档）</strong></p>
+<p>Describe one piece of documentation that would be appropriate to include with or in your program. Describe the intended purpose of this documentation by identifying who would use it and what they would do with it.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>句式</strong>：One appropriate piece of documentation is a [user manual / README / inline comments]. The intended users are [audience]. They would use it to [specific actions].</li><li><strong>易错</strong>：把"程序功能介绍"当文档；不点明具体文档类型；说视频/程序输出是 documentation。</li></ul></div></div>
+<p><strong>Set1-2a（Iteration Statement Condition · 循环至少执行一次的条件）</strong></p>
+<p>Consider the first iteration statement included in the Procedure section of your Personalized Project Reference. Describe the condition(s) that will cause the body of the iteration statement to execute at least once.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>句式</strong>：The first iteration statement is [贴出循环代码]. The body will execute at least once when [condition，如 the list is not empty]. In my program, [为什么该条件在程序中会成立].</li><li><strong>易错</strong>：答成"执行多少次"而不是"什么条件下执行"；画蛇添足加无关条件；把"at least once"的判据说成"至少 2 个元素"（正确是<strong>至少 1 个</strong>，如列表非空）。</li></ul></div></div>
+<p><strong>Set1-2b（Procedure Call with Arguments · 写调用并描述功能）</strong></p>
+<p>Consider the procedure identified in part (i) of the Procedure section of your Personalized Project Reference. Write a call to your procedure with specific argument(s) that you could use for testing this procedure. Describe the program functionality that is related to this call.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>句式</strong>：Test call: [procedureName]([具体实参]). Assuming [测试数据], the procedure will [逐步做什么]. This call should return [期望输出].</li><li><strong>易错</strong>：不给具体实参值；语法不符合你的语言；只描述过程"一般"做什么、不接回这次调用。</li></ul></div></div>
+<p><strong>Set1-2c（List Adjustment · 没有 list 怎么办）</strong></p>
+<p>Consider the list identified in the List section of your Personalized Project Reference. Explain how you would need to adjust this part of your program if the list was not included in your code.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>句式</strong>：见 §7.4。句式骨架：Without it, I would need to [alternative]… This would make the code [consequences].</li><li><strong>易错</strong>：换汤不换药（换一种数据源仍用 list）；只说"程序写不了"不给替代方案；不举具体例子。</li></ul></div></div>
+<h3 id="8-2">Set 2</h3>
+<p><strong>Set2-Q1（Testing, Feedback, and Reflection · 反馈/测试/反思）</strong></p>
+<p>Explain how you used or could have used feedback, testing, or reflection in the development of your program.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>策略</strong>：拿到 2/2 至少覆盖<strong>两项</strong>（testing + feedback + reflection 任二），且带具体 bug/修复细节。</li><li><strong>易错</strong>：只写一项；空话（"I tested my program"）；没有具体的 bug 和修复过程。</li></ul></div></div>
+<p><strong>Set2-2a（Equivalent Boolean Expression · 等价布尔表达式）</strong></p>
+<p>Consider the first conditional statement included in the Procedure section of your Personalized Project Reference. Write an equivalent Boolean expression for this conditional statement.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>句式</strong>：Original: [原条件]. Equivalent: [逻辑等价的新表达式]. This is equivalent because [一句理由，如 De Morgan 律/取反对偶].</li><li><strong>易错</strong>：原样抄一遍；写出的表达式逻辑不等价；用了代码里不存在的变量。</li></ul></div></div>
+<p><strong>Set2-2b（Testing Strategy，非 test case · 测试策略）</strong></p>
+<p>Consider the procedure identified in part (i) of the Procedure section of your Personalized Project Reference. Identify a strategy, other than using test cases, that you can use to test the correctness of your procedure. Describe how you would use this strategy.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>有效策略（不是 test case 的）</strong>：manual code tracing（手工跟踪）/ print debugging（加输出语句）/ 使用 debugger / 可视化 / 注释掉若干行观察差异。</li><li><strong>句式</strong>：One strategy is [strategy]. I would [具体做什么]. For example, with [specific input], I would track [specific variables]. This verifies [验证什么].</li><li><strong>易错</strong>：答成 test case（给输入列期望输出）——题目明说 other than test cases；描述空泛。</li></ul></div></div>
+<p><strong>Set2-2c（Subproblem · 子问题分解）</strong></p>
+<p>Consider the procedure identified in part (i) of the Procedure section of your Personalized Project Reference. Procedures are often used to organize larger problems into subproblems or smaller tasks. Identify the subproblem being solved or task that is being accomplished by your procedure. Explain how the procedure is used to accomplish the overall functionality of your program.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>句式</strong>：The subproblem solved by [procedureName] is [一个具体子任务]. It does this by [怎么做]. This procedure supports the overall program because [在全局中的位置].</li><li><strong>易错</strong>：列一堆子问题不聚焦一个；循环定义（"子问题就是解决该问题的"）；不接回整体功能。</li></ul></div></div>
+<h3 id="8-3">Set 3</h3>
+<p><strong>Set3-Q1（Problem or Creative Expression · 问题或创造性表达）</strong></p>
+<p>Describe the problem that your program was created to address or the creative expression it pursues.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>Option A（问题型）</strong>：My program addresses the problem of [具体问题]. Before my program, users had to [原来的低效做法]. My program solves this by [怎么解决].</li><li><strong>Option B（创造型）</strong>：My program pursues creative expression through [具体创意元素]. For example, [创意如何体现]. This makes the program [带来的好处].</li><li><strong>易错</strong>：答成"程序做了什么"而不是"解决什么问题/表达什么创意"；太虚（"It helps people"）；二选一没选明白。</li></ul></div></div>
+<p><strong>Set3-2a（List Code Segment Explanation · 逐步解释 list 代码）</strong></p>
+<p>Consider the code segment in part (ii) of the List section of your Personalized Project Reference that shows how your list is being used. Explain in detailed steps how this code segment works. Your explanation must be detailed enough for someone else to write the code segment.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>强答示范（官方风格）</strong>：1. Initialize <code>countAboveAverage</code> to 0. 2. Use a for loop to iterate through each grade in the <code>grades</code> list. 3. Compare each grade to the average using an if statement. 4. If grade &gt; average, increment <code>countAboveAverage</code> by 1. 5. After the loop finishes, <code>countAboveAverage</code> holds the total number of students above average.</li><li><strong>易错</strong>：不分步；太笼统；每步缺"为什么"。</li></ul></div></div>
+<p><strong>Set3-2b（Output Statements for Testing · 插输出语句验证代码块是否执行）</strong></p>
+<p>Passing different values as arguments to a procedure can cause different segments of code to execute. Based on one of your arguments, describe where you could insert output statements in your procedure to test whether a block of code is executed or not.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>句式</strong>：Using argument [具体值], I would insert [真实的 print 语句] at [代码中的确切位置]. If this prints, I know [哪块执行了]. If it doesn't print, I know [哪块被跳过].</li><li><strong>易错</strong>：不写出真实的 print 语句；位置含糊（只说 inside the loop）；不说怎么解读输出。</li></ul></div></div>
+<p><strong>Set3-2c（Parameter Removal · 去掉一个参数）</strong></p>
+<p>Consider the procedure identified in part (i) of the Procedure section of your Personalized Project Reference. Explain how your program could be written differently if one of your parameters was removed from your procedure.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示答题句式与易错点</button><div class="reveal-body" hidden><ul><li><strong>句式</strong>：见 §7.4：If [parameter] were removed… I would need to [hardcode/内部重算]… The impact is [灵活性/复用性损失]… For example, [具体后果].</li><li><strong>易错</strong>：不指名参数；只说"程序无法工作"不讲替代写法；不谈影响。</li></ul></div></div>
+<hr>
+<h2 id="9">AP Classroom「PT Formative」22 题自测清单</h2>
+<p>AP Classroom 官方形成性练习（PT Formative）把 CPT 可能考的<strong>全部任务类型</strong>拆成了 22 个训练题。每题都附官方评分行——这是理解"判断到什么程度才给分"的最佳材料。用法：按主题挑弱项练，重点题见下方 reveal 卡。</p>
+<table><tr><th>题号</th><th>任务类型（英文任务原文摘要）</th><th>近似字数</th><th>官方评分行要点</th></tr><tr><td>1</td><td>视频：仅演示输出；写出输出是什么</td><td>50</td><td>视频展示运行含输出（截图/分镜不算）+ 指出输出</td></tr><tr><td>2</td><td>视频：演示输入+输出；指出输入输出并说明输入如何影响功能</td><td>100</td><td>视频含输入/输出 + 指出输入输出 + 描述输入对功能的影响</td></tr><tr><td>3</td><td>视频：演示输入+功能+输出；描述功能与输入输出</td><td>100</td><td>视频含输入/功能/输出 + 描述功能 + 描述输入输出</td></tr><tr><td>4</td><td>视频：描述程序 overall purpose</td><td>50</td><td>视频三要素 + 描述目的</td></tr><tr><td>5</td><td>视频：目的+视频功能+输入输出 三合一</td><td>150</td><td>视频三要素 + 目的 + 功能 + 输入输出</td></tr><tr><td>6</td><td>变量：贴赋值段+使用段；说出变量名并描述数据含义</td><td>75</td><td>赋值段 + 非琐碎地使用段 + 说出名字 + 描述含义</td></tr><tr><td>7</td><td>list：贴存储段+处理段；说出 list 名并描述数据含义</td><td>75</td><td>存储段 + 非琐碎的处理段 + 说出名字 + 描述含义</td></tr><tr><td>8</td><td>变量：再加解释为什么选这个变量</td><td>200</td><td>前两项 + explains why chosen</td></tr><tr><td>9</td><td>变量：解释变量如何管理复杂度（没有它会怎样）</td><td>200</td><td>前两项 + managing complexity（替代方案必须合理自洽）</td></tr><tr><td>10</td><td>list：解释为什么选这个 list</td><td>200</td><td>存储段 + 处理段 + 名字 + 含义 + why chosen</td></tr><tr><td>11</td><td>list：解释 list 如何管理复杂度</td><td>200</td><td>存储段 + 处理段 + 名字 + 含义 + managing complexity</td></tr><tr><td>12</td><td>过程（无参数要求）：贴过程+调用；描述过程做什么及对整体功能的贡献</td><td>100</td><td>学生自开发过程（非内置/事件处理器）+ 调用段 + 描述并关联整体功能</td></tr><tr><td>13</td><td>过程：须含影响功能的参数</td><td>100</td><td>上一行 + 参数实际影响功能</td></tr><tr><td>14</td><td>算法：只含 sequencing；逐步解释</td><td>100</td><td>含 sequencing 的代码 + 详细到可重现</td></tr><tr><td>15</td><td>算法：sequencing + selection</td><td>100</td><td>同上（多要求 selection）</td></tr><tr><td>16</td><td>算法：sequencing + iteration</td><td>100</td><td>同上（多要求 iteration）</td></tr><tr><td>17</td><td>算法：sequencing + selection + iteration</td><td>100</td><td>三结构齐全 + 详细到可重现</td></tr><tr><td>18</td><td>过程：三结构算法 + 调用；描述过程 + 逐步解释算法</td><td>200</td><td>过程段 + 调用段 + 三结构 + 描述贡献 + 可重现的解释</td></tr><tr><td>19</td><td>过程：参数 + 三结构 + 调用 + 描述 + 逐步解释（全项合集）</td><td>200</td><td>6 行判据全过（最重的训练题）</td></tr><tr><td>20</td><td>描述程序的两个输入及各自的运行结果</td><td>100</td><td>两个合理输入 + 各自结果（必须与程序一致）</td></tr><tr><td>21</td><td>贴含参数的过程；描述两次不同实参的调用（走到不同代码段）+ 各自测试的条件 + 各自结果</td><td>200</td><td>过程段 + 参数有效 + 两次调用不同代码段 + 条件 + 结果</td></tr><tr><td>22</td><td>贴含 selection 的代码段；描述两个输入 + 真假两个分支的条件与结果</td><td>100</td><td>selection 代码 + 两个输入 + true/false 条件 + 各自结果</td></tr></table>
+<p><strong>重点题精练（与考试日题型对应最紧的 4 题）：</strong></p>
+<p><strong>PTF-Q11（list 管理复杂度 · 对应 Row 6 的数据抽象判据）</strong></p>
+<p>Capture and paste two program code segments you developed during the administration of this task that contain a list (or other collection type) being used in your program. The first program code segment must show how data has been stored in the list. The second program code segment must show the data in the same list being processed, such as creating new data from the existing data, as part of fulfilling the program's purpose. Provide a written response that (Approx. 200 words, exclusive of program code) identifies the name of the list being processed in this response, describes what the data contained in the list represents in your program, and explains how the selected list manages complexity in your program code by explaining why your program code could not be written, or how it would be written differently, if you did not use the list.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示评分行与 0 分陷阱</button><div class="reveal-body" hidden><ul><li><strong>评分行（5 项全中才满分）</strong>：存储段 / 处理段（非 trivial）/ 说出 list 名 / 描述数据含义 / managing complexity。</li><li><strong>0 分陷阱</strong>：处理段只用了 <code>len()</code>；没有 list 时代替方案不合理（官方：the solution without the list is implausible, inaccurate, or inconsistent with the program）；答非所贴的 list。</li></ul></div></div>
+<p><strong>PTF-Q19（过程全家桶 · 一次练全 Row 4 的算法判据 + Row 6 的过程抽象判据）</strong></p>
+<p>Capture and paste two program code segments that you developed. The first program code segment must contain a student-developed procedure that implements an algorithm used in your program. The procedure must contain and use one or more parameters that have an effect on the functionality of the procedure, and implement an algorithm that includes sequencing, selection, and iteration. The second program code segment must show a call to the procedure. Provide a written response that (Approx. 200 words, exclusive of program code) describes in general what the identified procedure does and how it contributes to the overall functionality of the program, and explains how the algorithm implemented in the selected procedure works in enough detail that someone else could recreate it.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示评分行（6 项）</button><div class="reveal-body" hidden><ul><li>过程段为<strong>学生自开发</strong>（非内置/事件处理器/main）；含<strong>调用段</strong>；<strong>参数实际影响功能</strong>；算法含<strong>三结构</strong>；描述过程并<strong>关联整体功能</strong>；算法解释<strong>可重现</strong>。</li><li>官方 Do-NOT-award 清单：过程代码段没贴进书面回答；只实现了内置结构的过程体；描述孤立不接整体；解释与代码不符。</li></ul></div></div>
+<p><strong>PTF-Q21（两次调用 · 对应 Row 5 的原型）</strong></p>
+<p>Capture and paste a procedure from your program that you developed during the administration of this task that implements an algorithm used in your program. This procedure must contain and use one or more parameters that have an effect on the functionality of the procedure. Provide a written response that (Approx. 200 words, exclusive of program code) describes two calls to the selected procedure, where each call passes different arguments that cause a different segment of code in the algorithm to execute, describes what condition(s) is being tested by each call to the procedure, and identifies the result of each call.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示评分行与 0 分陷阱</button><div class="reveal-body" hidden><ul><li><strong>评分行（5 项）</strong>：学生自开发过程段 / 参数有效 / 两次调用<strong>走到不同代码段</strong> / 描述各自测试的条件 / 说出各自结果。</li><li><strong>0 分陷阱</strong>：两次调用走的同一段代码（官方原文：the two calls cause the same segment of code in the algorithm to execute <strong>even if the result is different</strong>——结果不同也没用）；条件描述与程序不符；结果说不通。</li></ul></div></div>
+<p><strong>PTF-Q22（selection 分支测试 · Q2(b) 变式）</strong></p>
+<p>Capture and paste a code segment from your program that you developed during the administration of this task. Your code segment must contain selection. Provide a written response that (Approx. 100 words, exclusive of program code) describes two inputs for your program, describes the true and false conditions for the selection statement, and identifies the result of each condition.</p>
+<div class="reveal"><button class="reveal-btn" type="button">点击显示评分行</button><div class="reveal-body" hidden><ul><li>selection 代码段 / 两个合理输入 / true 与 false 两个分支的条件 / 每个条件的结果（须与程序一致）。注意本题要<strong>同时覆盖 true 和 false 两条路</strong>，与 Q21"两次调用不同代码段"异曲同工。</li></ul></div></div>
+<hr>
+<h2 id="10">5 分范文精读</h2>
+<p>下面是一份<strong>真实的 5 分考生书面回答</strong>（物种多样性计算器，Python），按 2023 卷编号 3a–3d 作答。<strong>2024 起映射</strong>：3a → 考试日 Q1（Row 3）；3b → Q2(c) 的数据抽象与复杂度判据（Row 6）；3c → Q2(a)（Row 4）与 Q2(c) 的过程抽象判据（Row 6）；3d → Q2(b)（Row 5）。作答实质不变，只是从"随作品提交"改到了"考试日限时作答"。</p>
+<blockquote><p><strong>3.a.i.</strong> The purpose of the program is to help researchers save time and enable them to attribute more time to doing experiments or searching papers. Moreover, this program helps people know more about which types of ecosystems usually have high species diversity and how the species diversity value is calculated.</p><p></p><p><strong>3.a.ii.</strong> The function of the program is to help people determine species diversity in an ecosystem based on number of animals of each species they collected from two areas in that ecosystem. This program estimates if both the two areas have high diversity, only one area has high diversity, or neither the two areas have high diversity. Finally, the diversity of the ecosystem is defined as high, moderate, or low, corresponding to the diversity of two areas.</p><p></p><p><strong>3.a.iii.</strong> Input is two lists of the number of animals of each species in two researched areas of the ecosystem, and each number is separated by space. An example of input for a researched area is <code>3 5 11 6</code>. Output is the species diversity value of two researched areas, the species diversity of two researched areas which is either "high" or "low", and the species diversity of the ecosystem, which is defined as "high", "moderate", or "low". …</p></blockquote>
+<div class="reveal"><button class="reveal-btn" type="button">点评：3a 为什么是满分</button><div class="reveal-body" hidden><ul><li><strong>i</strong> 用"help researchers save time…"句式开门见山给 purpose（给谁、省什么），完全避开"把功能当目的"的坑；</li><li><strong>ii</strong> 用 "The function of the program is…" 明示切题，且<strong>只讲视频演示的功能</strong>（判定两个区域多样性 → 汇总生态多样性等级）；</li><li><strong>iii</strong> 输入输出<strong>各给具体样例</strong>（<code>3 5 11 6</code>），并完整枚举三种输出情形——阅卷人不需要猜。三小问一问不缺，Row 3 满分。</li></ul></div></div>
+<blockquote><p><strong>3.b.v.</strong> The use of list <code>area_1</code> and <code>area_2</code> in the program reduces complexity of my program code. Because the number of species in every area is different, by using a list, users could input different numbers of species in each area and apply a unified formula to every element in the list to calculate the species diversity of the researched area conveniently without changing any code. Therefore, this program could have higher extensibility. However, without a list, I need to set a lot of variables to store the different number of species of each area, which is time-consuming; I would have to name every single variable, which would be difficult to come up with all the names for each variable and increases the chance of spelling errors; I also need to change the statement for calculation of species diversity of the researched area, which makes the program more likely to have error.</p></blockquote>
+<div class="reveal"><button class="reveal-btn" type="button">点评：3b.v 为什么撑满 Row 6 的复杂度判据</button><div class="reveal-body" hidden><ul><li>完整走完"没有 list 会怎样"三连：<strong>要建一大堆变量</strong>（时间成本）→ <strong>命名负担与拼写错误</strong>（可维护性）→ <strong>公式代码要跟着改</strong>（扩展性）。</li><li>关键是"替代方案具体且可信"（官方判据：without-list 方案必须 plausible）——它不是空喊"会麻烦"，而是给出"逐物种建变量"这个真实可行的替代写法并论证其代价。</li></ul></div></div>
+<blockquote><p><strong>3.c.iii.</strong> The procedure <code>calculate_diversity</code> uses the list <code>area</code> as a parameter to calculate the species diversity of a particular area. First, it calculates the species diversity value by using the formula <code>1-Σn(n-1)/(N(N-1))</code> (This formula comes from https://www.statisticshowto.com/simpsons-diversity-index/) and rounds the value to two decimals. Then, diversity is compared with 0.5. If it is larger or equal to 0.5, it means the area has high diversity. If it is smaller than 0.5, it means the area has low diversity. Thus, this procedure judges the diversity of areas in the ecosystem.</p><p></p><p><strong>3.d.i.</strong> First call: <code>area_1 = [3, 5, 11, 6]</code>; <code>calculate_diversity(area_1)</code> Second call: <code>area_2 = [81, 2, 2, 2, 2]</code>; <code>calculate_diversity(area_2)</code></p><p></p><p><strong>3.d.ii.</strong> Condition(s) tested by first call: The first call tests the situation that the species diversity of the researched area is high. … Because the value is larger or equal to 0.5, the species diversity of area1 is high. Condition(s) tested by second call: The second call tests the situation that the species diversity of the researched area is low. … Because the value is less than 0.5, the species diversity of area2 is low.</p><p></p><p><strong>3.d.iii.</strong> Results of the first call: high. Results of the second call: low.</p></blockquote>
+<div class="reveal"><button class="reveal-btn" type="button">点评：3c/3d 为什么是 Row 4 / Row 5 / Row 6 满分</button><div class="reveal-body" hidden><ul><li><strong>3c.iii</strong>：先一句话定位过程（用什么参数算什么），再按执行顺序复述（算值 → 四舍五入 → 与 0.5 比较 → 两个分支各自输出什么），最后回到"在整体程序中的角色"（judges the diversity of areas）——Describe + 贡献双达标。</li><li><strong>3d.i–iii</strong>：两次调用<strong>实参具体到列表字面量</strong>；两次测试的<strong>条件明确对偶</strong>（≥0.5 走高分支 / &lt;0.5 走低分支）；结果各自点名。<strong>两次调用走到了 if/else 的不同分支</strong>——正中 Row 5 判据。</li><li><strong>加分细节</strong>：公式<strong>注明出处</strong>（引用链接）——正是 CED 学术诚信政策里"非自创内容必须 acknowledge"的现场示范。</li><li><strong>移植到现行考试</strong>：考试日作答时把这份结构搬进 Q1 / Q2(a) / Q2(b) / Q2(c) 的对应小问即可，注意先在 PPR 里标好这两段代码的位置。</li></ul></div></div>
+<hr>
+<h2 id="11">高频丢分点总表 + 万能句式</h2>
+<p><strong>六行丢分原因汇总（评分标准 + 一线阅卷反馈）：</strong></p>
+<table><tr><th>评分行</th><th>丢分原因（按频次排序）</th></tr><tr><td>Row 1 · Video</td><td>视频没演示输入或输入不是程序真实输入；没演示完整功能；视频超时/超长；录像里出现的功能与实际代码不符</td></tr><tr><td>Row 2 · Program Requirements</td><td>六要素缺项：list 未创建/未初始化、list 数据未使用、自开发过程缺参数或参数无作用、算法缺三结构之一（尤其缺循环）、代码用了禁用的内置结构</td></tr><tr><td>Row 3 · Q1 目的/功能/输入输出</td><td>purpose 写成 function；没扣视频演示的功能；没写视频中的输入输出；输入输出写反</td></tr><tr><td>Row 4 · Q2(a) 算法实现</td><td>描述不够详细、无法支撑重现；解释与所贴代码不一致；代码段没贴</td></tr><tr><td>Row 5 · Q2(b) 错误与测试</td><td>没写具体实参；两次实参走同一段代码；把判断结果当条件本身描述</td></tr><tr><td>Row 6 · Q2(c) 数据与过程抽象</td><td>list 创建/初始化代码不完整；list 数据没被使用（只用长度）；list 可被几个常量/计数变量替代；前后说的 list 不一致；解释太笼统不结合自己代码；过程缺参数；参数对执行无影响；没描述对整体程序的贡献</td></tr></table>
+<p><strong>万能句式卡（考场直接套，方括号换成自己的内容）：</strong></p>
+<ul><li>目的：<em>The purpose of my program is to [help users … / entertain … / test …] by [一句话手段]。</em></li><li>输入输出：<em>Input is [具体形式+示例]. Output is [具体形式+示例].</em></li><li>算法四步：<em>First, [initialize]… Then the program [iterates]… For each [element], if [condition], [action]; otherwise [action]. After the loop, [result].</em></li><li>两次调用：<em>First call: <code>[p(args1)]</code>, which tests [condition] and results in [result]. Second call: <code>[p(args2)]</code>, which tests [另一条件/另一分支] and results in [另一结果].</em></li><li>复杂度：<em>Without [the list/the variable/…], I would need to [替代方案]. For example, [具体]. This would make the program [后果].</em></li><li>运行时错误：<em>A run-time error would occur if [修改], since [原因].</em></li><li>测试策略：<em>One strategy is [hand tracing / print statements / debugger]. I would [具体步骤] to verify [什么].</em></li></ul>
+<p><strong>Final Advice（官方策略指南结语）</strong>：Always reference YOUR specific code——用你代码里的<strong>真名</strong>（变量名/过程名/列表名）；Be specific——给真实数字、示例、测试数据；过程解释用<strong>分步编号</strong>；该写代码就写真实代码；解释"为什么"而不只是"是什么"。When in doubt, <strong>over-explain</strong>。</p>
+<hr>
+<h2 id="12">考前速查表</h2>
+<p><strong>数字卡：</strong></p>
+<table><tr><th>项目</th><th>数值</th></tr><tr><td>CPT 总权重</td><td><strong>30%</strong>（6 个评分行 × 1 分）</td></tr><tr><td>考试日书面回答</td><td><strong>2 题 4 小问 · 60 分钟</strong> · 可查 PPR</td></tr><tr><td>MCQ</td><td>70 题 · 120 分钟 · 70%</td></tr><tr><td>视频</td><td>≤ 1 分钟 · ≤ 30MB · .webm/.mp4/.wmv/.avi/.mov · 无旁白无个人信息</td></tr><tr><td>课堂任务时间</td><td>官方要求 ≥ 9 小时</td></tr><tr><td>PPR 截图字号</td><td>≥ 10pt · 不得含注释</td></tr><tr><td>字数参考</td><td>Q1 ≈150 词；Q2 各小问 ≈100–200 词（不含代码）</td></tr></table>
+<p><strong>提交三件套</strong>：Program Code（PDF，含出处注释）＋ Video（独立完成）＋ PPR（独立完成，Procedure 两段 + List 两段）。</p>
+<p><strong>红线清单（踩线 = 0 分或无资料）</strong>：抄袭/未注明 AI 与他人代码 → CPT 与书面回答全 0；PPR 含注释或 course content → 0；PPR 未按期 final → 考试日无 PPR；视频含身份信息或旁白 → 重录。</p>
+<p><strong>考场流程</strong>：拿到 PPR → Q1（目的/视频功能/输入输出，150 词内答全三点）→ Q2(a)（对着 PPR 过程段写四步算法）→ Q2(b)（两次调用：实参、条件、结果各两次）→ Q2(c)（list 名与含义 + 复杂度论证 + 过程与贡献）。<strong>每一行都要"全 criteria"，答一半 = 0 分。</strong></p>
+</div>
+<script>
+(function(){
+  var nav = document.querySelector('.sidenav');
+  if(!nav) return;
+  var lis = nav.querySelectorAll('.rootnav > li');
+  Array.prototype.forEach.call(lis, function(li){
+    var trigger = li.querySelector('a.big');
+    var sub = li.querySelector('.subnav');
+    if(!trigger) return;
+    if(!sub || sub.children.length === 0){
+      if(sub) sub.parentNode.removeChild(sub);
+      li.classList.add('no-sub');
+      return;
+    }
+    trigger.addEventListener('click', function(e){
+      e.preventDefault();
+      var willOpen = !li.classList.contains('open');
+      li.classList.toggle('open');
+      if(willOpen){
+        var target = document.querySelector(trigger.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+      if(history.replaceState) history.replaceState(null,'',trigger.getAttribute('href'));
+    });
+  });
+  if(location.hash){
+    var tgt = document.querySelector(location.hash);
+    if(tgt){
+      var li = tgt.closest ? tgt.closest('li') : null;
+      while(li){
+        if(li.parentNode && li.parentNode.classList && li.parentNode.classList.contains('rootnav')){
+          li.classList.add('open'); break;
+        }
+        li = li.parentNode ? li.parentNode.closest('li') : null;
+      }
+    }
+  }
+})();
+</script>
+<script>
+(function(){
+  function bind(){
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal-btn'), function(b){
+      b.addEventListener('click', function(){
+        var body = b.parentNode.querySelector('.reveal-body');
+        if(!body) return;
+        body.hidden = !body.hidden;
+        b.classList.toggle('open', !body.hidden);
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bind);
+  } else { bind(); }
+})();
+</script>
+</body></html>
