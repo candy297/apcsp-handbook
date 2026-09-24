@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="Expires" content="0"/><!-- build: 09-24 12:40 v1-interactive-quiz --><meta content="width=device-width,initial-scale=1" name="viewport"/><title>APCSP 备考手册 · Big Idea 3 算法与编程（Algorithms and Programming）</title><style>
+:root{--ink:#1a2233;--muted:#5a6478;--accent:#0f4c81;--accent2:#c8a24a;--bg:#f7f8fb;--card:#ffffff;--line:#dde3ee;}
+*{box-sizing:border-box}
+body{font-family:"Segoe UI","Microsoft YaHei",PingFang SC,sans-serif;color:var(--ink);background:var(--bg);margin:0;line-height:1.75;font-size:15.5px}
+.wrap{max-width:960px;margin:0 auto;padding:32px 40px 80px}
+h1{font-size:1.9em;color:var(--accent);border-bottom:3px solid var(--accent2);padding-bottom:12px;margin-top:8px}
+h2{font-size:1.45em;color:var(--accent);border-left:6px solid var(--accent2);padding-left:12px;margin-top:2.2em;background:linear-gradient(90deg,#eef3fa,transparent)}
+h3{font-size:1.18em;color:#28405e;margin-top:1.8em}
+h4{font-size:1.05em;color:#3a5474}
+table{border-collapse:collapse;width:100%;margin:14px 0;background:var(--card);font-size:.95em}
+th{background:var(--accent);color:#fff;padding:9px 12px;text-align:left;font-weight:600}
+td{border:1px solid var(--line);padding:8px 12px;vertical-align:top}
+tr:nth-child(even) td{background:#f4f7fc}
+pre{background:#1f2937;color:#e5edf8;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:.9em;line-height:1.5}
+code{background:#eef1f7;padding:1px 6px;border-radius:4px;font-family:Consolas,Menlo,monospace;font-size:.92em;color:#8a2d2d}
+pre code{background:transparent;color:inherit;padding:0}
+blockquote{border-left:5px solid var(--accent2);background:#fdf9ef;margin:14px 0;padding:10px 18px;border-radius:0 8px 8px 0}
+blockquote strong{color:#8a6410}
+ul,ol{padding-left:1.6em}
+li{margin:4px 0}
+hr{border:none;border-top:1.5px dashed var(--line);margin:2em 0}
+strong{color:#0d3a66}
+em{color:var(--muted)}
+p code{color:#a03d3d}
+@media print{body{background:#fff}.wrap{padding:0}}
+
+/* ===== 左侧导航（可折叠子菜单） ===== */
+.sidenav{position:fixed;top:0;left:0;width:270px;height:100vh;background:linear-gradient(180deg,#0f4c81 0%,#1a3a66 100%);color:#eaf0fa;overflow-y:auto;padding:16px 14px 24px;box-shadow:3px 0 14px rgba(0,0,0,.12);z-index:100;font-size:14px}
+.sidenav .nav-title{font-weight:700;font-size:16px;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:10px;margin-bottom:6px;letter-spacing:.5px;line-height:1.4;color:#fff}
+.sidenav .nav-home{position:absolute;top:12px;right:12px;font-size:11.5px;color:#ffd98a;text-decoration:none;border:1px solid rgba(200,162,74,.6);border-radius:12px;padding:2px 10px;background:rgba(200,162,74,.14);font-weight:600;transition:background .15s,color .15s}
+.sidenav .nav-home:hover{background:rgba(200,162,74,.38);color:#fff}
+.sidenav .nav-ver{font-size:11.5px;color:#9aabcb;margin:0 0 10px;letter-spacing:.3px}
+.sidenav .rootnav,.sidenav .subnav{list-style:none;padding:0;margin:0}
+.sidenav .rootnav > li{margin:2px 0}
+.sidenav .rootnav a{color:#dce6f5;text-decoration:none;display:block;padding:6px 10px;border-radius:6px;line-height:1.4;transition:background .15s,color .15s}
+.sidenav .rootnav a:hover,.sidenav .rootnav a:focus{background:rgba(255,255,255,.14);color:#fff;outline:none}
+.sidenav .rootnav a.big{font-weight:600;background:rgba(255,255,255,.04);margin-top:4px;position:relative;padding-right:26px}
+.sidenav .rootnav a.big:hover{background:rgba(200,162,74,.25)}
+.sidenav .rootnav a.big .num{display:inline-block;background:#c8a24a;color:#1a2233;font-weight:700;border-radius:4px;padding:1px 7px;margin-right:8px;min-width:22px;text-align:center;font-size:13px}
+.sidenav .rootnav a.big:after{content:"\25B8";position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:12px;color:#c8a24a;transition:transform .2s}
+.sidenav li.open > a.big:after{content:"\25BE";transform:translateY(-50%)}
+.sidenav li.no-sub > a.big:after{display:none}
+.sidenav li.no-sub > a.big{padding-right:10px}
+.sidenav .subnav{display:none;margin:2px 0 6px 22px;border-left:2px solid rgba(255,255,255,.18)}
+.sidenav li.open > .subnav{display:block}
+.sidenav .subnav a{padding:4px 10px;font-size:13px;color:#b9c6dc;border-radius:4px}
+.sidenav .subnav a:before{content:"\2022";color:#c8a24a;margin-right:6px;font-size:11px;opacity:.8}
+.sidenav .subnav a:hover{color:#fff;background:rgba(255,255,255,.10)}
+.sidenav .nav-foot{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);font-size:12px;color:#9aabcb;line-height:1.5}
+.wrap{margin-left:310px !important}
+html{scroll-behavior:smooth}
+h2[id],h3[id]{scroll-margin-top:20px}
+.sidenav::-webkit-scrollbar{width:6px}
+.sidenav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:3px}
+@media (max-width:1100px){.sidenav{width:220px;font-size:13px;padding:14px 12px}.sidenav .rootnav a{padding:5px 8px}.sidenav .subnav{margin-left:16px}.sidenav .subnav a{font-size:12.5px;padding:4px 8px}.wrap{margin-left:250px !important}}
+@media (max-width:700px){.sidenav{width:180px;font-size:12.5px;padding:12px 10px}.sidenav .rootnav a.big{padding:5px 7px;padding-right:22px}.sidenav .rootnav a.big .num{padding:0 5px;min-width:18px;font-size:12px;margin-right:6px}.sidenav .subnav{margin-left:12px}.sidenav .subnav a{font-size:12px;padding:3px 6px}.sidenav .nav-ver,.sidenav .nav-foot{display:none}.wrap{margin-left:200px !important;padding:24px 20px 60px}}
+@media (max-width:560px){.sidenav{position:static;height:auto;width:100%;padding:10px 14px}.wrap{margin-left:0 !important}.sidenav .rootnav > li{margin:0}.sidenav .subnav{margin:4px 0 8px 10px;border-left:none}}
+@media print{.sidenav{display:none}.wrap{margin-left:0 !important}}
+
+/* ===== §8/§9 交互式选择题 ===== */
+.quiz{background:#fbfcfe;border:1px solid #dfe6f0;border-left:4px solid #0f4c81;border-radius:10px;padding:16px 18px 12px;margin:18px 0 24px;box-shadow:0 1px 4px rgba(15,76,129,.06)}
+.quiz-stem>:first-child{margin-top:0}
+.quiz-stem>:last-child{margin-bottom:0}
+.quiz-stem pre{margin:10px 0}
+ul.quiz-opts{list-style:none;margin:12px 0 10px;padding:0;display:flex;flex-direction:column;gap:8px}
+.quiz-opt{display:flex;gap:10px;align-items:flex-start;border:1px solid #d9e2ee;background:#fff;border-radius:8px;padding:9px 12px;cursor:pointer;line-height:1.65;transition:border-color .15s,background .15s,box-shadow .15s}
+.quiz-opt:hover{border-color:#0f4c81;background:#f2f7fd;box-shadow:0 2px 6px rgba(15,76,129,.08)}
+.quiz-opt:focus{outline:2px solid #c8a24a;outline-offset:1px}
+.quiz-opt .opt-key{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#eef3fa;color:#0f4c81;font-weight:700;font-size:12.5px;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
+.quiz-opt .opt-text{flex:1 1 auto;min-width:0}
+.quiz-opt .opt-text code{white-space:pre-wrap}
+.quiz-opt pre.opt-code{margin:2px 0 0;padding:0;background:transparent;border:none;color:inherit;font-family:Consolas,Menlo,monospace;font-size:.88em;line-height:1.55;white-space:pre;overflow-x:auto;text-align:left}
+.quiz-opt.right{border-color:#1f9d55;background:#eefaf1}
+.quiz-opt.right .opt-key{background:#1f9d55;color:#fff}
+.quiz-opt.right .opt-text:after{content:" ✓ 正确";color:#1f9d55;font-weight:700;font-size:12.5px}
+.quiz-opt.wrong{border-color:#d9534f;background:#fdf0ef}
+.quiz-opt.wrong .opt-key{background:#d9534f;color:#fff}
+.quiz-opt.wrong .opt-text:after{content:" ✗ 你选的";color:#d9534f;font-weight:700;font-size:12.5px}
+.quiz.answered .quiz-opt{cursor:default}
+.quiz.answered .quiz-opt:hover{border-color:#d9e2ee;background:#fff;box-shadow:none}
+.quiz-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px dashed #e3e9f2;margin-top:4px;padding-top:9px;flex-wrap:wrap}
+.quiz-tip{font-size:12.5px;color:#7b8aa3}
+.quiz.answered .quiz-tip{color:#1f9d55;font-weight:600}
+.quiz-reset{font:inherit;font-size:12.5px;color:#0f4c81;background:#fff;border:1px solid #c9d7e8;border-radius:14px;padding:3px 13px;cursor:pointer;transition:all .15s}
+.quiz-reset:hover{background:#0f4c81;color:#fff;border-color:#0f4c81}
+.quiz-solution{margin-top:12px;padding:12px 15px;background:#f6f9fd;border:1px solid #dce7f4;border-radius:8px;animation:quizIn .22s ease-out}
+.quiz-solution[hidden]{display:none}
+@keyframes quizIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.quiz-correct{font-weight:700;color:#1f9d55;margin:0 0 8px;font-size:15px}
+.quiz-solution blockquote{margin:10px 0 0;padding:0 0 0 13px;border-left:3px solid #c8a24a;background:none;color:#33475f}
+.quiz-solution blockquote p:first-child{margin-top:0}
+.quiz-solution blockquote p:last-child{margin-bottom:0}
+@media print{.quiz{break-inside:avoid}.quiz-opt{break-inside:avoid}.quiz-tip,.quiz-reset{display:none}}
+</style></head><body>
+<nav class="sidenav" aria-label="章节目录"><a class="nav-home" href="index.html" title="返回国际考备考手册主页">⌂ 主页</a><div class="nav-title">Big Idea 3<br>章节目录</div><div class="nav-ver">v2 · 英文原题可作答 · 更新于 09-24 12:40</div><ul class="rootnav"><li><a class="big" href="#0"><span class="num">0</span>本章定位：Big Idea 3 考什么、怎么考</a><ul class="subnav"><li><a href="#0-1">考试权重</a></li><li><a href="#0-2">章节结构与考点地图（18 个 Topic 分为 6 组）</a></li></ul></li><li><a class="big" href="#1"><span class="num">1</span>变量与数据抽象（Topics 3.1–3.2）</a><ul class="subnav"><li><a href="#1-1">知识点梳理（AAP-1.A / 1.B / 1.C / 1.D）</a></li><li><a href="#1-2">重难点</a></li><li><a href="#1-3">易错点</a></li></ul></li><li><a class="big" href="#2"><span class="num">2</span>表达式、布尔与条件（Topics 3.3–3.7）</a><ul class="subnav"><li><a href="#2-1">知识点梳理（AAP-2.A–2.I）</a></li><li><a href="#2-2">重难点</a></li><li><a href="#2-3">易错点</a></li></ul></li><li><a class="big" href="#3"><span class="num">3</span>迭代与算法开发（Topics 3.8–3.9）</a><ul class="subnav"><li><a href="#3-1">知识点梳理（AAP-2.J–2.M）</a></li><li><a href="#3-2">重难点</a></li><li><a href="#3-3">易错点</a></li></ul></li><li><a class="big" href="#4"><span class="num">4</span>列表与搜索（Topics 3.10–3.11）</a><ul class="subnav"><li><a href="#4-1">知识点梳理（AAP-2.N–2.P）</a></li><li><a href="#4-2">重难点</a></li><li><a href="#4-3">易错点</a></li></ul></li><li><a class="big" href="#5"><span class="num">5</span>过程、库、随机与模拟（Topics 3.12–3.16）</a><ul class="subnav"><li><a href="#5-1">知识点梳理（AAP-3.A–3.F）</a></li><li><a href="#5-2">重难点</a></li><li><a href="#5-3">易错点</a></li></ul></li><li><a class="big" href="#6"><span class="num">6</span>算法效率与可判定性（Topics 3.17–3.18）</a><ul class="subnav"><li><a href="#6-1">知识点梳理（AAP-4.A / 4.B）</a></li><li><a href="#6-2">重难点</a></li><li><a href="#6-3">易错点</a></li></ul></li><li><a class="big" href="#7"><span class="num">7</span>重难点与易错点速查表（考前 10 分钟过一遍）</a><ul class="subnav empty"></ul></li><li><a class="big" href="#8"><span class="num">8</span>国际考真题与解析</a><ul class="subnav"><li><a href="#8-1">CED 官方样题（2023 CED Sample Exam Questions, pp.177–185）</a></li><li><a href="#8-2">2026 年国际考真题（大陆卷）</a></li><li><a href="#8-3">2025 年官方补充练习卷（Supplemental Practice Exam）</a></li><li><a href="#8-4">2024 年国际考真题（交叉参考）</a></li></ul></li><li><a class="big" href="#9"><span class="num">9</span>AP Classroom Topic Questions 精选（Big Idea 3 全套 154 题，附完整题目与逐题解析）</a><ul class="subnav"><li><a href="#9-1">Topic 3.1 Variables and Assignments</a></li><li><a href="#9-2">Topic 3.2 Data Abstraction</a></li><li><a href="#9-3">Topic 3.3 Mathematical Expressions</a></li><li><a href="#9-4">Topic 3.5 Boolean Expressions</a></li><li><a href="#9-5">Topic 3.6 Conditionals</a></li><li><a href="#9-6">Topic 3.9 Developing Algorithms</a></li><li><a href="#9-7">Topic 3.10 Lists</a></li><li><a href="#9-8">Topic 3.11 Binary Search</a></li><li><a href="#9-9">Topic 3.12 Calling Procedures</a></li><li><a href="#9-10">Topic 3.13 Developing Procedures</a></li><li><a href="#9-11">Topic 3.14 Libraries</a></li><li><a href="#9-12">Topic 3.16 Simulations</a></li><li><a href="#9-13">Topic 3.17 Algorithmic Efficiency</a></li><li><a href="#9-14">Topic 3.18 Undecidable Problems</a></li></ul></li><li><a class="big" href="#10"><span class="num">10</span>Section II 写作题中的 Big Idea 3</a><ul class="subnav"><li><a href="#10-1">Written Response 3（Procedural Abstraction）与 4（Algorithm Implementation）</a></li><li><a href="#10-2">得分要点（对照 scoring guidelines）</a></li></ul></li><li><a class="big" href="#11"><span class="num">11</span>备考策略与应试技巧</a><ul class="subnav"><li><a href="#11-1">题型分布与时间分配</a></li><li><a href="#11-2">五大高频套路（考前最后过一遍）</a></li><li><a href="#11-3">常见失分点自查</a></li><li><a href="#11-4">与其他章节的复习联动</a></li></ul></li><li><a class="big" href="#12"><span class="num">12</span>Quick Reference：AP CSP Exam Reference Sheet（2020 官方考试参考表）</a><ul class="subnav"><li><a href="#12-1">赋值、显示与输入（Assignment, Display, and Input）</a></li><li><a href="#12-2">算术运算符（Arithmetic Operators and Numeric Procedures）</a></li><li><a href="#12-3">关系与布尔运算符（Relational and Boolean Operators）</a></li><li><a href="#12-4">选择（Selection）</a></li><li><a href="#12-5">迭代（Iteration）</a></li><li><a href="#12-6">列表操作（List Operations）</a></li><li><a href="#12-7">过程定义与调用（Procedures and Procedure Calls）</a></li><li><a href="#12-8">机器人（Robot）</a></li></ul></li></ul><div class="nav-foot">点击小节名<br>精准跳转</div></nav>
+
+<div class="wrap">
+<h1>APCSP 备考手册 · Big Idea 3 算法与编程（Algorithms and Programming，AAP）</h1>
+<blockquote><p><strong>适用考试</strong>：AP Computer Science Principles 国际考（End-of-Course MCQ + Create Performance Task）</p><p><strong>考纲依据</strong>：2023 CED Big Idea 3，Topics 3.1–3.18</p><p><strong>本章真题来源</strong>：2026 年国际考大陆卷、2025 年官方补充练习卷（Supplemental Practice Exam）、2023 CED 官方样题、AP Classroom Topic Questions（Big Idea 3 全套 154 题）</p></blockquote>
+<hr>
+<h2 id="0">本章定位：Big Idea 3 考什么、怎么考</h2>
+<h3 id="0-1">考试权重</h3>
+<table><tr><th>Big Idea</th><th>MCQ 权重</th></tr><tr><td>Big Idea 1: Creative Development</td><td>10–13%</td></tr><tr><td>Big Idea 2: Data</td><td>17–22%</td></tr><tr><td><strong>Big Idea 3: Algorithms and Programming</strong></td><td><strong>30–35%</strong></td></tr><tr><td>Big Idea 4: Computer Systems and Networks</td><td>11–15%</td></tr><tr><td>Big Idea 5: Impact of Computing</td><td>21–26%</td></tr></table>
+<p><strong>30–35%，全卷最高权重</strong>。Big Idea 3 是"得分率低、失分最多"的一章：它要求你<strong>逐行跟踪代码</strong>（determine the result of code segments）、<strong>模拟机器人走格</strong>、<strong>判断算法等价性</strong>、<strong>估算二分查找次数</strong>。好消息是：考点高度模板化，把本手册 §1–§7 的题型套路练熟，分数提升最快。目标：<strong>错误率控制在 20% 以内</strong>。</p>
+<h3 id="0-2">章节结构与考点地图（18 个 Topic 分为 6 组）</h3>
+<table><tr><th>本手册章节</th><th>覆盖 Topic</th><th>LO / EK 编码</th><th>高频题型</th></tr><tr><td>§1 变量与数据抽象</td><td>3.1 Variables and Assignments；3.2 Data Abstraction</td><td>AAP-1.A–1.D</td><td>赋值跟踪、list 表示、数据抽象的意义</td></tr><tr><td>§2 表达式、布尔与条件</td><td>3.3 Math Expressions；3.4 Strings；3.5 Boolean；3.6 Conditionals；3.7 Nested Conditionals</td><td>AAP-2.A–2.I</td><td>MOD 运算、substring 拼接、布尔化简、IF/ELSE 等价改写</td></tr><tr><td>§3 迭代与算法开发</td><td>3.8 Iteration；3.9 Developing Algorithms</td><td>AAP-2.J–2.M</td><td>REPEAT n/UNTIL 跟踪、死循环识别、最大/最小值算法</td></tr><tr><td>§4 列表与搜索</td><td>3.10 Lists；3.11 Binary Search</td><td>AAP-2.N–2.P</td><td>APPEND/REMOVE 跟踪、FOR EACH 遍历、二分查找次数计算</td></tr><tr><td>§5 过程、库、随机与模拟</td><td>3.12 Calling Procedures；3.13 Developing Procedures；3.14 Libraries；3.15 Random Values；3.16 Simulations</td><td>AAP-3.A–3.F</td><td>参数传递与返回值、RANDOM(1,4) 取值个数、模拟适用场景</td></tr><tr><td>§6 效率与可判定性</td><td>3.17 Algorithmic Efficiency；3.18 Undecidable Problems</td><td>AAP-4.A–4.B</td><td>reasonable time 判断、heuristic 场景、decidable vs undecidable</td></tr></table>
+<p><strong>与其他 Big Idea 的联动</strong>：Big 3 与 Big 2 在"用程序处理数据"（filter/sort）深度重叠；与 Big 1 在"错误识别与修正"重叠；Create PT 的 Written Response 3/4/5 要求说明<strong>过程抽象与算法实现</strong>。学完本章请回头刷 Big 1 §1.4（Identifying and Correcting Errors）。</p>
+<p><strong>考试提示</strong>：AP CSP 的伪代码用 <strong>←</strong> 表示赋值，列表索引<strong>从 1 开始</strong>，<code>RANDOM(a,b)</code> <strong>含两端</strong>——这三个约定与 Python/Java 不同，是最大陷阱源。</p>
+<hr>
+<h2 id="1">变量与数据抽象（Topics 3.1–3.2）</h2>
+<h3 id="1-1">知识点梳理（AAP-1.A / 1.B / 1.C / 1.D）</h3>
+<p><strong>（1）变量与赋值（AAP-1.A / 1.B）</strong></p>
+<ul><li><strong>变量</strong>是程序中的抽象，同一时刻持有一个值（该值也可以是 list）。<strong>有意义的变量名</strong>提高可读性（AAP-1.A.2）。</li><li>赋值运算符 <strong>←</strong>：先求右侧表达式的值，再把<strong>一份副本</strong>赋给左侧变量（AAP-1.B.2）。</li><li>变量保存的是<strong>最近一次赋的值</strong>（AAP-1.B.3）。经典陷阱：</li></ul>
+<pre><code>a ← 1
+b ← a
+a ← 2
+DISPLAY(b)        // 仍然显示 1！b 拿到的是"当时 a 的值的副本"</code></pre>
+<p><strong>（2）list 与 string（AAP-1.C）</strong></p>
+<ul><li><strong>list</strong> 是有序元素序列，写作 <code>[value1, value2, value3, ...]</code>；<strong>element</strong> 是单个值，<strong>index</strong> 是引用元素的自然数编号。</li><li><strong>AP CSP 伪代码中 list/string 的索引从 1 开始</strong>（AAP-1.D.8：索引小于 1 或超出元素个数会报错）。</li><li><strong>string</strong> 是有序字符序列；字符串也有索引、也能 <code>aString[i]</code> 取字符。</li></ul>
+<p><strong>（3）数据抽象（AAP-1.D）</strong></p>
+<ul><li><strong>数据抽象</strong> = 把数据类型的抽象属性与其具体表示细节<strong>分离</strong>（AAP-1.D.1）。</li><li>用 list 给一组相关数据起名字，程序<strong>更容易开发和维护</strong>（AAP-1.D.4）；list 中元素<strong>可以是不同类型</strong>（AAP-1.D.5）。</li><li>list 让多个相关项<strong>作为一个整体值</strong>处理；在不同语言里也叫 array。</li></ul>
+<h3 id="1-2">重难点</h3>
+<p><strong>赋值跟踪三步法</strong>（所有"代码段执行后变量值是多少"题的通用解法）：</p>
+<p>1. 画一张<strong>变量表</strong>（variable trace table），列出每个变量。</p>
+<p>2. 逐行执行，<strong>每行只更新表中对应变量</strong>，其余保持不变。</p>
+<p>3. 注意<strong>右侧先全部求值再赋值</strong>——<code>a ← b</code> 不会让 a、b 之后保持联动。</p>
+<p><strong>易混：<code>a ← b</code> vs <code>a ← b + 1</code></strong>：前者复制值；后者先计算再复制。AP 不会考"引用 vs 值"的深层语义，只考"副本"这一层。</p>
+<h3 id="1-3">易错点</h3>
+<ul><li>❌ 以为 <code>b ← a</code> 后 b 会跟着 a 变。<strong>正确</strong>：赋值只复制当时的值。</li><li>❌ 把 list 索引当从 0 开始（Python/Java 习惯）。<strong>AP 伪代码从 1 开始</strong>，<code>aList[1]</code> 是第一个元素。</li><li>❌ 认为 list 必须同类型。<strong>AP 允许混合类型</strong>（数字、字符串、布尔可共存）。</li><li>❌ 数据抽象题只答"让代码更短"。<strong>标准答案要点</strong>：给数据集合命名 → 无需了解内部表示 → 易于开发与维护。</li></ul>
+<hr>
+<h2 id="2">表达式、布尔与条件（Topics 3.3–3.7）</h2>
+<h3 id="2-1">知识点梳理（AAP-2.A–2.I）</h3>
+<p><strong>（1）算术运算（AAP-2.C）</strong></p>
+<ul><li>运算符：<code>+</code>、<code>-</code>、<code><em></code>、<code>/</code>、<strong><code>MOD</code></strong>（取余）。运算优先级与数学相同，<strong>MOD 与 </em> / 同级</strong>（AAP-2.C.4）。</li><li><code>a MOD b</code>：a 除以 b 的<strong>余数</strong>（a ≥ 0，b &gt; 0）。例：17 MOD 5 = 2；<strong>n MOD 2 = 0 即 n 是偶数</strong>（最高频用法）；<code>n MOD 10</code> 取个位。</li></ul>
+<p><strong>（2）字符串操作（AAP-2.D）</strong></p>
+<ul><li><strong>concat(str1, str2)</strong>：把两个字符串首尾相连成新串。</li><li><strong>substring(str, start, length)</strong>：从<strong>第 start 个字符</strong>（索引从 1 开始！）起取 length 个字符。例：<code>substring("delivery", 3, 4)</code> 返回 <code>"live"</code>。</li></ul>
+<p><strong>（3）布尔表达式（AAP-2.E / 2.F）</strong></p>
+<ul><li>关系运算符：<code>= ≠ &gt; &lt; ≥ ≤</code>，结果为 true/false。</li><li>逻辑运算符（<strong>全部大写</strong>）：<strong>NOT、AND、OR</strong>。</li><li>NOT：真假取反。</li><li>AND：两者都 true 才 true。</li><li>OR：至少一个 true 即 true。</li></ul>
+<p><strong>逻辑运算真值表（必背）</strong>：</p>
+<table><tr><th>A</th><th>B</th><th>A AND B</th><th>A OR B</th><th>NOT A</th></tr><tr><td>true</td><td>true</td><td>true</td><td>true</td><td>false</td></tr><tr><td>true</td><td>false</td><td>false</td><td>true</td><td>false</td></tr><tr><td>false</td><td>true</td><td>false</td><td>true</td><td>true</td></tr><tr><td>false</td><td>false</td><td>false</td><td>false</td><td>true</td></tr></table>
+<p><strong>重要恒等式</strong>（2025 真题直接考过）：</p>
+<ul><li><code>(A AND true) = A</code>；<code>(A AND false) = false</code></li><li><code>(A OR true) = true</code>；<code>(A OR false) = A</code></li><li><code>NOT(A AND B) = (NOT A) OR (NOT B)</code>；<code>NOT(A OR B) = (NOT A) AND (NOT B)</code>（德摩根律）</li></ul>
+<p><strong>（4）条件语句 IF / IF-ELSE（AAP-2.G / 2.H）</strong></p>
+<pre><code>IF(condition)
+{
+    &lt;statements&gt;       // condition 为 true 时执行
+}
+
+IF(condition)
+{
+    &lt;statements1&gt;      // true 时执行
+}
+ELSE
+{
+    &lt;statements2&gt;      // false 时执行
+}</code></pre>
+<p><strong>（5）嵌套条件（AAP-2.I）</strong>：条件里套条件。<strong>ELSE 与最近的未配对 IF 配对</strong>。三档判断（如 &gt;15 Platinum / &gt;5 Gold / 否则 Basic）既可写成嵌套 IF-ELSE，也可写成两个并列 IF——<strong>两种写法是否等价要看条件是否互斥</strong>。</p>
+<h3 id="2-2">重难点</h3>
+<p><strong>IF-ELSE 与布尔表达式的互化</strong>（AAP-2.L.3/4，真题高频）：</p>
+<pre><code>IF(x = 5)  { y ← true }  ELSE  { y ← false }
+// 等价于
+y ← (x = 5)</code></pre>
+<p><strong>多重 IF-ELSE 等价性判断技巧</strong>：给每个变量代入<strong>边界值</strong>（如 5、15、16）逐个测试选项。2025 Q68（reward level）和 2026 Q33（highest score）都是"代入边界值 + 跟踪流程"就能解决的。</p>
+<p><strong>"x 但不同时 y"（XOR）写法</strong>：<code>(x AND (NOT y)) OR (y AND (NOT x))</code>；两变量一正一负：<code>(q &gt; 0) XOR (r &gt; 0)</code> 等价于 <code>((q &gt; 0) AND (r ≤ 0)) OR ((r &gt; 0) AND (q ≤ 0))</code>。注意"正数"要写成 <code>&gt; 0</code>，"非正"是 <code>≤ 0</code> 而不是 <code>&lt; 0</code>。</p>
+<h3 id="2-3">易错点</h3>
+<ul><li>❌ <code>substring</code> 用 0 起始索引。<strong>AP 从 1 开始</strong>："delivery" 第 3 个字符是 "l"。</li><li>❌ MOD 优先级低于乘除。<strong>同级</strong>，从左到右算。</li><li>❌ 把 <code>(A AND true)</code> 化简成 true。<strong>应化简为 A</strong>。</li><li>❌ 忽略 IF 无 ELSE 时的"不执行任何分支"情况——条件为 false 时直接跳过，变量保持原值。</li><li>❌ 嵌套 IF 中 ELSE 配对错误。<strong>配最近的 IF</strong>。</li><li>❌ 边界混淆：<code>≥ 16</code> 与 <code>&gt; 16</code> 差一个值。题目说 "at least 16" 就是 <code>≥ 16</code>。</li></ul>
+<hr>
+<h2 id="3">迭代与算法开发（Topics 3.8–3.9）</h2>
+<h3 id="3-1">知识点梳理（AAP-2.J–2.M）</h3>
+<p><strong>（1）迭代（AAP-2.J / 2.K）</strong></p>
+<ul><li><strong>Iteration</strong>：算法中重复执行的部分——重复<strong>指定次数</strong>或<strong>直到条件满足</strong>。</li><li><code>REPEAT n TIMES { ... }</code>：执行恰好 n 次。</li><li><code>REPEAT UNTIL(condition) { ... }</code>：<strong>先检查条件，后执行循环体</strong>；条件为 true 时<strong>停止</strong>（不是"为 true 时执行"）。</li><li>若一开始条件就为 true，<strong>循环体一次都不执行</strong>（AAP-2.K.5）。</li><li>若条件永远不为 true → <strong>死循环（infinite loop）</strong>（AAP-2.K.4）。</li></ul>
+<p><strong>（2）开发算法（AAP-2.L / 2.M）</strong></p>
+<ul><li>同一任务可以由<strong>不同算法</strong>完成；<strong>看起来相似的算法可能产生不同结果/副作用</strong>（AAP-2.L.2）。</li><li>某些条件语句可写成等价布尔表达式，反之亦然。</li><li>算法的来源：从想法构造、<strong>组合现有算法</strong>、<strong>修改现有算法</strong>（AAP-2.M.1）。</li><li><strong>必会的"积木算法"</strong>（AAP-2.M.2 / 2.O.4，几乎每年考）：</li><li>求最大/最小值；求和/平均值；</li><li><strong>计数</strong>（counting）：满足条件的元素个数；</li><li>线性/顺序查找（linear/sequential search）：逐个检查直到找到或查完。</li></ul>
+<h3 id="3-2">重难点</h3>
+<p><strong>REPEAT UNTIL 跟踪模板</strong>：</p>
+<pre><code>n ← 1
+REPEAT UNTIL(n &gt; 4)
+{
+    DISPLAY(n)
+    n ← n + 1
+}
+// 输出：1 2 3 4（n=5 时条件成立，退出）</code></pre>
+<p>判断输出几行/循环几次：列出每轮的 n 与条件真值，数到条件第一次为 true 为止。</p>
+<p><strong>死循环识别三特征</strong>：① 循环体内<strong>没有改变</strong>条件中变量的语句；② 变量朝错误方向变（如条件 <code>n &lt; 5</code> 而 n 每次 -1）；③ 条件写成恒假（如 <code>REPEAT UNTIL(false)</code>）。</p>
+<p><strong>计数算法标准模板</strong>：</p>
+<pre><code>count ← 0
+FOR EACH item IN aList
+{
+    IF(条件)
+    {
+        count ← count + 1
+    }
+}
+DISPLAY(count)</code></pre>
+<h3 id="3-3">易错点</h3>
+<ul><li>❌ 把 REPEAT UNTIL 当"直到条件为 true 才执行"。<strong>每次迭代先检查，true 就停</strong>。</li><li>❌ 循环体边界差一：<code>REPEAT 3 TIMES</code> 里 <code>n ← n + 1</code> 从 n=1 开始，结束时 n = 4（不是 3）。</li><li>❌ 死循环题选"再等一会儿就好"。<strong>条件写错就是永远不终止</strong>。</li><li>❌ 认为"看起来像的算法结果一样"（AAP-2.L.2 反例年年出）。</li><li>❌ 求最大值算法忘记把 <code>max</code> 初始化为<strong>第一个元素</strong>（初始化为 0 在全负数列表会错）。</li></ul>
+<hr>
+<h2 id="4">列表与搜索（Topics 3.10–3.11）</h2>
+<h3 id="4-1">知识点梳理（AAP-2.N–2.P）</h3>
+<p><strong>（1）list 操作（AAP-2.N）</strong></p>
+<ul><li><code>aList[i]</code>：访问索引 i 的元素（<strong>从 1 开始</strong>）。</li><li><code>APPEND(aList, value)</code>：把 value 加到<strong>列表末尾</strong>。</li><li><code>REMOVE(aList, i)</code>：删除索引 i 的元素，<strong>后面元素整体前移</strong>，列表长度 -1。</li><li><code>INSERT(aList, i, value)</code>：在索引 i 处插入 value（原 i 及之后后移）。</li><li><code>LENGTH(aList)</code>：元素个数。</li><li><code>FOR EACH item IN aList { ... }</code>：<strong>完整遍历</strong>——item 依次取每个元素的<strong>值</strong>（不是索引）；遍历时修改列表长度是高危操作。</li></ul>
+<p><strong>（2）列表遍历算法（AAP-2.O）</strong></p>
+<ul><li><strong>完整遍历 vs 部分遍历</strong>（AAP-2.O.1）：全部访问 vs 只访问一段。</li><li>常用积木算法：求最大/最小、求和/平均、计数、<strong>线性查找</strong>（逐个检查直到找到或查完）。</li></ul>
+<p><strong>（3）二分查找（AAP-2.P）</strong></p>
+<ul><li><strong>前提：数据必须已排序</strong>（AAP-2.P.2）！</li><li>流程：从<strong>中间元素</strong>开始比较 → 若目标更大，舍弃较小的一半；若更小，舍弃较大的一半 → 重复直到找到或区间为空（AAP-2.P.1）。</li><li><strong>效率</strong>：对已排序数据，二分通常远快于线性查找（AAP-2.P.3）。</li><li><strong>核心计算</strong>：n 个元素最多检查 <strong>⌈log₂(n+1)⌉ 次左右</strong>（约 log₂n 量级）：</li><li>100 个元素 → 约 7 次（2⁷ = 128）</li><li>500 个元素 → <strong>9 次</strong>（2⁹ = 512；2⁸ = 256 &lt; 500）→ CED 样题 Q13 答案 A(10) 与此一致，按"最接近"取 10</li><li>1000 个元素 → 约 10 次</li><li>100 万个元素 → 约 20 次</li></ul>
+<h3 id="4-2">重难点</h3>
+<p><strong>APPEND/REMOVE 组合跟踪</strong>（2025 Q22 原题套路）：</p>
+<pre><code>listA ← ["Red", "Green", "Orange"]
+listB ← ["Purple", "Blue", "Yellow"]
+APPEND(listB, listA[1])        // listB 末尾加 "Red"
+REMOVE(listA, 1)               // listA 删掉 "Red"，其余前移
+// 结果：listA = ["Green", "Orange"]
+//        listB = ["Purple", "Blue", "Yellow", "Red"]</code></pre>
+<p><strong>遍历中删除元素</strong>（2025 Q64 高危套路）：在 <code>REPEAT UNTIL</code> / FOR EACH 中 <code>REMOVE(aList, index)</code> 后，<strong>被删位置换上了新元素</strong>——若继续 <code>index ← index + 1</code> 会<strong>跳过一个元素</strong>；正确做法之一是删除后 <code>index ← index - 1</code>（或多选答案里选"删后不前进/回退"的选项）。</p>
+<p><strong>二分 vs 线性选择判断</strong>：题目给"未排序的列表" → 只能线性；给"已排序 + 要求最快" → 二分；问"二分查找的前提" → <strong>数据必须有序</strong>。</p>
+<h3 id="4-3">易错点</h3>
+<ul><li>❌ 索引从 0 开始。<strong>AP 从 1 开始</strong>，且越界会报错。</li><li>❌ <code>FOR EACH x IN listX</code> 中把 x 当索引用（2025 Q51 A 选项陷阱：<code>listX[x]</code> 错误；x 就是元素值）。</li><li>❌ REMOVE 后索引前进导致漏查/越界。</li><li>❌ 二分查找用于未排序数据。<strong>先排序才能二分</strong>。</li><li>❌ 二分次数心算错：记<strong>对半砍</strong>——500 → 250 → 125 → 63 → 32 → 16 → 8 → 4 → 2 → 1，共约 9~10 次区间缩小。</li></ul>
+<hr>
+<h2 id="5">过程、库、随机与模拟（Topics 3.12–3.16）</h2>
+<h3 id="5-1">知识点梳理（AAP-3.A–3.F）</h3>
+<p><strong>（1）过程调用（AAP-3.A）</strong></p>
+<ul><li><strong>Procedure（过程）</strong>：命名的指令组，可有<strong>参数（parameters）</strong>与<strong>返回值</strong>；不同语言叫 method / function。</li><li><strong>参数 vs 实参</strong>：参数是过程定义里的输入变量；<strong>arguments（实参）</strong>是调用时给出的具体值（AAP-3.A.3）。</li><li>过程调用会<strong>打断顺序执行</strong>，执行过程内语句，到 <code>RETURN</code> 或结尾后<strong>回到调用点继续</strong>（AAP-3.A.4）。</li><li><code>DISPLAY(expr)</code> 显示值后跟一个空格；<code>RETURN(expr)</code> 返回控制权与值；<code>INPUT()</code> 接收用户输入。</li><li><strong>DISPLAY 只是打印；RETURN 才有"值"</strong>——<code>DISPLAY(sum(a,b))</code> 与直接 <code>DISPLAY(a+b)</code> 效果相同，但 <code>x ← sum(a,b)</code> 必须过程有 RETURN。</li></ul>
+<p><strong>（2）过程抽象（AAP-3.B / 3.C）</strong></p>
+<ul><li><strong>过程抽象</strong>：给一段处理流程起名字，使用者<strong>只需知道做什么、不必知道怎么做</strong>（AAP-3.B.1）。</li><li>大问题拆成子问题、每个子问题写一个过程 = <strong>模块化（modularity）</strong>（AAP-3.B.2/3）。</li><li>抽象共享特征 → <strong>代码复用</strong> → 管理复杂度；<strong>参数化</strong>让过程可适用一组输入（AAP-3.B.4/5）。</li><li>好处：<strong>提高可读性</strong>；<strong>可以改内部实现而无需通知使用者</strong>（AAP-3.B.6/7）。</li></ul>
+<p><strong>（3）库（AAP-3.D）</strong></p>
+<ul><li><strong>Library</strong>：包含可在新程序中使用的过程集合；简化复杂程序开发（AAP-3.D.1/3）。</li><li>现有代码可来自内部或外部来源（AAP-3.D.2）。</li><li><strong>API</strong>：说明库中过程的行为与用法的规范；<strong>读 API 文档</strong>才能正确使用库（AAP-3.D.4/5）。</li></ul>
+<p><strong>（4）随机值（AAP-3.E）</strong></p>
+<ul><li><code>RANDOM(a, b)</code>：生成 <strong>a 到 b 之间（含两端）</strong> 的随机整数，每个值等可能。</li><li><strong>取值个数 = b − a + 1</strong>（高频计算！）：<code>RANDOM(1,4)</code> 有 4 种；<code>RANDOM(2,5)</code> 有 4 种。</li><li>使用随机数 → <strong>每次运行程序结果可能不同</strong>（AAP-3.E.2）。</li></ul>
+<p><strong>（5）模拟（AAP-3.F）</strong></p>
+<ul><li><strong>Simulation</strong>：为特定目的对复杂对象/现象做的<strong>抽象表示</strong>（AAP-3.F.1）；用随时间变化的值反映现象状态。</li><li>用途：<strong>在不便做真实实验时</strong>（太大、太小、太快、太慢、太贵、太危险）研究现象、推导与修正假设（AAP-3.F.6/7）。</li><li>开发模拟要<strong>去掉细节、简化功能</strong>；因此<strong>可能包含偏差</strong>（选取/排除哪些真实元素）（AAP-3.F.4/5）。</li><li><strong>随机数生成器</strong>用来模拟现实世界的随机变化（AAP-3.F.8）。</li></ul>
+<h3 id="5-2">重难点</h3>
+<p><strong>含 RANDOM 的代码段结果判断</strong>：把 RANDOM 的<strong>每一个可能取值</strong>代入跟踪一遍，看哪些选项的输出"可能"出现（问 possible）或"一定"出现（问 must）。2026 Q16（机器人随机走）与 2025 Q47（抛 5 枚硬币）都是此套路。</p>
+<p><strong>过程组合</strong>（2026 Q54 isPerfect 套路）：</p>
+<pre><code>PROCEDURE sumFactors(number)  { ... RETURN(s) }
+PROCEDURE isPerfect(number)
+{
+    sum ← sumFactors(number)
+    RETURN(sum - number)
+}</code></pre>
+<p>调用 <code>isPerfect(28)</code>：先执行 sumFactors(28) 得 28 的因数和，再减 28。<strong>嵌套调用逐层展开</strong>即可。</p>
+<h3 id="5-3">易错点</h3>
+<ul><li>❌ <code>RANDOM(2,5)</code> 以为有 5 个值。<strong>含两端，5−2+1 = 4 个</strong>。</li><li>❌ 混淆 DISPLAY 与 RETURN。<strong>没有 RETURN 的过程不能给变量赋"计算结果"</strong>。</li><li>❌ 模拟题答"模拟完全等于现实"。<strong>模拟是抽象，必有简化与偏差</strong>。</li><li>❌ 模拟适用场景选错。<strong>关键词：impractical（不现实）</strong>——太大/太小/太快/太慢/太贵/太危险。</li><li>❌ 认为 API 与库无关。<strong>API 就是库的使用说明书</strong>。</li></ul>
+<hr>
+<h2 id="6">算法效率与可判定性（Topics 3.17–3.18）</h2>
+<h3 id="6-1">知识点梳理（AAP-4.A / 4.B）</h3>
+<p><strong>（1）问题与效率（AAP-4.A）</strong></p>
+<ul><li><strong>Problem（问题）</strong>是对任务的<strong>一般性描述</strong>；<strong>instance（实例）</strong>包含具体输入。例：排序是 problem；给 [7, 3, 9, 1] 排序是 instance。</li><li><strong>Decision problem（判定问题）</strong>：答案为 yes/no（如"从 A 到 B 有路径吗？"）；<strong>Optimization problem（优化问题）</strong>：找"最好"解（如"最短路径是什么？"）（AAP-4.A.2）。</li><li><strong>Efficiency（效率）</strong>：算法所用<strong>计算资源</strong>的估计，通常表示为<strong>输入规模 n 的函数</strong>；可通过形式化或数学推理确定，也可<strong>非正式地数语句执行次数</strong>（AAP-4.A.3/4/5）。</li><li>不同正确算法效率可以不同（AAP-4.A.6）。</li></ul>
+<p><strong>（2）reasonable time（AAP-4.A.7）</strong></p>
+<table><tr><th>效率类型</th><th>例子</th><th>分类</th></tr><tr><td>常数、线性、平方、立方（多项式及更慢）</td><td>1 次遍历、双层循环</td><td><strong>Reasonable time</strong></td></tr><tr><td><strong>指数、阶乘</strong></td><td>2ⁿ 种子集枚举、n! 排列</td><td><strong>Not reasonable time</strong></td></tr></table>
+<p><strong>（3）Heuristic（启发式）（AAP-4.A.8/9）</strong></p>
+<ul><li>有些问题<strong>没有已知的高效算法</strong>——无法在合理时间内保证最优解。</li><li><strong>Heuristic</strong>：不保证最优（甚至不保证正确），但在实际中"够用"的近似解法。使用场景：<strong>最优算法不切实际（impractical）时</strong>。</li><li>经典例子：地图导航走"看起来近"的路、下棋 AI 只往前看若干步。</li></ul>
+<p><strong>（4）可判定性（AAP-4.B）</strong></p>
+<ul><li><strong>Decidable problem</strong>：存在算法能对<strong>所有输入</strong>给出正确 yes/no 答案（如"这个数是偶数吗？"）（AAP-4.B.1）。</li><li><strong>Undecidable problem</strong>：<strong>不存在</strong>总能给出正确 yes/no 回答的算法（AAP-4.B.2）。</li><li>关键理解（最高频考点）：<strong>undecidable 问题可能有一些实例可以被算法解决，但没有任何算法能解决它的所有实例</strong>（AAP-4.B.3）。所以"某算法对一些实例给出解、对另一些实例永远给不出解"与"问题 undecidable"<strong>完全相容</strong>——2025 Q47 正是考这一点。</li></ul>
+<h3 id="6-2">重难点</h3>
+<p><strong>"reasonable time" 判断口诀</strong>：看<strong>循环嵌套层数与输入的关系</strong>——</p>
+<ul><li>单层遍历所有输入 → 线性 → reasonable。</li><li>两两比较所有配对（双层循环）→ 平方 → reasonable。</li><li>枚举<strong>所有子集</strong>（2ⁿ）或<strong>所有排列</strong>（n!）→ not reasonable。</li></ul>
+<p><strong>heuristic vs undecidable 辨析</strong>（2025 Q47 干扰项设置）：</p>
+<ul><li>算法<strong>有时能给解、有时永远给不出</strong>，且<strong>无逻辑错误</strong> → 问题本身 undecidable（选 undecidable，不选 heuristic）。</li><li>heuristic 是"为了速度放弃最优"，与"能不能解出"无关。</li></ul>
+<p><strong>"某算法解决了所有实例吗"三选一</strong>：</p>
+<p>1. 若问题 decidable 且算法无逻辑错误 → 能。</p>
+<p>2. 若问题 undecidable → <strong>不存在</strong>这样的算法，任何算法都不行。</p>
+<p>3. 题目说"算法对某些实例无解"→ 说明问题 undecidable（或算法不完备，看题干暗示）。</p>
+<h3 id="6-3">易错点</h3>
+<ul><li>❌ 把 undecidable 理解成"还没找到算法"。<strong>是数学上证明了不存在</strong>。</li><li>❌ 认为 undecidable 问题的所有实例都无解。<strong>部分实例可有解</strong>（AAP-4.B.3）。</li><li>❌ 把平方效率当成 not reasonable。<strong>多项式及以下都 reasonable</strong>。</li><li>❌ optimization 与 decision problem 混为一谈。<strong>一个是"最好解"，一个是"yes/no"</strong>。</li><li>❌ 见到"慢"就选 not reasonable。<strong>判据是增长率（多项式 vs 指数/阶乘），不是绝对速度</strong>。</li></ul>
+<hr>
+<h2 id="7">重难点与易错点速查表（考前 10 分钟过一遍）</h2>
+<p>1. 赋值是<strong>复制值</strong>：<code>b ← a</code> 后 a 变 b 不变。</p>
+<p>2. list/string 索引<strong>从 1 开始</strong>；越界报错。</p>
+<p>3. <code>MOD</code> 与 <code>* /</code> 同级；<code>n MOD 2 = 0</code> 判偶数。</p>
+<p>4. <code>substring(s, start, len)</code> 的 start <strong>从 1 数</strong>。</p>
+<p>5. <code>(A AND true) = A</code>；<code>(A OR false) = A</code>；德摩根律两条。</p>
+<p>6. REPEAT UNTIL <strong>先判后做</strong>；条件一开始为 true 则循环体执行 0 次。</p>
+<p>7. 死循环 = 条件永远不为 true = 条件变量没被正确更新。</p>
+<p>8. <code>RANDOM(a,b)</code> 含两端，<strong>取值个数 = b−a+1</strong>。</p>
+<p>9. FOR EACH 的变量是<strong>元素值</strong>不是索引。</p>
+<p>10. REMOVE 后元素前移，遍历删除要<strong>回退索引</strong>或小心前进。</p>
+<p>11. <strong>二分查找前提：已排序</strong>；n 个元素最多约 log₂n 次（500→约 9~10 次）。</p>
+<p>12. 无 RETURN 的过程不能给变量赋计算结果；DISPLAY 只是打印。</p>
+<p>13. 参数在定义处；<strong>arguments 是调用处给的实参</strong>。</p>
+<p>14. 库 + API 文档 = 简化复杂程序开发。</p>
+<p>15. 模拟 = 抽象 + 简化 → <strong>必有偏差</strong>；适用场景 = 现实实验 impractical。</p>
+<p>16. 多项式效率 = reasonable；<strong>指数/阶乘 = not reasonable</strong>。</p>
+<p>17. Heuristic = 不保证最优的近似解，用于最优解不切实际时。</p>
+<p>18. <strong>Undecidable = 不存在对所有输入都正确的算法</strong>；但部分实例可以有解。</p>
+<hr>
+<h2 id="8">国际考真题与解析</h2>
+<blockquote><p>本节题目均采用工作区真题 PDF 的<strong>英文原文</strong>（题干与选项逐字照录），解析为中文。点击选项即可作答。</p></blockquote>
+<h3 id="8-1">CED 官方样题（2023 CED Sample Exam Questions, pp.177–185）</h3>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q6（官方考点：AAP-2.F.b）</strong></p><p>In a certain country, a person must be at least 16 years old to drive a car and must be at least 18 years old to vote. The variable <code>age</code> represents the age of a person as an integer.</p><p>Which of the following expressions evaluates to <code>true</code> if the person is old enough to drive but not old enough to vote, and evaluates to <code>false</code> otherwise?</p><p>Ⅰ. <code>(age ≥ 16) AND (age ≤ 18)</code></p><p>Ⅱ. <code>(age ≥ 16) AND (NOT(age ≥ 18))</code></p><p>Ⅲ. <code>(age &lt; 18) AND (NOT(age &lt; 16))</code></p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Ⅱ only</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Ⅰ and Ⅱ only</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Ⅰ and Ⅲ only</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Ⅱ and Ⅲ only</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p>。能开车但不能投票即 <code>age ≥ 16</code> 且 <code>age &lt; 18</code>。Ⅱ 等价于 <code>(age ≥ 16) AND (age &lt; 18)</code> ✓。Ⅲ 等价于 <code>(age &lt; 18) AND (age ≥ 16)</code>，与 Ⅱ 相同 ✓。<strong>Ⅰ 错在把上界写成了 ≤ 18</strong>：<code>age = 18</code>（可投票）时 Ⅰ 仍为 true。注意 "at least 18 to vote" → 不能投票 = <code>age &lt; 18</code>，不是 <code>≤ 18</code>。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q8（官方考点：AAP-2.J）</strong></p><p>A list of numbers has <code>n</code> elements, indexed from 1 to n. The following algorithm is intended to display the number of elements in the list that have a value greater than 100. The algorithm uses the variables <code>count</code> and <code>position</code>. Steps 3 and 4 are missing.</p><p>Step 1: Set <code>count</code> to 0 and <code>position</code> to 1.</p><p>Step 2: If the value of the element at index <code>position</code> is greater than 100, increase the value of <code>count</code> by 1.</p><p>Step 3: (missing step)</p><p>Step 4: (missing step)</p><p>Step 5: Display the value of <code>count</code>.</p><p>Which of the following could be used to replace steps 3 and 4 so that the algorithm works as intended?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Step 3: Increase the value of <code>position</code> by 1.<br>Step 4: Repeat steps 2 and 3 until the value of <code>count</code> is greater than 100.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Step 3: Increase the value of <code>position</code> by 1.<br>Step 4: Repeat steps 2 and 3 until the value of <code>position</code> is greater than n.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Step 3: Repeat step 2 until the value of <code>count</code> is greater than 100.<br>Step 4: Increase the value of <code>position</code> by 1.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Step 3: Repeat step 2 until the value of <code>position</code> is greater than n.<br>Step 4: Increase the value of <code>count</code> by 1.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>。需要<strong>遍历整个列表</strong>：position 逐个前进（Step 3），直到 <strong>position &gt; n</strong>（Step 4）——此时所有 n 个元素都被检查过。A/C 用 count 当终止条件（count 未必到 100）；D 的顺序颠倒（position 还没动就退出，且 count 增加毫无意义）。<strong>关键：终止条件由"遍历进度（position）"决定，而不是由统计结果（count）决定</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q13（官方考点：AAP-2.P.a）</strong></p><p>A sorted list of numbers contains 500 elements. Which of the following is closest to the maximum number of list elements that will be examined when performing a binary search for a value in the list?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">10</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">50</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">250</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">500</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p>。二分查找每次砍一半：500 → 250 → 125 → 63 → 32 → 16 → 8 → 4 → 2 → 1，约 9 次区间减半，最接近 10。口诀 <strong>log₂(500) ≈ 9</strong>；记住 2⁹ = 512 ≥ 500、2⁸ = 256 &lt; 500 即可。</p></blockquote></div></div>
+<div class="quiz" data-ans="A,D"><div class="quiz-stem"><p><strong>Q18（官方考点：AAP-2.L，双选）</strong></p><p>In the following statement, <code>val1</code>, <code>val2</code>, and <code>result</code> are Boolean variables.</p><p><code>result ← val1 AND (NOT val2)</code></p><p>Which of the following code segments produce the same result as the statement above for all possible values of <code>val1</code> and <code>val2</code>? <strong>Select two answers.</strong></p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text"><pre class="opt-code">result ← false
+IF (val1)
+{
+    IF (NOT val2)
+    {
+        result ← true
+    }
+}</pre></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text"><pre class="opt-code">result ← false
+IF (val1)
+{
+    result ← true
+}
+IF (NOT val2)
+{
+    result ← true
+}</pre></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text"><pre class="opt-code">IF (val1)
+{
+    result ← true
+}
+ELSE
+{
+    IF (val2)
+    {
+        result ← false
+    }
+    ELSE
+    {
+        result ← true
+    }
+}</pre></span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text"><pre class="opt-code">IF (val1)
+{
+    IF (val2)
+    {
+        result ← false
+    }
+    ELSE
+    {
+        result ← true
+    }
+}
+ELSE
+{
+    result ← false
+}</pre></span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A、D</p><blockquote><p>。原式仅在 <code>val1=true 且 val2=false</code> 时为 true。 - A：先置 false，只有内层两个条件都成立才改 true ✓。 - D：val1 为 true 时再看 val2——val2 false 则 true、val2 true 则 false；val1 false 时保持 false ✓。 - B：两个 IF 独立并列，val1=true、val2=true 时 result 也变 true ✗（应该是 false）。 - C：val1=true、val2=true 时走 IF(val1) 分支直接 true，永远不再检查 val2 ✗。</p></blockquote></div></div>
+<h3 id="8-2">2026 年国际考真题（大陆卷）</h3>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q33（考点：AAP-2.L）</strong></p><p>A game keeps track of the highest score obtained so far, which is stored in the variable <code>highest</code>. Assume that all scores are between 0 and 5000, inclusive. If <code>newScore</code> is the most recent score obtained, which of the following algorithms can always be used to update the value of <code>highest</code> appropriately?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">If <code>newScore</code> is greater than <code>highest</code>, assign the value of <code>newScore</code> to <code>highest</code>. Otherwise, <code>highest</code> is unchanged.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">If <code>newScore</code> is greater than <code>highest</code>, assign the value of <code>newScore</code> to <code>highest</code>. Otherwise, assign 5000 to <code>highest</code>.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">If <code>highest</code> is greater than <code>newScore</code>, assign the value of <code>newScore</code> to <code>highest</code>. Otherwise, <code>highest</code> is unchanged.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">If <code>highest</code> is greater than <code>newScore</code>, assign the value of <code>newScore</code> to <code>highest</code>. Otherwise, assign 5000 to <code>highest</code>.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p>。更新最大值的标准写法："只在更大时替换（otherwise 不动）"。B 在否则分支把 5000 硬塞进 <code>highest</code>——一旦新分数较小就把最高分顶掉；C/D 的条件方向反了：<code>highest &gt; newScore</code> 时反而把较小的 <code>newScore</code> 赋给 <code>highest</code>，最高分被越改越小。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q36（考点：AAP-2.M）</strong></p><p>A list of numbers is unsorted. Which of the following algorithms can always be used to determine whether all elements in the list are less than the number <code>max</code>?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Inspect the first and last elements of the list. If both elements are less than <code>max</code>, then all elements in the list are less than <code>max</code>. Otherwise, not all elements are less than <code>max</code>.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Inspect the first and last elements of the list. If both elements are greater than or equal to <code>max</code>, then not all elements in the list are less than <code>max</code>. Otherwise, all elements are less than <code>max</code>.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Iterate through the list. If an element that is less than <code>max</code> is encountered before reaching the end of the list, then all elements in the list are less than <code>max</code>. Otherwise, not all elements are less than <code>max</code>.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Iterate through the list. If an element that is greater than or equal to <code>max</code> is encountered before reaching the end of the list, then not all elements in the list are less than <code>max</code>. Otherwise, all elements are less than <code>max</code>.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p>。判断"全部满足 P"必须<strong>遍历找反例</strong>：找到反例（≥ max）即可提前停止并断言 false；查完全部无反例才断言 true。A/B 只看两端——中间元素可能违规；C 把"存在一个 &lt; max"当"全部 &lt; max"，逻辑颠倒。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q48（考点：AAP-3.A）</strong></p><p>The procedure does not work as intended. Which of the following changes can be made so that the procedure works as intended?</p><p>In the following procedure, <code>wordList</code> is a list of strings representing vocabulary words and <code>target</code> is a string representing a single word. The procedure is intended to return the first index where <code>target</code> appears in <code>wordList</code> or return −1 if <code>target</code> does not appear in <code>wordList</code>.</p><pre><code>Line 1:  PROCEDURE search(wordList, target)
+Line 2:  {
+Line 3:      REPEAT UNTIL(index &gt; LENGTH(wordList))
+Line 4:      {
+Line 5:          index ← 1
+Line 6:          IF(target = wordList[index])
+Line 7:          {
+Line 8:              RETURN(index)
+Line 9:          }
+Line 10:         index ← index + 1
+Line 11:     }
+Line 12:     RETURN(-1)
+Line 13: }</code></pre></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Moving the statement in line 5 so that it appears just before the <code>REPEAT UNTIL</code> loop</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Moving the statement in line 10 so that it appears just after the <code>REPEAT UNTIL</code> loop</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Interchanging lines 8 and 12</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Interchanging lines 9 and 10</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p>。<code>index ← 1</code> 写在循环<strong>内部</strong>，每轮都被重置为 1 → 死循环（除非第一个元素就匹配）。<strong>计数器初始化必须在循环外</strong>。B 把自增移出循环后 index 永不增加，同样死循环；C 交换后第一个匹配处返回 −1、循环外返回未定义的 index；D 交换 9/10 两行会把自增语句挪进 IF 块、右花括号错位。注意本题与 2025 补充卷 Q64（removeMatch）同属"循环内初始化/索引更新"套路。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q54（考点：AAP-3.C）</strong></p><p>Consider the following procedure.</p><table><tr><th>Procedure</th><th>Explanation</th></tr><tr><td><code>sumFactors(num)</code></td><td>This procedure returns the sum of the factors of <code>num</code>, where <code>num</code> is an integer greater than zero. For example, <code>sumFactors(6)</code> returns 12 since 1 + 2 + 3 + 6 equals 12. As another example, <code>sumFactors(10)</code> returns 18 since 1 + 2 + 5 + 10 equals 18.</td></tr></table><p>A number is considered perfect if it is equal to the sum of its factors, <strong>excluding the number itself</strong>. For example, 6 is a perfect number because 6 is equal to 1 + 2 + 3 (its factors excluding 6), whereas 10 is not a perfect number because 10 is not equal to 1 + 2 + 5 (its factors excluding 10).</p><p>Consider the procedure <code>isPerfect</code>, which is intended to return <code>true</code> if its integer parameter <code>number</code> is perfect and to return <code>false</code> otherwise. Assume that <code>number</code> is greater than zero. Which of the following correctly uses the <code>sumFactors</code> procedure to implement the <code>isPerfect</code> procedure?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text"><pre class="opt-code">PROCEDURE isPerfect(number)
+{
+    sum ← sumFactors(number)
+    sum ← sum - number
+    RETURN(sum = number)
+}</pre></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text"><pre class="opt-code">PROCEDURE isPerfect(number)
+{
+    sum ← number
+    sum ← sum - sumFactors(number)
+    RETURN(sum = number)
+}</pre></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text"><pre class="opt-code">PROCEDURE isPerfect(number)
+{
+    sum ← sumFactors(number)
+    RETURN(sum - number)
+}</pre></span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text"><pre class="opt-code">PROCEDURE isPerfect(number)
+{
+    IF (sumFactors(number) = number)
+    {
+        RETURN(true)
+    }
+    ELSE
+    {
+        RETURN(false)
+    }
+}</pre></span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p>（官方答案册原文确认）。<code>sumFactors</code> <strong>包含自身</strong>（sumFactors(6)=12），而 perfect 的定义是<strong>真因数和</strong>（不含自身）等于自身 → 先求总和、再减去 number，最后与 number 比较：<code>sumFactors(6) − 6 = 6</code> ✓。B 用 <code>number − sumFactors</code> 得到负数 ✗；C 返回的是差值（一个数）而不是布尔值 ✗；D 拿<strong>含自身</strong>的总和直接与 number 比较（12 ≠ 6）✗。<strong>做题第一步：看清过程返回值"含不含自身"</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q56（考点：AAP-4.B）</strong></p><p>A computational problem is determined to be undecidable. Which of the following best describes the ability of a computer to solve the problem algorithmically?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">There exists an algorithm to solve the problem for all inputs, and the algorithm will run in a reasonable amount of time for most inputs.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">There exists an algorithm to solve the problem for all inputs, but no such algorithm will run in a reasonable amount of time.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">With further research, it may be possible to solve the problem for all inputs, but no such algorithm has been discovered yet.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">It is not possible to create an algorithm to solve the problem for all inputs.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p>。Undecidable 的定义就是"不存在对一切输入都给出正确 yes/no 回答的算法"——这是被<strong>数学证明</strong>的不可能性，不是"还没找到"（C 错），也与时间/空间效率无关（A/B 错）。</p></blockquote></div></div>
+<h3 id="8-3">2025 年官方补充练习卷（Supplemental Practice Exam）</h3>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q22（考点：AAP-2.O）</strong></p><p>Consider the following code segment.</p><pre><code>listA ← ["Red", "Green", "Orange"]
+listB ← ["Purple", "Blue", "Yellow"]
+APPEND(listB, listA[1])
+REMOVE(listA, 1)</code></pre><p>What will be the contents of <code>listA</code> and <code>listB</code> after executing the code segment?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">listA = ["Purple", "Blue", "Yellow", "Green", "Orange"], listB = ["Purple", "Blue", "Yellow"]</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">listA = ["Green", "Orange", "Purple"], listB = ["Blue", "Yellow"]</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">listA = ["Green", "Orange"], listB = ["Red", "Purple", "Blue", "Yellow"]</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">listA = ["Green", "Orange"], listB = ["Purple", "Blue", "Yellow", "Red"]</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p>（官方解析原文：The APPEND statement takes the value of the first element of listA ("Red") and places it at the end of listB）。<code>APPEND(listB, listA[1])</code> 把 listA 的<strong>第一个</strong>元素（索引从 1 开始）"Red" 追加到 listB <strong>末尾</strong>。<code>REMOVE(listA, 1)</code> 删除 listA 的第一个元素，其余前移 → ["Green","Orange"]。两步都考"索引 1 = 第一个元素"。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q34（考点：AAP-2.M）</strong></p><p>A list of positive integers has 11 elements. Which of the following algorithms can always be used to determine whether there are more even elements in the list than odd elements in the list?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Sort the list from least to greatest. If the 6th element of the list is even, then there are more even elements than odd elements. Otherwise, there are more odd elements than even elements.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Calculate the sum of all list elements. If the sum is even, then there are more even elements than odd elements. Otherwise, there are more odd elements than even elements.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Determine the maximum and minimum values in the list. If the difference between the maximum and minimum values is even, then there are more even elements than odd elements. Otherwise, there are more odd elements than even elements.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Check each element in the list, counting the number of even elements encountered. If the number of even elements is at least 6, then there are more even elements than odd elements. Otherwise, there are more odd elements than even elements.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p>。11 个元素中偶数 ≥ 6 ⇔ 偶数比奇数多（6 vs 5 或更多）。<strong>计数是唯一可靠方法</strong>。A 反例：[2,3,5,7,9,11,13,15,17,19,21] 排序后第 6 位是 11（奇），但偶数 1 个、奇数 10 个，"第 6 位"与"偶数是否占多数"无逻辑关联；B 反例：偶数+偶数=偶、奇数+奇数=偶，和的奇偶性与个数无关；C 的差与奇偶个数毫无关系。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q47（考点：AAP-4.B）</strong></p><p>A programmer has developed an algorithm to solve a problem for a customer. The programmer has analyzed the algorithm and found some instances of the problem for which the algorithm provides a solution and some instances of the problem for which the algorithm can never provide a solution. Assume that there are no logic errors in the algorithm.</p><p>What is the most likely explanation for the behavior of the algorithm?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The algorithm is attempting to solve a decidable problem.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The algorithm is attempting to solve an undecidable problem.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The algorithm is using a heuristic, which causes some instances of the problem to be impossible to solve.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The algorithm needs more time to find a solution for all instances of the problem.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>（官方解析：An undecidable problem is one for which no algorithm can be constructed that is always capable of providing a correct yes-or-no answer. It may have some instances that have an algorithmic solution, but there is no algorithmic solution that can solve all instances）。"部分实例永远无解 + 算法无逻辑错误"正是 undecidable 的表现。C 是常见干扰：heuristic 影响的是"解的质量/速度"，不是"有没有解"；D 错在问题不是时间而是<strong>可解性本身</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q51（考点：AAP-2.O）</strong></p><p>Assume that <code>listX</code> contains a list of words with no duplicates and that <code>listY</code> also contains a list of words with no duplicates. Assume that the list <code>bothList</code> is initially empty.</p><p>A program is intended to add all words that appear in both <code>listX</code> and <code>listY</code> to <code>bothList</code>. For example, if <code>listX</code> contains ["apple", "banana", "carrot", "kale"] and <code>listY</code> contains ["banana", "grape", "kale", "peach", "spinach"], then the values "banana" and "kale" should be added to <code>bothList</code>.</p><p>Which of the following correctly adds all words that appear in both <code>listX</code> and <code>listY</code> to <code>bothList</code>?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text"><pre class="opt-code">FOR EACH x IN listX
+{
+    IF(listX[x] = listY[x])
+    {
+        APPEND(bothList, listX[x])
+    }
+}</pre></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text"><pre class="opt-code">FOR EACH x IN listX
+{
+    FOR EACH y IN listY
+    {
+        IF(x = y)
+        {
+            APPEND(bothList, x)
+        }
+    }
+}</pre></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text"><code>i ← 1, j ← 1</code>，<code>REPEAT (LENGTH(listX)) TIMES { IF(listX[i] = listY[j]) { APPEND(bothList, listX[i]) }　i ← i + 1　j ← j + 1 }</code></span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text"><code>i ← 1, j ← 1</code>，<code>REPEAT (LENGTH(listX)) TIMES { REPEAT (LENGTH(listY)) TIMES { IF(listX[i] = listY[j]) { APPEND(bothList, listX[i]) } }　i ← i + 1　j ← j + 1 }</code></span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>（官方解析：the outer loop traverses listX and the inner loop traverses listY, so every pair is compared）。需要<strong>对每一对 (x, y) 都比较一次</strong>——双重 FOR EACH 全配对遍历，x、y 直接就是元素值。A 把 x 当索引用（<code>listX[x]</code> 类型错误，且只比较同位置元素）；C 只比较 i=j 的位置（且可能越界）；D 的双层循环里 j 永远不重置、i 也前进时机错误，漏配大多数组合。<strong>口诀："两列表找共同元素 = 双重循环全配对"</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="A,D"><div class="quiz-stem"><p><strong>Q69（考点：AAP-2.F，双选）</strong></p><p>In the following expressions, A and B are Boolean variables. Which of the following statements about Boolean expressions are true? <strong>Select two answers.</strong></p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The expression <code>(A AND true)</code> always evaluates to the value of A.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The expression <code>(A OR true)</code> always evaluates to the value of A.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The expression <code>(B AND false)</code> always evaluates to the value of B.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The expression <code>(B OR false)</code> always evaluates to the value of B.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A、D</p><blockquote><p>。AND 一个恒真项 → 结果由另一项决定（<code>A AND true = A</code>）；OR 一个恒假项 → 结果由另一项决定（<code>B OR false = B</code>）。B 错：<code>A OR true</code> 恒为 true；C 错：<code>B AND false</code> 恒为 false。<strong>记忆：true 是 OR 的"吸收元"、AND 的"单位元"；false 正好相反</strong>。</p></blockquote></div></div>
+<h3 id="8-4">2024 年国际考真题（交叉参考）</h3>
+<p>2024 年真题为扫描件，其中与本 Big Idea 直接相关的题目已收录在 <strong>Big Idea 1 手册 §6.3</strong>（错误识别与修正类）。Data 相关题见 Big Idea 2 手册 §6.3。其余算法题与 AP Classroom 各 Topic 同源，刷 §9 即可覆盖。</p>
+<hr>
+<h2 id="9">AP Classroom Topic Questions 精选（Big Idea 3 全套 154 题，附完整题目与逐题解析）</h2>
+<blockquote><p>以下按 Topic 挑选最有代表性的题目，<strong>题干与选项为 AP Classroom 英文原文</strong>，解析为中文。<strong>APC 3.x-Qn</strong> = AP Classroom Topic 3.x 第 n 题；完整题库请直接在 AP Classroom 刷。</p></blockquote>
+<h3 id="9-1">Topic 3.1 Variables and Assignments</h3>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>APC 3.1-Q1（考点：AAP-1.A.4）</strong></p><p>The variable <code>age</code> is to be used to represent a person's age, in years. Which of the following is the most appropriate data type for <code>age</code>?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Boolean</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">number</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">string</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">list</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>。年龄是数值，参与比较/计算，用 number。isOpen 类开关用 Boolean；姓名用 string；多项数据用 list。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>APC 3.1-Q2（考点：AAP-1.A.2）</strong></p><p>The variable <code>isOpen</code> is to be used to indicate whether or not a store is currently open. Which of the following is the most appropriate data type for <code>isOpen</code>?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Boolean</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">number</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">string</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">list</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p>。"是/否"只有两态 → Boolean。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>APC 3.1-Q4（考点：AAP-1.B.3）</strong></p><p>Consider the following code segment, which uses the variables r, s, and t.</p><pre><code>r ← 1
+s ← 2
+t ← 3
+r ← s
+s ← t
+DISPLAY(r)
+DISPLAY(s)</code></pre><p>What is displayed as a result of running the code segment?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">1 1</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">1 2</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">2 3</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">3 2</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p>。<code>r ← s</code> 把 2 复制给 r；<code>s ← t</code> 把 3 复制给 s。输出 "2 3"。<strong>每行只影响被赋值的变量</strong>。</p></blockquote></div></div>
+<h3 id="9-2">Topic 3.2 Data Abstraction</h3>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>APC 3.2-Q1（考点：AAP-1.D）</strong></p><p>Which of the following is a benefit of using a list as a data abstraction in a program?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Lists often allow their size to be easily updated to hold as many data values as needed.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Lists convert all elements to strings so that they can be inspected character-by-character.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Lists prevent duplicate data values from appearing in the list.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Lists are used to store all input data so that there is a running record of all user input.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p>。list 长度可变（APPEND/REMOVE），这是"用 list 抽象一组数据"的核心好处之一。B/C/D 都是 list 不具备的性质。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>APC 3.2-Q2（考点：AAP-1.D）</strong></p><p>A programmer has a need to round many numeric values to the nearest integer. Which of the following best explains the benefit of using a list as a data abstraction in this situation?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Keeping the numeric values in a list makes it easier to round a number to the nearest integer.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Keeping the numeric values in a list makes it easier to apply the same computation to every data element.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Keeping the numeric values in a list makes it easier to prevent a program from unintentionally changing the value of a variable.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Keeping the numeric values in a list makes it easier to prevent a program from attempting to access an index beyond the length of the list.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>。把同构数据放进 list，就能用一次 FOR EACH 统一处理——这正是"数据抽象让批量操作变简单"。</p></blockquote></div></div>
+<h3 id="9-3">Topic 3.3 Mathematical Expressions</h3>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>APC 3.3-Q1（考点：AAP-2.C）</strong></p><p>A student is creating an algorithm to display the distance between the numbers <code>num1</code> and <code>num2</code> on a number line. The following table shows the distance for several different values.</p><table><tr><th>Value of num1</th><th>Value of num2</th><th>Distance Between num1 and num2</th></tr><tr><td>5</td><td>2</td><td>3</td></tr><tr><td>1</td><td>8</td><td>7</td></tr><tr><td>-3</td><td>4</td><td>7</td></tr></table><p>Which of the following algorithms displays the correct distance for all possible values of <code>num1</code> and <code>num2</code>?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Step 1: Add <code>num1</code> and <code>num2</code> and store the result in the variable <code>sum</code>.<br>Step 2: Take the absolute value of <code>sum</code> and display the result.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Step 1: Subtract <code>num1</code> from <code>num2</code> and store the result in the variable <code>diff</code>.<br>Step 2: Take the absolute value of <code>diff</code> and display the result.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Step 1: Take the absolute value of <code>num1</code> and store it in the variable <code>absNum1</code>.<br>Step 2: Take the absolute value of <code>num2</code> and store it in the variable <code>absNum2</code>.<br>Step 3: Add <code>absNum1</code> and <code>absNum2</code> and display the result.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Step 1: Take the absolute value of <code>num1</code> and store it in the variable <code>absNum1</code>.<br>Step 2: Take the absolute value of <code>num2</code> and store it in the variable <code>absNum2</code>.<br>Step 3: Subtract <code>absNum1</code> from <code>absNum2</code> and display the result.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>。距离 = |num2 − num1|。A 错（5+2=7≠3）；C 错（|−3|+|4|=7 恰好对，但 (5,2) 得 7≠3）；D 错（差可能为负）。<strong>"两点距离"必须先做差再取绝对值，顺序不能反</strong>。</p></blockquote></div></div>
+<h3 id="9-4">Topic 3.5 Boolean Expressions</h3>
+<div class="quiz" data-ans="A,D"><div class="quiz-stem"><p><strong>APC 3.5-Q2（考点：AAP-2.F，双选）</strong></p><p>The following table shows the value of <code>expression</code> based on the values of <code>input1</code> and <code>input2</code>.</p><table><tr><th>Value of input1</th><th>Value of input2</th><th>Value of expression</th></tr><tr><td>true</td><td>true</td><td>false</td></tr><tr><td>true</td><td>false</td><td>true</td></tr><tr><td>false</td><td>true</td><td>true</td></tr><tr><td>false</td><td>false</td><td>true</td></tr></table><p>Which of the following expressions are equivalent to the value of <code>expression</code> as shown in the table? <strong>Select two answers.</strong></p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text"><pre class="opt-code">(NOT input1) OR (NOT input2)</pre></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text"><pre class="opt-code">(NOT input1) AND (NOT input2)</pre></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text"><pre class="opt-code">NOT (input1 OR input2)</pre></span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text"><pre class="opt-code">NOT (input1 AND input2)</pre></span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A、D</p><blockquote><p>。表其实是 NAND（只有全 true 时 false）。德摩根：<code>NOT(A AND B) = (NOT A) OR (NOT B)</code>，所以 A、D 恒等。B/C 是 NOR（全 false 才 true），与表不符。</p></blockquote></div></div>
+<h3 id="9-5">Topic 3.6 Conditionals</h3>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>APC 3.6-Q1（考点：AAP-2.H）</strong></p><p>A certain game keeps track of the maximum and minimum scores obtained so far. If <code>num</code> represents the most recent score obtained, which of the following algorithms correctly updates the values of the maximum and the minimum?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">If <code>num</code> is greater than the minimum, set the minimum equal to <code>num</code>. Otherwise, if <code>num</code> is greater than the maximum, set the maximum equal to <code>num</code>.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">If <code>num</code> is less than the minimum, set the minimum equal to <code>num</code>. Otherwise, if <code>num</code> is greater than the maximum, set the maximum equal to <code>num</code>.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">If <code>num</code> is less than the minimum, set the minimum equal to <code>num</code>. Otherwise, if <code>num</code> is less than the maximum, set the maximum equal to <code>num</code>.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">If <code>num</code> is greater than the minimum, set the minimum equal to <code>num</code>. Otherwise, if <code>num</code> is less than the maximum, set the maximum equal to <code>num</code>.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>。小于最小值 → 更新 min；否则（没破低记录）若大于最大值 → 更新 max。"否则"连接保证一个 num 只走一条路，且两条判断方向相反。A/D 的第一个条件就写反了；C 的第二个条件方向错。</p></blockquote></div></div>
+<h3 id="9-6">Topic 3.9 Developing Algorithms</h3>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>APC 3.9-Q2（考点：AAP-2.M）</strong></p><p>Three different numbers need to be placed in order from least to greatest. For example, if the numbers are ordered 9, 16, 4, they should be reordered as 4, 9, 16. Which of the following algorithms can be used to place any three numbers in the correct order?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">If the first number is greater than the last number, swap them. Then, if the first number is greater than the middle number, swap them.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">If the first number is greater than the middle number, swap them. Then, if the middle number is greater than the last number, swap them.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">If the first number is greater than the middle number, swap them. Then, if the middle number is greater than the last number, swap them. Then, if the first number is greater than the last number, swap them.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">If the first number is greater than the middle number, swap them. Then, if the middle number is greater than the last number, swap them. Then, if the first number is greater than the middle number, swap them.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p>。三个数排序需要<strong>恰好三次两两比较</strong>：前-中、中-后、再前-中（即"冒泡两轮"结构）。穷举 6 种排列可验证：B 只比较两次，在 (2,3,1) 和 (3,2,1) 时失败——第一次交换后最小值可能还卡在中间；C 的第三次比较做的是"前-后"而不是"前-中"，同样在 (2,3,1)、(3,2,1) 时失败；A 更是只比较了前-后、前-中两组，漏掉中-后。<strong>这类题最稳的解法是代入 (2,3,1)、(3,2,1) 这类"逆序+错位"排列逐一验证</strong>。</p></blockquote></div></div>
+<h3 id="9-7">Topic 3.10 Lists</h3>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>APC 3.10-Q1（考点：AAP-2.J）</strong></p><p>A list of numbers has n elements, indexed from 1 to n. The following algorithm is intended to display the number of elements in the list that have a value greater than 100. The algorithm uses the variables <code>count</code> and <code>position</code>. Steps 3 and 4 are missing.</p><p>Step 1: Set <code>count</code> to 0 and <code>position</code> to 1.</p><p>Step 2: If the value of the element at index <code>position</code> is greater than 100, increase the value of <code>count</code> by 1.</p><p>Step 3: (missing step)</p><p>Step 4: (missing step)</p><p>Step 5: Display the value of <code>count</code>.</p><p>Which of the following could be used to replace steps 3 and 4 so that the algorithm works as intended?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Step 3: Increase the value of <code>position</code> by 1.<br>Step 4: Repeat steps 2 and 3 until the value of <code>count</code> is greater than 100.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Step 3: Increase the value of <code>position</code> by 1.<br>Step 4: Repeat steps 2 and 3 until the value of <code>position</code> is greater than n.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Step 3: Repeat step 2 until the value of <code>count</code> is greater than 100.<br>Step 4: Increase the value of <code>position</code> by 1.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Step 3: Repeat step 2 until the value of <code>position</code> is greater than n.<br>Step 4: Increase the value of <code>count</code> by 1.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>。终止条件看<strong>遍历进度</strong>（position &gt; n），不看统计值（count）。与 CED 官方样题 Q8 完全同题——<strong>CED 样题就出自 AP Classroom 题库</strong>，务必重视。</p></blockquote></div></div>
+<h3 id="9-8">Topic 3.11 Binary Search</h3>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>APC 3.11-Q1（考点：AAP-2.P）</strong></p><p>A sorted list of numbers contains 200 elements. Which of the following is closest to the maximum number of list elements that will need to be examined when performing a binary search for a particular value in the list?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">5</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">8</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">100</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">200</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p>。2⁷=128 &lt; 200 ≤ 2⁸=256 → 约 8 次。<strong>速算：n 个元素 ≈ log₂n 次</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>APC 3.11-Q2（考点：AAP-2.P）</strong></p><p>A sorted list of numbers contains 500 elements. Which of the following is closest to the maximum number of list elements that will be examined when performing a binary search for a value in the list?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">10</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">50</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">250</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">500</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p>。log₂500 ≈ 9，最接近 10。与 CED 官方样题 Q13 同题。</p></blockquote></div></div>
+<h3 id="9-9">Topic 3.12 Calling Procedures</h3>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>APC 3.12-Q2（考点：AAP-3.A）</strong></p><p>A programmer is writing a program to calculate a student's course grade using the process described. The programmer has the following procedures available.</p><table><tr><th>Procedure Call</th><th>Explanation</th></tr><tr><td><code>Min(numList)</code></td><td>Returns the minimum value in the list <code>numList</code></td></tr><tr><td><code>Sum(numList)</code></td><td>Returns the sum of the values in the list <code>numList</code></td></tr></table><p>The student's individual assignment scores are stored in the list <code>scores</code>. Which of the following can be used to calculate a student's course grade and store the result in the variable <code>finalGrade</code>?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text"><code>finalGrade ← Sum(scores) / LENGTH(scores)</code><br>then<br><code>finalGrade ← finalGrade - Min(scores)</code></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text"><code>finalGrade ← Sum(scores) / (LENGTH(scores) - 1)</code><br>then<br><code>finalGrade ← finalGrade - Min(scores)</code></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text"><code>finalGrade ← Sum(scores) - Min(scores)</code><br>then<br><code>finalGrade ← finalGrade / LENGTH(scores)</code></span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text"><code>finalGrade ← Sum(scores) - Min(scores)</code><br>then<br><code>finalGrade ← finalGrade / (LENGTH(scores) - 1)</code></span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p>。正确顺序：<strong>先</strong>从总和中减去最低分，<strong>再</strong>除以"元素个数 − 1"。A/B 先除后减，减的是"平均分 − 最低分"，不是去掉最低分的平均；C 分母没有减 1（最低分对应的那个元素还在计数）。<strong>可用过程的题先写下每个过程的返回值再组合，注意运算顺序与分母</strong>。</p></blockquote></div></div>
+<h3 id="9-10">Topic 3.13 Developing Procedures</h3>
+<div class="quiz" data-ans="C,D"><div class="quiz-stem"><p><strong>APC 3.13-Q2（考点：AAP-3.B，双选）</strong></p><p>Which of the following are benefits of procedural abstraction? <strong>Select two answers.</strong></p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Procedural abstraction prevents programmers from accidentally using the intellectual property of other programmers.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Procedural abstraction eliminates the need for programmers to document their code.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Procedural abstraction makes it easier for people to read computer programs.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Procedural abstraction provides an opportunity to give a name to a block of code that describes the purpose of the code block.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C、D</p><blockquote><p>。过程抽象 = 命名 + 封装：名字描述用途（D）→ 可读性提升（C）。A 与知识产权无关；B 恰恰相反——抽象<strong>不减少</strong>文档需求。</p></blockquote></div></div>
+<h3 id="9-11">Topic 3.14 Libraries</h3>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>APC 3.14-Q1（考点：AAP-3.D）</strong></p><p>A student has a data file containing 10,000 numerical values. The student is writing a program to compute the average of the numbers contained in the file. Which of the following procedures is most likely to be useful in the student's program?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">A procedure that returns the quotient when dividing one value by another</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">A procedure that returns the sum when adding one value to another</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">A procedure that returns the sum of the values in the file</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">A procedure that returns true if the file contains any duplicate values and returns false otherwise</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p>。平均值 = 总和 ÷ 个数。计算平均的<strong>核心积木是"一次返回全文件总和"的过程</strong>——A/B 只做一次两数运算，对 10,000 个数毫无帮助；D 与求平均无关。选库里的过程时，问自己"这个过程的输出能否直接参与我需要的计算"。</p></blockquote></div></div>
+<h3 id="9-12">Topic 3.16 Simulations</h3>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>APC 3.16-Q1（考点：AAP-3.F）</strong></p><p>Flight simulation software, which imitates the experience of flying, is often used to train airline pilots. Which of the following is LEAST likely to be an advantage of using flight simulation software for this purpose?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Flight simulation software allows pilots to practice landing in a variety of different terrains and weather conditions without having to physically travel.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Flight simulation software could save money due to the cost of maintenance and fuel for actual training flights.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Flight simulation software provides a more realistic experience for pilots than actual training flights.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Flight simulation software allows for the testing of emergency air situations without serious consequences.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p>。模拟是<strong>抽象和简化</strong>，不可能比真实更真实——这正是模拟的固有局限。A/B/D 是模拟的经典优点（无风险、低成本、可重复危险场景）。</p></blockquote></div></div>
+<div class="quiz" data-ans="A,B"><div class="quiz-stem"><p><strong>APC 3.16-Q2（考点：AAP-3.F，双选）</strong></p><p>Which of the following is a benefit of using a simulation instead of an experiment to make a prediction? <strong>Select two answers.</strong></p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">A simulation allows investigation of a phenomenon without the real-world limitations on time, safety, or budget.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">A simulation can be used to model real-world events that are impractical for experiments.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">A simulation always produces the same output, so its results can be verified.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">A simulation produces results that are more accurate than experimental results.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A、B</p><blockquote><p>（已对答案册勾选位置人工复核）。模拟的价值 = 规避现实约束。C 错（含随机数时每次结果可能不同）；D 错（模拟是简化，精度不保证超过实验）。</p></blockquote></div></div>
+<h3 id="9-13">Topic 3.17 Algorithmic Efficiency</h3>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>APC 3.17-Q2（考点：AAP-4.A）</strong></p><p>Under which of the following conditions is it most beneficial to use a heuristic approach to solve a problem?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">When the problem can be solved in a reasonable time and an approximate solution is acceptable</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">When the problem can be solved in a reasonable time and an exact solution is needed</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">When the problem cannot be solved in a reasonable time and an approximate solution is acceptable</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">When the problem cannot be solved in a reasonable time and an exact solution is needed</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p>。Heuristic 的使用条件是<strong>两句话同时成立</strong>：① 最优算法不可行（超出 reasonable time）；② 应用场景能接受近似。注意 A 的错误：既然能在合理时间内精确解，就不必启发式。</p></blockquote></div></div>
+<h3 id="9-14">Topic 3.18 Undecidable Problems</h3>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>APC 3.18-Q1（考点：AAP-4.B）</strong></p><p>Which of the following best explains the ability to solve problems algorithmically?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Any problem can be solved algorithmically, though some algorithmic solutions may require humans to validate the results.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Any problem can be solved algorithmically, though some algorithmic solutions must be executed on multiple devices in parallel.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Any problem can be solved algorithmically, though some algorithmic solutions require a very large amount of data storage to execute.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">There exist some problems that cannot be solved algorithmically using any computer.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p>。Undecidable 问题的存在是计算机科学的基石结论（停机问题）。A/B/C 都是"所有问题可解 + 某资源不足"的错误框架。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>APC 3.18-Q2（考点：AAP-4.B）</strong></p><p>A team of programmers is designing software. One portion of the project presents a problem for which there is not an obvious solution. After some research, the team determines that the problem is undecidable. Which of the following best explains the consequence of the problem being undecidable?</p></div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The problem can be solved algorithmically, but it will require an unreasonably long amount of time.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The problem can be solved algorithmically, but it will require an unreasonably large amount of data storage.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">There is no possible algorithm that can be used to solve all instances of the problem.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">There are several different possible algorithms that can solve the problem, but there is controversy about which is the most efficient.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p>。Undecidable = 不存在对所有输入都正确的算法。与"时间不够"（那叫 not reasonable time）严格区分。</p></blockquote></div></div>
+<h2 id="10">Section II 写作题中的 Big Idea 3</h2>
+<h3 id="10-1">Written Response 3（Procedural Abstraction）与 4（Algorithm Implementation）</h3>
+<p>Create PT 的书面回应中，与本章直接相关的两问：</p>
+<ul><li><strong>Row 5（Procedural Abstraction - Procedure）</strong>：描述你调用的一个<strong>自己写的过程</strong>，说明它如何管理复杂度（起名、参数化、复用）。</li><li><strong>Row 6（Procedural Abstraction - Calls）</strong>：写出<strong>调用该过程的具体语句</strong>，并说明调用时传入了什么实参、过程返回/产生了什么。</li><li><strong>Row 7（Algorithm Implementation - Sequencing/Selection/Iteration）</strong>：说明程序中某算法如何<strong>同时使用</strong>顺序、选择、迭代三种结构。</li><li><strong>Row 8（Algorithm Testing）</strong>：给出两组具体调用，说明程序在不同输入下产生的<strong>不同结果</strong>。</li></ul>
+<h3 id="10-2">得分要点（对照 scoring guidelines）</h3>
+<p>1. 描述过程时<strong>先写"它做什么"（what）再写"它怎么做"（how）</strong>——这正是过程抽象的定义。</p>
+<p>2. 调用语句必须<strong>真实出现在你的程序代码截图里</strong>，实参值写具体。</p>
+<p>3. "算法使用了三种结构"必须<strong>逐一对号入座</strong>：顺序（语句按序执行）、选择（IF/ELSE）、迭代（REPEAT/FOR EACH），并指出各自的代码位置。</p>
+<p>4. 测试题要写<strong>两个不同的输入</strong>和<strong>对应的不同输出</strong>，最好一组触发 IF 的 true 分支、一组触发 false 分支。</p>
+<hr>
+<h2 id="11">备考策略与应试技巧</h2>
+<h3 id="11-1">题型分布与时间分配</h3>
+<p>Big Idea 3 在 MCQ 中约占 <strong>13–15 题（42 题中）</strong>，其中：</p>
+<ul><li>代码跟踪题（变量/IF/循环/过程调用）约 5–7 题 → 每题 ≤ 1.5 分钟</li><li>算法等价/补全题约 3–4 题 → 每题 ≤ 2 分钟</li><li>概念题（效率/模拟/undecidable/库）约 3–4 题 → 每题 ≤ 1 分钟</li></ul>
+<h3 id="11-2">五大高频套路（考前最后过一遍）</h3>
+<p>1. <strong>变量表跟踪法</strong>：任何"代码段输出"题先画表逐行填。赋值是复制，FOR EACH 的变量是元素值，索引从 1 开始。</p>
+<p>2. <strong>REPEAT UNTIL 先判后做</strong>：条件一开始为 true 就执行 0 次；条件变量必须被循环体更新，否则死循环。</p>
+<p>3. <strong>遍历找反例</strong>：判断"所有元素都…"→ 遇到反例立即断言 false，查完无反例才 true。<strong>只看首尾元素永远不够</strong>。</p>
+<p>4. <strong>二分查找三件套</strong>：已排序；每次砍半；次数 ≈ log₂n（100→7、500→9、1000→10）。</p>
+<p>5. <strong>undecidable ≠ 慢</strong>：undecidable 是"不可能有算法解决所有实例"；not reasonable time 是"有算法但跑不完"。两个概念从不混用，选项里出现另一个就是干扰。</p>
+<h3 id="11-3">常见失分点自查</h3>
+<ul><li>[ ] 我会不会把 <code>b ← a</code> 后 a 再变当成 b 也变？（不会才对）</li><li>[ ] 我记住 list 索引从 1 开始了吗？</li><li>[ ] 我能秒答 <code>RANDOM(2,5)</code> 有几个取值吗？（4 个）</li><li>[ ] 我能区分"heuristic 导致无解"与"undecidable 本来就无解"吗？</li><li>[ ] 我知道 <code>substring("delivery", 3, 4)</code> = "live" 吗？</li><li>[ ] 我会做"去掉最低分求平均"这种<strong>多过程组合</strong>题吗？</li></ul>
+<h3 id="11-4">与其他章节的复习联动</h3>
+<ul><li>刷完本章 → 立刻回刷 <strong>Big Idea 1 §1.4（Identifying and Correcting Errors）</strong>，错误识别题大量复用本章的代码跟踪能力。</li><li><strong>Big Idea 2 §4（Using Programs with Data）</strong> 的 filter/sort 题是本章列表遍历的直接应用。</li><li>Create PT 提交前，用 §10 的四条得分要点逐条检查自己的书面回应。</li></ul>
+<hr>
+<h2 id="12">Quick Reference：AP CSP Exam Reference Sheet（2020 官方考试参考表）</h2>
+<p>考试时随卷提供的官方参考表（College Board《AP Computer Science Principles Exam Reference Sheet》V.1, © 2020）。选择题里出现的一切语法（<code>←</code>、<code>DISPLAY</code>、<code>RANDOM</code>、<code>INSERT</code>、机器人指令…）<strong>只可能来自这张表</strong>——它不是任何真实编程语言。下表按官方原文逐类收录 Text 语法与官方解释要点，考前过两遍，读题速度直接受益。</p>
+<h3 id="12-1">赋值、显示与输入（Assignment, Display, and Input）</h3>
+<table><tr><th>指令（Text）</th><th>官方解释</th></tr><tr><td><code>a ← expression</code></td><td>先求 expression 的值，再把结果的一份<strong>拷贝</strong>赋给变量 a</td></tr><tr><td><code>DISPLAY(expression)</code></td><td>显示 expression 的值，后跟一个空格</td></tr><tr><td><code>INPUT()</code></td><td>接受用户输入的一个值，并返回该输入值</td></tr></table>
+<h3 id="12-2">算术运算符（Arithmetic Operators and Numeric Procedures）</h3>
+<table><tr><th>指令（Text）</th><th>官方解释</th></tr><tr><td><code>a + b</code> / <code>a - b</code> / <code>a * b</code> / <code>a / b</code></td><td>加、减、乘、除四则运算；例如 <code>17 / 5</code> 求值为 <code>3.4</code>；求值时适用数学运算优先级</td></tr><tr><td><code>a MOD b</code></td><td>a 除以 b 的<strong>余数</strong>。假定 a 为 ≥ 0 的整数、b 为 &gt; 0 的整数；例如 <code>17 MOD 5</code> 求值为 <code>2</code>；MOD 与 <code>*</code>、<code>/</code> 同优先级</td></tr><tr><td><code>RANDOM(a, b)</code></td><td>生成并返回 a 到 b 之间（<strong>含 a 和 b 两端</strong>）的随机整数，每个结果等可能；例如 <code>RANDOM(1, 3)</code> 可能返回 1、2 或 3</td></tr></table>
+<h3 id="12-3">关系与布尔运算符（Relational and Boolean Operators）</h3>
+<table><tr><th>指令（Text）</th><th>官方解释</th></tr><tr><td><code>a = b</code> / <code>a ≠ b</code> / <code>a &gt; b</code> / <code>a &lt; b</code> / <code>a ≥ b</code> / <code>a ≤ b</code></td><td>关系运算符：测试两个变量、表达式或值之间的关系，结果为布尔值。例如 <code>a = b</code> 在 a 与 b 相等时求值为 true，否则为 false</td></tr><tr><td><code>NOT condition</code></td><td>condition 为 false 时求值为 true；否则求值为 false</td></tr><tr><td><code>condition1 AND condition2</code></td><td>两个条件<strong>都</strong>为 true 时才为 true；否则为 false</td></tr><tr><td><code>condition1 OR condition2</code></td><td>条件 1 为 true、或条件 2 为 true、或两者都为 true 时为 true；否则为 false</td></tr></table>
+<h3 id="12-4">选择（Selection）</h3>
+<table><tr><th>指令（Text）</th><th>官方解释</th></tr><tr><td><code>IF(condition) { &lt;block of statements&gt; }</code></td><td>布尔表达式 condition 为 true 时执行块内代码；为 false 时不采取任何行动</td></tr><tr><td><code>IF(condition) { &lt;first block&gt; } ELSE { &lt;second block&gt; }</code></td><td>condition 为 true 时执行 first block；否则执行 second block</td></tr></table>
+<h3 id="12-5">迭代（Iteration）</h3>
+<table><tr><th>指令（Text）</th><th>官方解释</th></tr><tr><td><code>REPEAT n TIMES { &lt;block of statements&gt; }</code></td><td>块内代码执行 <strong>n 次</strong></td></tr><tr><td><code>REPEAT UNTIL(condition) { &lt;block of statements&gt; }</code></td><td>重复执行块内代码，<strong>直到</strong>布尔表达式 condition 求值为 true</td></tr></table>
+<h3 id="12-6">列表操作（List Operations）</h3>
+<p><strong>官方总注</strong>：所有列表操作中，若列表索引小于 1 或大于列表长度，产生错误信息且程序终止。<strong>列表索引从 1 开始</strong>（与多数真实语言不同，考试时按此算）。</p>
+<table><tr><th>指令（Text）</th><th>官方解释</th></tr><tr><td><code>aList ← [value1, value2, value3, ...]</code></td><td>创建新列表，value1、value2、value3… 依次存于索引 1、2、3…，并赋给 aList</td></tr><tr><td><code>aList ← []</code></td><td>创建空列表并赋给 aList</td></tr><tr><td><code>aList ← bList</code></td><td>把 bList 的一份<strong>拷贝</strong>赋给 aList。例如 bList 含 [20, 40, 60]，赋值后 aList 也含 [20, 40, 60]</td></tr><tr><td><code>aList[i]</code></td><td>访问 aList 索引 i 处的元素。第一个元素在索引 1，用 <code>aList[1]</code> 访问</td></tr><tr><td><code>x ← aList[i]</code></td><td>把 aList[i] 的值赋给变量 x</td></tr><tr><td><code>aList[i] ← x</code></td><td>把 x 的值存入 aList[i]</td></tr><tr><td><code>aList[i] ← aList[j]</code></td><td>把 aList[j] 的值存入 aList[i]</td></tr><tr><td><code>INSERT(aList, i, value)</code></td><td>索引 ≥ i 的元素整体<strong>右移</strong>一位；长度加 1；value 放入索引 i 处</td></tr><tr><td><code>APPEND(aList, value)</code></td><td>长度加 1，value 追加到 aList <strong>末尾</strong></td></tr><tr><td><code>REMOVE(aList, i)</code></td><td>移除 aList 索引 i 处的元素，其后元素<strong>左移</strong>；长度减 1</td></tr><tr><td><code>LENGTH(aList)</code></td><td>求值为 aList 的元素个数</td></tr><tr><td><code>FOR EACH item IN aList { &lt;block of statements&gt; }</code></td><td>变量 item 依次取 aList 的每个元素（从第一个到最后一个，按顺序），每取一次执行一遍块内代码</td></tr></table>
+<h3 id="12-7">过程定义与调用（Procedures and Procedure Calls）</h3>
+<table><tr><th>指令（Text）</th><th>官方解释</th></tr><tr><td><code>PROCEDURE procName(parameter1, parameter2, ...) { &lt;block of statements&gt; }</code></td><td>定义过程 procName：接受零或多个参数，过程体为 block of statements</td></tr><tr><td><code>procName(arg1, arg2, ...)</code></td><td>调用过程：arg1 赋给 parameter1，arg2 赋给 parameter2……依次对应</td></tr><tr><td><code>PROCEDURE procName(parameter1, parameter2, ...) { &lt;block of statements&gt; RETURN(expression) }</code></td><td>定义<strong>带返回值</strong>的过程：过程体含 block of statements 并返回 expression 的值</td></tr><tr><td><code>result ← procName(arg1, arg2, ...)</code></td><td>调用过程，并把返回值赋给变量 result</td></tr><tr><td><code>RETURN(expression)</code></td><td>控制流立即返回到调用该过程的位置，并返回 expression 的值。RETURN 可出现在过程体内<strong>任意位置</strong>，一旦执行即<strong>立即返回</strong></td></tr></table>
+<h3 id="12-8">机器人（Robot）</h3>
+<p><strong>官方总注</strong>：若机器人试图移动到一个非开放格子或网格边缘之外，机器人停留在原位置，<strong>程序终止</strong>。</p>
+<table><tr><th>指令（Text）</th><th>官方解释</th></tr><tr><td><code>MOVE_FORWARD()</code></td><td>机器人朝它面对的方向前移一格</td></tr><tr><td><code>ROTATE_LEFT()</code></td><td>机器人原地逆时针旋转 90°（原地左转）</td></tr><tr><td><code>ROTATE_RIGHT()</code></td><td>机器人原地顺时针旋转 90°（原地右转）</td></tr><tr><td><code>CAN_MOVE(direction)</code></td><td>若机器人面对方向上相对的一格为开放格，求值为 true；否则为 false。direction 可为 <code>left</code>、<code>right</code>、<code>forward</code> 或 <code>backward</code></td></tr></table>
+<hr>
+<blockquote><p><strong>本章完</strong>。配套文件：<code>Big Idea 3 算法与编程（Algorithms and Programming）.html</code>（含可作答交互选择题）。</p></blockquote>
+</div>
+<script>
+(function(){
+  var nav = document.querySelector('.sidenav');
+  if(!nav) return;
+  var lis = nav.querySelectorAll('.rootnav > li');
+  Array.prototype.forEach.call(lis, function(li){
+    var trigger = li.querySelector('a.big');
+    var sub = li.querySelector('.subnav');
+    if(!trigger) return;
+    if(!sub || sub.children.length === 0){
+      if(sub) sub.parentNode.removeChild(sub);
+      li.classList.add('no-sub');
+      return;
+    }
+    trigger.addEventListener('click', function(e){
+      e.preventDefault();
+      var willOpen = !li.classList.contains('open');
+      li.classList.toggle('open');
+      if(willOpen){
+        var target = document.querySelector(trigger.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+      if(history.replaceState) history.replaceState(null,'',trigger.getAttribute('href'));
+    });
+  });
+  if(location.hash){
+    var tgt = document.querySelector(location.hash);
+    if(tgt){
+      var li = tgt.closest ? tgt.closest('li') : null;
+      while(li){
+        if(li.parentNode && li.parentNode.classList && li.parentNode.classList.contains('rootnav')){
+          li.classList.add('open'); break;
+        }
+        li = li.parentNode ? li.parentNode.closest('li') : null;
+      }
+    }
+  }
+})();
+</script>
+<script>
+(function(){
+  function keys(q){ return (q.getAttribute('data-ans')||'').toUpperCase().split(',').filter(Boolean); }
+  function answer(q, chosen){
+    if(q.classList.contains('answered')) return;
+    var ans = keys(q);
+    q.classList.add('answered');
+    var opts = q.querySelectorAll('.quiz-opt');
+    Array.prototype.forEach.call(opts, function(o){
+      if(ans.indexOf(o.getAttribute('data-key').toUpperCase()) >= 0) o.classList.add('right');
+    });
+    if(chosen && ans.indexOf(chosen.getAttribute('data-key').toUpperCase()) < 0){
+      chosen.classList.add('wrong');
+    }
+    var sol = q.querySelector('.quiz-solution'); if(sol) sol.hidden = false;
+    var tip = q.querySelector('.quiz-tip');
+    if(tip){
+      var picked = chosen ? chosen.getAttribute('data-key').toUpperCase() : '';
+      var right = ans.indexOf(picked) >= 0;
+      tip.textContent = right ? '回答正确 ✓' : (picked ? '回答错误 ✗ 正确答案为 ' + ans.join('、') : '已显示答案');
+    }
+  }
+  function resetQuiz(q){
+    q.classList.remove('answered');
+    Array.prototype.forEach.call(q.querySelectorAll('.quiz-opt'), function(o){
+      o.classList.remove('right'); o.classList.remove('wrong');
+    });
+    var sol = q.querySelector('.quiz-solution'); if(sol) sol.hidden = true;
+    var tip = q.querySelector('.quiz-tip');
+    if(tip) tip.textContent = keys(q).length > 1
+      ? '多选题，共 ' + keys(q).length + ' 项 — 点击任一选项查看答案'
+      : '点击选项作答，选后显示正确答案与解析';
+  }
+  function bind(){
+    Array.prototype.forEach.call(document.querySelectorAll('.quiz'), function(q){
+      Array.prototype.forEach.call(q.querySelectorAll('.quiz-opt'), function(o){
+        o.addEventListener('click', function(){ answer(q, o); });
+        o.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); answer(q, o); }
+        });
+      });
+      var reset = q.querySelector('.quiz-reset');
+      if(reset) reset.addEventListener('click', function(){ resetQuiz(q); });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bind);
+  } else { bind(); }
+})();
+</script>
+</body></html>
