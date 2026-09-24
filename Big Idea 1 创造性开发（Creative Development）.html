@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="Expires" content="0"/><!-- build: 09-23 16:06 v6-interactive-quiz --><meta content="width=device-width,initial-scale=1" name="viewport"/><title>APCSP 备考手册 · Big Idea 1 创造性开发</title><style>
+:root{--ink:#1a2233;--muted:#5a6478;--accent:#0f4c81;--accent2:#c8a24a;--bg:#f7f8fb;--card:#ffffff;--line:#dde3ee;}
+*{box-sizing:border-box}
+body{font-family:"Segoe UI","Microsoft YaHei",PingFang SC,sans-serif;color:var(--ink);background:var(--bg);margin:0;line-height:1.75;font-size:15.5px}
+.wrap{max-width:960px;margin:0 auto;padding:32px 40px 80px}
+h1{font-size:1.9em;color:var(--accent);border-bottom:3px solid var(--accent2);padding-bottom:12px;margin-top:8px}
+h2{font-size:1.45em;color:var(--accent);border-left:6px solid var(--accent2);padding-left:12px;margin-top:2.2em;background:linear-gradient(90deg,#eef3fa,transparent)}
+h3{font-size:1.18em;color:#28405e;margin-top:1.8em}
+h4{font-size:1.05em;color:#3a5474}
+table{border-collapse:collapse;width:100%;margin:14px 0;background:var(--card);font-size:.95em}
+th{background:var(--accent);color:#fff;padding:9px 12px;text-align:left;font-weight:600}
+td{border:1px solid var(--line);padding:8px 12px;vertical-align:top}
+tr:nth-child(even) td{background:#f4f7fc}
+pre{background:#1f2937;color:#e5edf8;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:.9em;line-height:1.5}
+code{background:#eef1f7;padding:1px 6px;border-radius:4px;font-family:Consolas,Menlo,monospace;font-size:.92em;color:#8a2d2d}
+pre code{background:transparent;color:inherit;padding:0}
+blockquote{border-left:5px solid var(--accent2);background:#fdf9ef;margin:14px 0;padding:10px 18px;border-radius:0 8px 8px 0}
+blockquote strong{color:#8a6410}
+ul,ol{padding-left:1.6em}
+li{margin:4px 0}
+hr{border:none;border-top:1.5px dashed var(--line);margin:2em 0}
+strong{color:#0d3a66}
+em{color:var(--muted)}
+p code{color:#a03d3d}
+@media print{body{background:#fff}.wrap{padding:0}}
+
+
+
+/* ===== 左侧导航（v4：可折叠子菜单） ===== */
+.sidenav{position:fixed;top:0;left:0;width:270px;height:100vh;background:linear-gradient(180deg,#0f4c81 0%,#1a3a66 100%);color:#eaf0fa;overflow-y:auto;padding:16px 14px 24px;box-shadow:3px 0 14px rgba(0,0,0,.12);z-index:100;font-size:14px}
+.sidenav .nav-title{font-weight:700;font-size:16px;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:10px;margin-bottom:6px;letter-spacing:.5px;line-height:1.4;color:#fff}
+.sidenav .nav-home{position:absolute;top:12px;right:12px;font-size:11.5px;color:#ffd98a;text-decoration:none;border:1px solid rgba(200,162,74,.6);border-radius:12px;padding:2px 10px;background:rgba(200,162,74,.14);font-weight:600;transition:background .15s,color .15s}
+.sidenav .nav-home:hover{background:rgba(200,162,74,.38);color:#fff}
+.sidenav .nav-ver{font-size:11.5px;color:#9aabcb;margin:0 0 10px;letter-spacing:.3px}
+.sidenav .rootnav,.sidenav .subnav{list-style:none;padding:0;margin:0}
+.sidenav .rootnav > li{margin:2px 0}
+.sidenav .rootnav a{color:#dce6f5;text-decoration:none;display:block;padding:6px 10px;border-radius:6px;line-height:1.4;transition:background .15s,color .15s}
+.sidenav .rootnav a:hover,.sidenav .rootnav a:focus{background:rgba(255,255,255,.14);color:#fff;outline:none}
+
+/* 一级菜单（大节） */
+.sidenav .rootnav a.big{font-weight:600;background:rgba(255,255,255,.04);margin-top:4px;position:relative;padding-right:26px}
+.sidenav .rootnav a.big:hover{background:rgba(200,162,74,.25)}
+.sidenav .rootnav a.big .num{display:inline-block;background:#c8a24a;color:#1a2233;font-weight:700;border-radius:4px;padding:1px 7px;margin-right:8px;min-width:22px;text-align:center;font-size:13px}
+/* 折叠箭头 */
+.sidenav .rootnav a.big:after{content:"\25B8";position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:12px;color:#c8a24a;transition:transform .2s}
+.sidenav li.open > a.big:after{content:"\25BE";transform:translateY(-50%)}
+.sidenav li.no-sub > a.big:after{display:none}
+.sidenav li.no-sub > a.big{padding-right:10px}
+
+/* 子菜单：默认折叠，点击一级菜单展开 */
+.sidenav .subnav{display:none;margin:2px 0 6px 22px;border-left:2px solid rgba(255,255,255,.18)}
+.sidenav li.open > .subnav{display:block}
+.sidenav .subnav a{padding:4px 10px;font-size:13px;color:#b9c6dc;border-radius:4px}
+.sidenav .subnav a:before{content:"\2022";color:#c8a24a;margin-right:6px;font-size:11px;opacity:.8}
+.sidenav .subnav a:hover{color:#fff;background:rgba(255,255,255,.10)}
+
+.sidenav .nav-foot{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);font-size:12px;color:#9aabcb;line-height:1.5}
+
+/* 正文右移 */
+.wrap{margin-left:310px !important}
+
+/* 锚点偏移 + 平滑滚动 */
+html{scroll-behavior:smooth}
+h2[id],h3[id]{scroll-margin-top:20px}
+
+/* 滚动条 */
+.sidenav::-webkit-scrollbar{width:6px}
+.sidenav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:3px}
+
+/* 中等宽度：侧栏缩窄，仍在左侧 */
+@media (max-width:1100px){.sidenav{width:220px;font-size:13px;padding:14px 12px}.sidenav .rootnav a{padding:5px 8px}.sidenav .subnav{margin-left:16px}.sidenav .subnav a{font-size:12.5px;padding:4px 8px}.wrap{margin-left:250px !important}}
+
+/* 窄屏：侧栏更窄，子菜单仍可折叠展开 */
+@media (max-width:700px){.sidenav{width:180px;font-size:12.5px;padding:12px 10px}.sidenav .rootnav a.big{padding:5px 7px;padding-right:22px}.sidenav .rootnav a.big .num{padding:0 5px;min-width:18px;font-size:12px;margin-right:6px}.sidenav .subnav{margin-left:12px}.sidenav .subnav a{font-size:12px;padding:3px 6px}.sidenav .nav-ver,.sidenav .nav-foot{display:none}.wrap{margin-left:200px !important;padding:24px 20px 60px}}
+
+/* 极窄：转顶部横排 */
+@media (max-width:560px){.sidenav{position:static;height:auto;width:100%;padding:10px 14px}.wrap{margin-left:0 !important}.sidenav .rootnav > li{margin:0}.sidenav .subnav{margin:4px 0 8px 10px;border-left:none}}
+
+/* 打印 */
+@media print{.sidenav{display:none}.wrap{margin-left:0 !important}}
+
+/* ===== §6 交互式选择题（v6） ===== */
+.quiz{background:#fbfcfe;border:1px solid #dfe6f0;border-left:4px solid #0f4c81;border-radius:10px;padding:16px 18px 12px;margin:18px 0 24px;box-shadow:0 1px 4px rgba(15,76,129,.06)}
+.quiz-stem>:first-child{margin-top:0}
+.quiz-stem>:last-child{margin-bottom:0}
+.quiz-stem pre{margin:10px 0}
+ul.quiz-opts{list-style:none;margin:12px 0 10px;padding:0;display:flex;flex-direction:column;gap:8px}
+.quiz-opt{display:flex;gap:10px;align-items:flex-start;border:1px solid #d9e2ee;background:#fff;border-radius:8px;padding:9px 12px;cursor:pointer;line-height:1.65;transition:border-color .15s,background .15s,box-shadow .15s}
+.quiz-opt:hover{border-color:#0f4c81;background:#f2f7fd;box-shadow:0 2px 6px rgba(15,76,129,.08)}
+.quiz-opt:focus{outline:2px solid #c8a24a;outline-offset:1px}
+.quiz-opt .opt-key{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#eef3fa;color:#0f4c81;font-weight:700;font-size:12.5px;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
+.quiz-opt .opt-text{flex:1 1 auto;min-width:0}
+.quiz-opt.right{border-color:#1f9d55;background:#eefaf1}
+.quiz-opt.right .opt-key{background:#1f9d55;color:#fff}
+.quiz-opt.right .opt-text:after{content:" ✓ 正确";color:#1f9d55;font-weight:700;font-size:12.5px}
+.quiz-opt.wrong{border-color:#d9534f;background:#fdf0ef}
+.quiz-opt.wrong .opt-key{background:#d9534f;color:#fff}
+.quiz-opt.wrong .opt-text:after{content:" ✗ 你选的";color:#d9534f;font-weight:700;font-size:12.5px}
+.quiz.answered .quiz-opt{cursor:default}
+.quiz.answered .quiz-opt:hover{border-color:#d9e2ee;background:#fff;box-shadow:none}
+.quiz-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px dashed #e3e9f2;margin-top:4px;padding-top:9px;flex-wrap:wrap}
+.quiz-tip{font-size:12.5px;color:#7b8aa3}
+.quiz.answered .quiz-tip{color:#1f9d55;font-weight:600}
+.quiz-reset{font:inherit;font-size:12.5px;color:#0f4c81;background:#fff;border:1px solid #c9d7e8;border-radius:14px;padding:3px 13px;cursor:pointer;transition:all .15s}
+.quiz-reset:hover{background:#0f4c81;color:#fff;border-color:#0f4c81}
+.quiz-solution{margin-top:12px;padding:12px 15px;background:#f6f9fd;border:1px solid #dce7f4;border-radius:8px;animation:quizIn .22s ease-out}
+.quiz-solution[hidden]{display:none}
+@keyframes quizIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.quiz-correct{font-weight:700;color:#1f9d55;margin:0 0 8px;font-size:15px}
+.quiz-solution blockquote{margin:10px 0 0;padding:0 0 0 13px;border-left:3px solid #c8a24a;background:none;color:#33475f}
+.quiz-solution blockquote p:first-child{margin-top:0}
+.quiz-solution blockquote p:last-child{margin-bottom:0}
+.quiz-intro{background:#fff8e8;border:1px solid #f0dcae;border-radius:8px;padding:10px 14px;margin:14px 0 22px;font-size:14px;color:#6b5320}
+@media print{.quiz{break-inside:avoid}.quiz-opt{break-inside:avoid}.quiz-tip,.quiz-reset{display:none}}
+</style></head><body>
+<nav class="sidenav" aria-label="章节目录"><a class="nav-home" href="index.html" title="返回国际考备考手册主页">⌂ 主页</a><div class="nav-title">Big Idea 1<br>章节目录</div>
+<div class="nav-ver">v6 · 可作答选择题 · 更新于 09-23 16:06</div><ul class="rootnav"><li><a class="big" href="#0"><span class="num">0</span>本章定位：Big Idea 1 考什么、怎么考</a><ul class="subnav"><li><a href="#0-1">0.1 考试权重</a></li><li><a href="#0-2">0.2 章节结构与考点地图</a></li></ul></li><li><a class="big" href="#1"><span class="num">1</span>Topic 1.1 Collaboration（协作）</a><ul class="subnav"><li><a href="#1-1">1.1 知识点梳理（CRD-1.A / 1.B / 1.C）</a></li><li><a href="#1-2">1.2 重难点</a></li><li><a href="#1-3">1.3 易错点</a></li></ul></li><li><a class="big" href="#2"><span class="num">2</span>Topic 1.2 Program Function and Purpose（程序功能与目的）</a><ul class="subnav"><li><a href="#2-1">2.1 知识点梳理（CRD-2.A ~ 2.D）</a></li><li><a href="#2-2">2.2 重难点：识别"必需的输入"（近三年最高频题型）</a></li><li><a href="#2-3">2.3 易错点</a></li></ul></li><li><a class="big" href="#3"><span class="num">3</span>Topic 1.3 Program Design and Development（程序设计与开发）</a><ul class="subnav"><li><a href="#3-1">3.1 知识点梳理（CRD-2.E ~ 2.H）</a></li><li><a href="#3-2">3.2 重难点</a></li><li><a href="#3-3">3.3 易错点</a></li></ul></li><li><a class="big" href="#4"><span class="num">4</span>Topic 1.4 Identifying and Correcting Errors（识别与纠正错误）</a><ul class="subnav"><li><a href="#4-1">4.1 知识点梳理（CRD-2.I ~ 2.J）</a></li><li><a href="#4-2">4.2 重难点</a></li><li><a href="#4-3">4.3 易错点</a></li></ul></li><li><a class="big" href="#5"><span class="num">5</span>重难点与易错点速查表（考前 10 分钟过一遍）</a><ul class="subnav empty"></ul></li><li><a class="big" href="#6"><span class="num">6</span>国际考真题与解析</a><ul class="subnav"><li><a href="#6-1">6.1 2026 年国际考真题（大陆卷）</a></li><li><a href="#6-2">6.2 2025 年官方补充练习卷（Supplemental Practice Exam）</a></li><li><a href="#6-3">6.3 2024 年国际考真题（官方答案键核对）</a></li><li><a href="#6-4">6.4 CED 官方样题（附官方考点标注，2023 CED Sample Exam Questions）</a></li><li><a href="#6-5">6.5 AP Classroom Topic Questions 精选（Big Idea 1 全套，附完整题目与逐题解析）</a></li></ul></li><li><a class="big" href="#7"><span class="num">7</span>Section II 写作题中的 Big Idea 1</a><ul class="subnav"><li><a href="#7-1">7.1 Written Response 1（Program Design, Function and Purpose）</a></li><li><a href="#7-2">7.2 Written Response 2(b)（Errors and Testing）</a></li></ul></li><li><a class="big" href="#8"><span class="num">8</span>备考策略与应试技巧</a><ul class="subnav empty"></ul></li></ul><div class="nav-foot">点击小节名<br>精准跳转</div></nav>
+
+<div class="wrap">
+<h1>APCSP 备考手册 · Big Idea 1 创造性开发（Creative Development，CRD）</h1>
+<blockquote><p>依据 College Board《AP Computer Science Principles Course and Exam Description》（2023 CED）编写<br/>适用考试：AP CSP 国际考（End-of-Course Exam：Section I 70 道 MCQ + Section II 4 道写作题）</p></blockquote>
+<hr/>
+<h2 id="0">0. 本章定位：Big Idea 1 考什么、怎么考</h2>
+<h3 id="0-1">0.1 考试权重</h3>
+<table>
+<tr><th>Big Idea</th><th>MCQ 权重</th></tr>
+<tr><td><strong>Big Idea 1：Creative Development（CRD）</strong></td><td><strong>10–13%</strong>（70 题中约 7–9 题）</td></tr>
+<tr><td>Big Idea 2：Data</td><td>17–22%</td></tr>
+<tr><td>Big Idea 3：Algorithms and Programming</td><td>30–35%</td></tr>
+<tr><td>Big Idea 4：Computer Systems and Networks</td><td>11–15%</td></tr>
+<tr><td>Big Idea 5：Impact of Computing</td><td>21–26%</td></tr>
+</table>
+<p><strong>⚠️ 不要被 10–13% 迷惑。</strong> Big Idea 1 的概念（程序目的、输入/输出、开发过程、测试与纠错）同时是 <strong>Section II 写作题</strong> 的直接考查对象：</p>
+<table>
+<tr><th>写作题（依据 Personalized Project Reference 作答）</th><th>对应 CRD 知识点</th></tr>
+<tr><td>Written Response 1：Program Design, Function and Purpose</td><td>Topic 1.2（目的、输入/输出、功能）+ Topic 1.3（开发过程、修改与反馈/测试）</td></tr>
+<tr><td>Written Response 2(b)：Errors and Testing</td><td>Topic 1.4（测试用例、procedure call 测试）</td></tr>
+</table>
+<p>也就是说，Big Idea 1 直接或间接影响约 <strong>20%–25%</strong> 的考试分数。</p>
+<h3 id="0-2">0.2 章节结构与考点地图</h3>
+<table>
+<tr><th>Topic</th><th>名称</th><th>核心 Learning Objective</th><th>常见考查方式</th></tr>
+<tr><td>1.1</td><td>Collaboration 协作</td><td>CRD-1.A / 1.B / 1.C</td><td>概念判断题：协作的好处、偏见、团队沟通</td></tr>
+<tr><td>1.2</td><td>Program Function and Purpose 程序功能与目的</td><td>CRD-2.A / 2.B / 2.C / 2.D</td><td>情境题：识别程序的输入/输出、描述程序行为</td></tr>
+<tr><td>1.3</td><td>Program Design and Development 程序设计与开发</td><td>CRD-2.E / 2.F / 2.G / 2.H</td><td>概念题：迭代/增量开发、文档、需求调查</td></tr>
+<tr><td>1.4</td><td>Identifying and Correcting Errors 识别与纠正错误</td><td>CRD-2.I / 2.J</td><td>代码题：四类错误、测试用例、hand tracing</td></tr>
+</table>
+<p><strong>两大 Enduring Understanding（持久理解）：</strong></p>
+<ul><li><strong>CRD-1</strong>：通过协作吸纳多种视角（multiple perspectives）能改进计算创新。</li><li><strong>CRD-2</strong>：开发者以用户为中心（user-focused）、经历"实现—反馈"循环（implementation/feedback cycles）、留有实验与冒险空间的<strong>迭代设计过程</strong>来创造和创新。</li></ul>
+<p><strong>涉及技能（Skills）</strong>：1.A 调查情境；1.B 设计方法；1.C 解释协作影响；3.A 识别输入/输出；4.A 解释代码功能；4.C 识别并纠正错误；6.A 协作；6.C 尊重知识产权。</p>
+<hr/>
+<h2 id="1">1. Topic 1.1 Collaboration（协作）</h2>
+<h3 id="1-1">1.1 知识点梳理（CRD-1.A / 1.B / 1.C）</h3>
+<table>
+<tr><th>条目</th><th>内容</th></tr>
+<tr><td>CRD-1.A.1</td><td><strong>计算创新（computing innovation）</strong>：以程序为其功能的不可分割部分的发明（包括硬件+程序+概念）</td></tr>
+<tr><td>CRD-1.A.2</td><td>计算创新可以是<strong>有形的</strong>（自动驾驶汽车）、<strong>无形的软件</strong>（修图软件）或<strong>无形的概念</strong>（电子商务）</td></tr>
+<tr><td>CRD-1.A.3</td><td>有效协作产生的创新能<strong>反映设计者多元的才能与视角</strong>（diversity of talents and perspectives）</td></tr>
+<tr><td>CRD-1.A.4</td><td>包含多元视角的协作有助于<strong>避免偏见（avoid bias）</strong></td></tr>
+<tr><td>CRD-1.A.5</td><td>与用户的<strong>咨询和沟通</strong>（consultation and communication）是开发计算创新的重要环节</td></tr>
+<tr><td>CRD-1.A.6</td><td>从潜在用户处收集的信息可用于<strong>从多元视角理解程序目的</strong>，并开发出充分吸纳这些视角的程序</td></tr>
+<tr><td>CRD-1.B.1</td><td><strong>在线工具</strong>支持协作：共享和反馈想法与文档（共享文档、云文件夹、视频会议等）</td></tr>
+<tr><td>CRD-1.B.2</td><td>常见协作模式：如 <strong>pair programming（结对编程）</strong></td></tr>
+<tr><td>CRD-1.C.1</td><td>高效协作团队需要<strong>人际技能（interpersonal skills）</strong>：communication 沟通、consensus building 达成共识、conflict resolution 化解冲突、negotiation 协商</td></tr>
+</table>
+<h3 id="1-2">1.2 重难点</h3>
+<ol><li><strong>协作的"收益清单"要背牢</strong>——考题常问"以下哪项<strong>不是</strong>协作的好处"：</li></ol>
+<ul><li>✅ 减轻个人任务量、降低单个任务的规模和复杂度</li><li>✅ 多人更容易发现和纠正错误（多一双眼睛）</li><li>✅ 带来多元视角，激发创意</li><li>✅ 帮助预判各类用户的需求、减少偏见</li><li>❌ <strong>绝不</strong>消除"意见分歧"——分歧恰恰需要 conflict resolution 去解决</li><li>❌ <strong>绝不</strong>免除软件测试</li><li>❌ <strong>绝不</strong>减少对文档的需求</li></ul>
+<ol><li><strong>"多元视角→减少偏见"是 CRD-1 的主旋律</strong>：2025、2026 年连续两年考到"咨询多元化用户群体→减少算法/软件中的偏见"。</li></ol>
+<h3 id="1-3">1.3 易错点</h3>
+<ul><li><strong>绝对化动词 = 错误选项</strong>：eliminate（消除）、remove the need for（免去）……凡宣称协作能"免去测试/免去文档/消除分歧"的选项几乎必错。</li><li><strong>"各写各的再合并"不算高效协作</strong>：多人独立写代码、最后由一人拼合，缺少沟通与反馈，是"最不可能促进协作"的典型选项（真题重复考查）。</li><li>在线协作工具（共享文档、云文件夹、视频会议）<strong>是</strong>促进协作的正面例子。</li></ul>
+<hr/>
+<h2 id="2">2. Topic 1.2 Program Function and Purpose（程序功能与目的）</h2>
+<h3 id="2-1">2.1 知识点梳理（CRD-2.A ~ 2.D）</h3>
+<table>
+<tr><th>条目</th><th>内容</th></tr>
+<tr><td>CRD-2.A.1</td><td>计算创新的<strong>目的（purpose）</strong>：解决问题（solve problems）或通过创意表达追求兴趣（pursue interests through creative expression）</td></tr>
+<tr><td>CRD-2.A.2</td><td>理解创新目的能让开发者更好地开发该创新</td></tr>
+<tr><td>CRD-2.B.1</td><td><strong>程序（program）</strong>= 一组程序语句（program statements）的集合，运行时执行特定任务；常被称为软件（software）</td></tr>
+<tr><td>CRD-2.B.2</td><td><strong>代码段（code segment）</strong>= 程序的一部分语句集合</td></tr>
+<tr><td>CRD-2.B.3</td><td>程序必须在<strong>多种输入和情境</strong>下都能工作</td></tr>
+<tr><td>CRD-2.B.4</td><td>程序的<strong>行为（behavior）</strong>= 程序运行时如何起作用，常从"用户如何与之交互"的角度描述</td></tr>
+<tr><td>CRD-2.B.5</td><td>描述程序可"宽"（它做什么 what it does）也可"细"（做什么 + 语句如何实现 how the statements accomplish it）</td></tr>
+<tr><td>CRD-2.C.1</td><td><strong>输入（input）</strong>= 送入计算机供程序处理的数据；形式多样：触觉、音频、视觉、文本</td></tr>
+<tr><td>CRD-2.C.2</td><td><strong>事件（event）</strong>= 与某个动作关联、给程序提供输入数据的东西</td></tr>
+<tr><td>CRD-2.C.3</td><td>事件可由按键、点击鼠标、程序启动等任何影响执行流的已定义动作触发</td></tr>
+<tr><td>CRD-2.C.4</td><td>输入通常会影响程序产生的输出</td></tr>
+<tr><td>CRD-2.C.5</td><td><strong>事件驱动编程（event-driven programming）</strong>：语句被触发时执行，而非按顺序控制流执行</td></tr>
+<tr><td>CRD-2.C.6</td><td>输入可来自<strong>用户或其他程序</strong></td></tr>
+<tr><td>CRD-2.D.1</td><td><strong>输出（output）</strong>= 程序发送到设备的数据；形式：触觉、音频、视觉、文本</td></tr>
+<tr><td>CRD-2.D.2</td><td>输出通常取决于程序的<strong>输入或先前的状态（prior state，如内部变量值）</strong></td></tr>
+</table>
+<h3 id="2-2">2.2 重难点：识别"必需的输入"（近三年最高频题型）</h3>
+<p>阅读材料题组（reading passage，2023 CED 明确规定 MCQ 含一组 5 道材料题）几乎每年都有一道"以下哪个数据是程序<strong>必需</strong>但<strong>不是</strong>从某用户设备收集的"。</p>
+<p><strong>解题三步法：</strong></p>
+<ol><li>回到材料找"程序要完成的功能"（如：推荐餐厅、分享跑步路线、主持视频会议）；</li><li>逐项问："没有这个数据，功能能不能完成？"——不能完成的就是<strong>必需</strong>输入；</li><li>再判断该数据"由谁提供"：来自题目主人公的设备？还是来自<strong>其他用户/其他程序/公司自己的数据库</strong>？</li></ol>
+<p><strong>典型例证</strong>（均来自国际考真题，见第 6 节）：</p>
+<ul><li>RunRoutr 分享 Adrianna 的跑步路线 → 需要"<strong>其他用户</strong>的当前位置"（不是从 Adrianna 手机取得的）；</li><li>视频会议应用主持会议 → 需要"被邀请者<strong>是否接受</strong>会议"的信号（来自<strong>其他用户</strong>的设备）。</li></ul>
+<h3 id="2-3">2.3 易错点</h3>
+<ul><li><strong>"描述程序"的宽窄之分</strong>：只说"做什么"是宽泛描述；"做什么+语句如何实现"才是详细描述。选项混搭时要看清问的是哪一种。</li><li><strong>输出不只来自输入</strong>：还取决于 prior state（程序内部已有的变量值），只看输入推输出会出错。</li><li>事件驱动的程序中，<strong>执行顺序由触发决定</strong>，不是从上到下顺序执行。</li><li>输入不仅来自"人的操作"，也可来自<strong>传感器（GPS、麦克风、摄像头）和其他程序</strong>。</li></ul>
+<hr/>
+<h2 id="3">3. Topic 1.3 Program Design and Development（程序设计与开发）</h2>
+<h3 id="3-1">3.1 知识点梳理（CRD-2.E ~ 2.H）</h3>
+<table>
+<tr><th>条目</th><th>内容</th></tr>
+<tr><td>CRD-2.E.1</td><td>开发过程可以<strong>有序且有意图</strong>（ordered and intentional），也可以是<strong>探索式</strong>（exploratory）</td></tr>
+<tr><td>CRD-2.E.2</td><td>常见开发阶段：<strong>investigating and reflecting（调查与反思）→ designing（设计）→ prototyping（原型）→ testing（测试）</strong></td></tr>
+<tr><td>CRD-2.E.3</td><td><strong>迭代（iterative）</strong>过程：基于反馈、测试或反思不断<strong>细化与修订</strong>，可能回到早期阶段</td></tr>
+<tr><td>CRD-2.E.4</td><td><strong>增量（incremental）</strong>过程：把问题拆成小块，<strong>每块验证可用后再加入整体</strong></td></tr>
+<tr><td>CRD-2.F.1</td><td>程序设计包含<strong>调查（investigation）</strong>以确定需求</td></tr>
+<tr><td>CRD-2.F.2</td><td>调查有助于了解<strong>程序约束（constraints）</strong>及使用者的关切和兴趣</td></tr>
+<tr><td>CRD-2.F.3</td><td>调查方式：<strong>问卷调查（surveys）、用户测试（user testing）、访谈（interviews）、直接观察（direct observations）</strong></td></tr>
+<tr><td>CRD-2.F.4</td><td><strong>程序需求（requirements）</strong>描述程序如何运作，包括必须提供的用户交互</td></tr>
+<tr><td>CRD-2.F.5</td><td>程序的<strong>规格说明（specification）</strong>定义程序的需求</td></tr>
+<tr><td>CRD-2.F.6</td><td>设计阶段（design phase）说明<strong>如何实现</strong>规格说明</td></tr>
+<tr><td>CRD-2.F.7</td><td>设计阶段可包括：头脑风暴、计划与故事板（storyboarding）、按模块/功能组件组织程序、绘制用户界面示意图、制定测试策略</td></tr>
+<tr><td>CRD-2.G.1</td><td><strong>程序文档（documentation）</strong>：对代码段/事件/过程/程序的功能及其开发过程的书面描述</td></tr>
+<tr><td>CRD-2.G.2</td><td><strong>注释（comments）</strong>：写进程序里给人看的文档形式，<strong>不影响程序运行</strong></td></tr>
+<tr><td>CRD-2.G.3</td><td>应<strong>贯穿开发全程</strong>写文档</td></tr>
+<tr><td>CRD-2.G.4</td><td>文档帮助个人或协作环境下<strong>开发与维护</strong>正确程序</td></tr>
+<tr><td>CRD-2.G.5</td><td>并非所有编程环境都支持注释，可能需要其他文档方式</td></tr>
+<tr><td>CRD-2.H.1</td><td>必须<strong>致谢（acknowledge）</strong>协作开发或来自他人的代码段</td></tr>
+<tr><td>CRD-2.H.2</td><td>致谢可写在程序文档中，须注明来源或原作者姓名（2023 CED 补充：AI 工具生成的代码也须以注释注明，如 "This code was generated using [tool name]"）</td></tr>
+</table>
+<h3 id="3-2">3.2 重难点</h3>
+<ol><li><strong>迭代 vs 增量</strong>（概念辨析高频）：</li></ol>
+<ul><li>迭代 = 反复"实现→反馈→修订"，<strong>可能回头重做</strong>；</li><li>增量 = 化整为零，<strong>每块先跑通再加</strong>；</li><li>二者的共同好处（真题答案原话）：<strong>帮助程序员在向可运行程序逐步添加组件时及早发现错误（identify errors as components are added to a working program）</strong>。</li></ul>
+<ol><li><strong>文档三连问</strong>（概念题固定套路）：</li></ol>
+<ul><li>文档写完后还能改吗？→ <strong>能</strong>，程序修改时文档也要更新；</li><li>程序完成后还需要文档吗？→ <strong>需要</strong>（维护、修改时都有用）；</li><li>只有团队开发才需要文档吗？→ <strong>不是</strong>，个人开发同样需要。</li></ul>
+<ol><li><strong>为什么把重复代码封装成 procedure？</strong>→ 减少重复代码、<strong>提高可读性、便于维护</strong>（修改一处即可）；它<strong>不能</strong>提高运行速度、<strong>不能</strong>减少输入数据、<strong>不能</strong>降低用户输错率。</li></ol>
+<h3 id="3-3">3.3 易错点</h3>
+<ul><li>调查阶段收集用户数据时，<strong>抽样方式决定偏见</strong>：只问"离公司近的 10 个用户/最活跃玩家/开发者的朋友"→ 样本不具代表性（not representative / may not reflect all potential users）；<strong>从全体用户中随机抽取</strong>→ 最不易引入偏见。</li><li>"需求（requirements）"是<strong>调查的产出</strong>，"设计（design）"是<strong>如何满足需求</strong>——两者因果别颠倒。</li><li>注释写给人看，删除或添加注释<strong>不改变程序行为</strong>；但 Create PT 的 Personalized Project Reference 截图中<strong>不得包含注释或课程内容</strong>（会被判 0 分）——这是考试规则，不是语法规则，注意区分。</li></ul>
+<hr/>
+<h2 id="4">4. Topic 1.4 Identifying and Correcting Errors（识别与纠正错误）</h2>
+<h3 id="4-1">4.1 知识点梳理（CRD-2.I ~ 2.J）</h3>
+<p><strong>四类错误（必背）：</strong></p>
+<table>
+<tr><th>错误类型</th><th>定义</th><th>典型例子</th></tr>
+<tr><td><strong>Logic error 逻辑错误</strong></td><td>算法/程序中的错误导致行为不正确或出乎意料（<strong>程序能跑</strong>）</td><td>条件写反、循环边界差一、交换两个变量次序错误</td></tr>
+<tr><td><strong>Syntax error 语法错误</strong></td><td>违反编程语言规则的错误（<strong>跑不起来</strong>）</td><td>缺括号、缺引号、关键字拼错</td></tr>
+<tr><td><strong>Run-time error 运行时错误</strong></td><td>程序<strong>执行期间</strong>发生的错误（各语言自定义）</td><td>除以零、访问越界索引、死循环后内存耗尽</td></tr>
+<tr><td><strong>Overflow error 溢出错误</strong></td><td>计算机试图处理<strong>超出定义范围</strong>的数</td><td>8 位无符号整数 255+1→0；有符号整数溢出后变成<strong>负数</strong></td></tr>
+</table>
+<p><strong>发现和纠正错误的有效手段（CRD-2.I.5，五个都要认识）：</strong><br/>test cases（测试用例）、hand tracing（手工跟踪）、visualizations（可视化）、debuggers（调试器）、adding extra output statement(s)（加输出语句/<code>DISPLAY</code> 调试）。</p>
+<p><strong>测试（CRD-2.J）：</strong></p>
+<ul><li>测试用<strong>定义好的输入（defined inputs）</strong>验证程序是否产生<strong>预期输出</strong>，据结果修订程序；</li><li>定义输入应展示<strong>各种预期结果</strong>，或取<strong>恰好在/略超出极值（minimum 和 maximum）</strong>的输入——即<strong>边界值（edge cases）</strong>；</li><li>需要依据<strong>程序需求</strong>来选择合适的测试输入。</li></ul>
+<h3 id="4-2">4.2 重难点</h3>
+<ol><li><strong>Overflow vs Round-off（最高频混淆点）</strong>：</li></ol>
+<ul><li><strong>整数太大存不下 → overflow</strong>（8 位存 200+60=260 → 变成 4；3 位存 5+3=8 → 变成 0；播放量 200 万变成七位负数 = 有符号溢出）；</li><li><strong>实数精度不够 → round-off</strong>（<code>0.5 − 0.4 − 0.1 ≠ 0</code>，浮点误差）；</li><li>判断口诀：<strong>整数场景想溢出，小数偏差想舍入</strong>。</li></ul>
+<ol><li><strong>"一次测试通过 ≠ 程序正确"</strong>：真题原话——用一个测试用例得出"程序正确"的结论是<strong>不充分的</strong>（not sufficient）；测试应覆盖不同预期结果，尤其是<strong>边界</strong>。</li><li><strong>"证明程序有错"只需一个反例</strong>：问"以下哪组初值能<strong>证明</strong>代码不正确"，选让逻辑漏洞暴露的那组（如求 max(x,y,z) 的嵌套 IF 只比较了部分组合时，选"x=1, y=3, z=2"这类让中间值最大/某变量从未被比较的组合）。</li><li><strong>逻辑错误修复三板斧</strong>（代码题套路）：</li></ol>
+<ul><li>循环变量更新位置不对（先自增再使用 / 忘记更新 → 死循环）；</li><li>IF/ELSE 分支写反或 RETURN 值写反（isIncreasing 返回 true/false 互换）；</li><li>多个独立条件用并列 IF 时，同时命中的数据被<strong>重复计数</strong>（如"被 2 或 7 整除"的计数题）。</li></ul>
+<h3 id="4-3">4.3 易错点</h3>
+<ul><li><strong>死循环（infinite loop）</strong>属于 run-time 表现，最常见的语法层面原因是<strong>忘记更新循环变量</strong>或更新位置错误——补一条 <code>index ← index − 1</code> / <code>index ← index + 1</code> 的位置题是送分题，注意"放在 IF 内还是 IF 外"。</li><li><strong>REPEAT UNTIL 的条件是"退出条件"</strong>（满足即停），<code>REPEAT UNTIL(i &gt; 10)</code> 执行到 i=11 才停；把它与"执行 10 次"划等号前先数一遍。</li><li>删除列表元素后再访问原索引会<strong>错位</strong>；<strong>从后往前</strong>（index 从 LENGTH 递减）遍历删除是安全套路。</li><li><code>RANDOM(1,4)</code> 两次独立调用结果互不相干——用两次 RANDOM 模拟互斥事件（25%/75%）会漏计试验，正确改法是把第二个 IF 改成 <strong>ELSE</strong>。</li></ul>
+<hr/>
+<h2 id="5">5. 重难点与易错点速查表（考前 10 分钟过一遍）</h2>
+<table>
+<tr><th>#</th><th>考点</th><th>一句话结论</th></tr>
+<tr><td>1</td><td>协作收益</td><td>带来多元视角、减少偏见、易找错；<strong>不免测试、不免文档、不消分歧</strong></td></tr>
+<tr><td>2</td><td>多元用户反馈</td><td><strong>随机抽样</strong>才不易引入偏见；亲友/最活跃用户/附近 10 人 = 偏差样本</td></tr>
+<tr><td>3</td><td>程序目的</td><td>解决问题 <strong>或</strong> 创意表达</td></tr>
+<tr><td>4</td><td>输入/输出</td><td>输入可来自用户、传感器、<strong>其他程序</strong>；必需但"非本设备收集"的输入是高频题</td></tr>
+<tr><td>5</td><td>事件驱动</td><td>由触发决定执行，非顺序执行</td></tr>
+<tr><td>6</td><td>开发阶段</td><td>调查反思 → 设计 → 原型 → 测试，<strong>迭代可回溯、增量分块验证</strong></td></tr>
+<tr><td>7</td><td>迭代/增量好处</td><td>向可运行程序逐步添加组件时<strong>及早发现错误</strong></td></tr>
+<tr><td>8</td><td>文档/注释</td><td>全程书写、随时更新、个人也需要；注释不影响运行</td></tr>
+<tr><td>9</td><td>引用致谢</td><td>他人代码、AI 生成代码都要注明出处</td></tr>
+<tr><td>10</td><td>四类错误</td><td>整数超范围=溢出（可能变负）；小数偏差=舍入；违反语法=语法错；运行中崩溃=运行时错</td></tr>
+<tr><td>11</td><td>测试充分性</td><td>一个用例通过≠正确；要测<strong>边界值</strong>和不同预期结果</td></tr>
+<tr><td>12</td><td>反例证明</td><td>证明"程序有错"只需一组让错误暴露的数据</td></tr>
+<tr><td>13</td><td>重复计数</td><td>并列 IF 处理互斥条件时，交集数据被算两次</td></tr>
+<tr><td>14</td><td>procedure 封装</td><td>减重复、易维护；<strong>不提速、不省输入</strong></td></tr>
+</table>
+<hr/>
+<h2 id="6">6. 国际考真题与解析</h2>
+<blockquote><p>来源说明：2026 年为国际考（大陆卷）真题；2025 年为 College Board 官方 Supplemental Practice Exam（与正式国际考同源同格式）；2024 年为国际考真题（官方答案键）；CED 样题出自 2023 CED 官方 Sample Exam Questions（附官方考点标注）。</p></blockquote>
+<p class="quiz-intro">本章选择题支持<strong>在线作答</strong>：点击任一选项即可看到正确答案与解析；点"重做本题"可清空重练。建议先自己想一遍再点，模拟真实考试节奏。</p><h3 id="6-1">6.1 2026 年国际考真题（大陆卷）</h3>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q6（考点：CRD-2.I.4 溢出错误）</strong></p>
+<p>A certain programming language uses 8-bit binary numbers to represent nonnegative integers. Using this programming language, a programmer attempts to add the decimal values 90 and 150. Which of the following best describes the result of this operation?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">An overflow error will occur because 8 bits is not large enough to represent either 90 or 150.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">An overflow error will occur because 8 bits is large enough to represent 90 but not 150.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">An overflow error will occur because 8 bits is large enough to represent 90 and 150 but not the sum 240.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">No overflow error will occur; the sum 240 can be represented using the 8-bit representation.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：8 位无符号整数可表示 0～255。90 ✓、150 ✓、和 240 ≤ 255 ✓，全程不超范围，<strong>不发生溢出</strong>。本题反套路：多数溢出题答案都是"溢出"，出题人故意设置 240 &lt; 255 的陷阱，必须老老实实算范围。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q25（考点：CRD-1.A.6 / CRD-2.F 用户调查与偏见）</strong></p>
+<p>A company is developing a new feature for a popular application. While developing the new feature, the company plans to regularly collect usage data from a group of 10 users who live close to the company's office. Which of the following best explains why the company should be cautious about making decisions based on the data collected from the 10 users?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Consulting with these users may slow down the development of the new feature.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The preferences of these users may not reflect the preferences of all potential users.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">These users might log into the company network using a rogue access point.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">These users are unlikely to provide meaningful information to software developers.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：样本只有 10 人且都住在公司附近（便利抽样），<strong>代表性不足</strong>，其偏好未必代表所有潜在用户——这是"调查引入偏见"的标准表述。A、C、D 均为无关干扰。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q47（考点：CRD-1.A.4 多元视角减少偏见）</strong></p>
+<p>A company is developing a new feature for a popular application. The developers of the new feature plan to consult with a diverse group of users while developing the new feature. Which of the following is a direct benefit of this approach?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">It may reduce bias in the algorithms used in the new feature.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">It may reduce the amount of documentation needed during the development process.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">It may reduce the need for conflict resolution during the development process.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">It may reduce the total number of programmers needed to develop the new feature.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：CRD-1.A.4 原文——多元视角的协作<strong>帮助避免偏见</strong>。B（文档）、C（冲突化解）、D（人数）都不是"直接收益"，且 C 与事实相反（多元团队更需要冲突化解）。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q58（考点：CRD-2.C 识别输入）</strong>（视频会议应用材料题组）</p>
+<p><em>材料：视频会议应用，用户以邮箱注册、建联系人列表、发起/接受会议；会议中加密音视频；可开启语音转文字并邮件发送会议记录。</em></p>
+<p>Which of the following data is collected from the device of each participant during a video chat session?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Audio and video signals captured from the device's microphone and camera</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The email addresses of users who declined the session</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The locations of the other users participating in the session</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">A text transcript of the participant's speech during the session</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：直接从参会者设备采集的是<strong>麦克风与摄像头捕捉的音视频信号</strong>。B 是别人的设备产生的信号；C 材料未提及收集位置；D（转写文本）是程序<strong>处理后生成的输出</strong>，不是从设备采集的原始输入——"输入 vs 输出"辨析是本题陷阱。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q59（考点：CRD-2.C.6 输入可来自其他用户/程序）</strong>（同上材料题组）</p>
+<p>Kim wants to start a video chat session. Which of the following data is not collected from Kim's device but is needed for the application to host a video chat session with multiple users?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The ages of the other users participating in the session</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The contact lists of the other users participating in the session</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">An indication of whether the users invited to the session accepted the session</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">An indication of whether the users invited to the session provided biographical information for their accounts</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：主持多人会议必须知道<strong>被邀请者是否接受</strong>，该信息来自<strong>其他用户的设备</strong>（CRD-2.C.6：输入可来自用户或其他程序）。年龄（A）、简历填写与否（D）与开会无关；联系人列表（B）只需 Kim 自己的。</p></blockquote><blockquote><p>Describe a revision you could make to your program. Explain how feedback or testing could be used as part of a development process for this future revision.</p></blockquote></div></div>
+<p><strong>答题模板</strong>（结合自己的 Create PT 程序）：</p>
+<ol><li><strong>Revision</strong>：指明一个具体改进（如"增加用户自定义提醒频率的功能"）；</li><li><strong>Feedback 用法</strong>：说明向潜在用户展示程序、收集反馈（访谈/观察）后，如何根据反馈确定该修改的优先级和具体形式；</li><li><strong>Testing 用法</strong>：说明为该修改设计<strong>定义好的输入</strong>（含边界值），运行后把实际输出与预期输出比较，不满足则继续修订——体现"实现→反馈→修订"的<strong>迭代</strong>过程。</li></ol>
+<h3 id="6-2">6.2 2025 年官方补充练习卷（Supplemental Practice Exam）</h3>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q5（考点：CRD-2.G/CRD-2.E 代码维护与封装）</strong></p>
+<p>A student developed a program that works correctly but contains sections of duplicated code that appear in different parts of the program. Which of the following actions is most likely to make the program easier to maintain in the future?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Deleting all but one of the duplicated code segments</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Putting each of the duplicated code segments into a separate procedure in such a way that allows each procedure to be called once</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Putting the duplicated code into a single procedure in such a way that allows the procedure to be called multiple times</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Taking all of the duplicated code and putting it in a loop</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：官方解析——把重复代码放进<strong>可被多处调用的单个过程（procedure）</strong>，能管理复杂度、减少需要维护的代码量、提高可读性。A 直接删代码会改变功能；B"各自只被调用一次"没有消除重复本质；D 塞进循环扭曲了逻辑。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q21（考点：CRD-2.F 开发过程各环节与偏见）</strong></p>
+<p>A program is being developed that will process scientific data and then use that data to draw conclusions. Which of the following components of the development process is least likely to introduce bias?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The algorithms used in the program to analyze the data</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The documentation in the program explaining the functionality of its procedures</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The set of users analyzing the results generated by the program</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The source of the data being used as input to test the program</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：官方解析——文档只解释功能，<strong>不影响程序如何处理或解读数据</strong>，因此最不可能引入偏见。算法（A）、分析者（C）、测试数据来源（D）都会把主观倾向带进结论。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q26（考点：CRD-2.I.4 溢出错误）</strong></p>
+<p><em>材料：某程序用 8 位二进制表示非负整数，计算 200 + 60 得到 4 而不是 260。</em></p>
+<p>Which of the following is most likely to be the cause of the error?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Addition using this representation is only accurate for powers of two (1, 2, 4, 8, 16, etc.).</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">An overflow error occurred because the sum 260 is a larger number than can be represented using this representation.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">A round-off error occurred due to the imprecision of this representation.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The sequence of bits representing the sum 260 was interpreted as a computer instruction instead of an integer.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：官方解析——8 位只能表示 0～255，260 超出上限发生<strong>溢出</strong>，按模 256 回绕得到 260 − 256 = <strong>4</strong>。注意与 2026 年 Q6 对比：那题 240 ≤ 255 不溢出，这题 260 &gt; 255 溢出——<strong>先算范围再下结论</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q44（考点：CRD-2.I.1 逻辑错误：重复计数）</strong></p>
+<p><em>材料：以下程序旨在统计并显示 1～100（含）之间能被 2 或被 7 整除的整数个数，但运行结果不对。</em></p>
+<pre><code>n ← 1
+counter ← 0
+REPEAT UNTIL(n &gt; 100)
+{
+    IF((n MOD 2) = 0)
+    {
+        counter ← counter + 1
+    }
+    IF((n MOD 7) = 0)
+    {
+        counter ← counter + 1
+    }
+    n ← n + 1
+}
+DISPLAY(counter)</code></pre>
+<p>Which of the following best describes the incorrect behavior of the program?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The value displayed is 0 because no values are counted.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The value displayed is greater than 0 but less than the intended result because some values are not counted.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The value displayed is greater than the intended result because some values are counted more than once.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">No value is displayed because the program enters an infinite loop.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：官方解析——能同时被 2 和 7 整除的数（14、28、42……共 7 个）两个 IF 都命中，被<strong>计数两次</strong>，结果偏大。修正思路：第二个 IF 改为 <code>ELSE IF</code>，或条件合并写法。这是"并列 IF + 互斥/相交条件"的经典逻辑错误模型。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q52（考点：CRD-2.F.3 调查方法与偏见）</strong></p>
+<p>The developers of a popular online gaming application are planning to add some new features to the application. Which of the following methods of acquiring feedback on the new features is least likely to introduce bias in the software?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Asking 100 users who are chosen randomly from all users to provide feedback on the new features when the new features become available</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Asking the 100 users who most recently accessed the application to attend online feedback sessions</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Giving 100 users who are friends with members of the development team access to the new features and asking them to provide feedback</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Giving the 100 users with the most amount of play time access to the new features and asking them to provide feedback</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：官方解析——<strong>从全体用户中随机抽取</strong>能保证经历与视角的多样性，减少反馈偏见。最近访问（B）、开发者好友（C）、时长最高玩家（D）都是系统性偏差样本。</p></blockquote></div></div>
+<div class="quiz" data-ans="C,D"><div class="quiz-stem"><p><strong>Q63（双选，考点：CRD-1.A.3 / 1.A.4 协作收益）</strong></p>
+<p>A company has decided to use teams of programmers who will collaborate to develop software. Which of the following are likely benefits of this decision? <em>Select two answers.</em></p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Consultation and communication will minimize the need to document the software.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Teams of programmers are able to develop the software with significantly less testing than programmers working on their own would require.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The software will likely reflect the diversity of talents and perspectives of the team members.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The use of a team will help reduce bias in the software being developed.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C、D</p><blockquote><p><strong>解析</strong>：官方解析——多元团队汇聚不同视角与技能，软件更有创意和完整性（对应 CRD-1.A.3）；多元视角的协作减少开发中的偏见（CRD-1.A.4）。A、B 是"协作万能论"陷阱：沟通<strong>不能</strong>取代文档，团队<strong>不能</strong>少测试。</p></blockquote></div></div>
+<h3 id="6-3">6.3 2024 年国际考真题（官方答案键核对）</h3>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q19（考点：CRD-1.A / 1.C 协作方式辨析）</strong></p>
+<p>Students are working in groups on an assignment to produce a series of Web pages. The assignment will be graded based on the content of the Web pages as well as the overall look and feel of the Web site. Which of the following strategies uses the benefits of collaboration the LEAST?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Building consensus among group members about design decisions</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Assigning each of the group members to individually develop a different Web page</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Having group members offer individual perspectives when providing feedback to each other</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Having group members use online tools and cloud storage to share information with each other</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：网站"整体观感"占分，各写各的页面（B）缺乏共识建立、互相反馈与共享，发挥协作收益最少。A、C、D 分别对应 consensus building、多元视角、在线协作工具——全是 CRD-1 的正面关键词。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q13（考点：CRD-2.E/CRD-2.G procedure 封装收益）</strong></p>
+<p>A student develops a program that periodically prompts the user to enter a password. The program then verifies the password before the user is able to continue. The student chooses to implement the code for the password-verification feature as a procedure that will be called repeatedly by the program. Which of the following is most likely to be a benefit of implementing this feature as a procedure?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Improving the readability of the program by reducing the amount of duplicated code</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Improving the speed of the program by reducing the number of lines of code that must be executed</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Improving the storage needs of the program by reducing the amount of input data</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Improving the usability of the program by reducing the likelihood that the user will enter an incorrect password</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：封装为过程的好处是<strong>减少重复代码、提高可读性、便于维护</strong>。过程调用不会减少实际执行的指令量（B 错），与输入数据量（C）和用户输错率（D）无关。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q33（考点：CRD-2.I 舍入误差）</strong></p>
+<p>In a computer program, the expression ((0.5 − 0.4) − 0.1) evaluates to a value other than 0. What property of the digital representation of numbers best explains the result?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Digital representations of real numbers cannot be used for expressions that use the subtraction operator.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Digital representations of numbers are subject to round-off errors.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Digital representations of numbers are subject to overflow errors.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The binary number system can only represent integers.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：0.4、0.1 在二进制下是无限循环小数，只能近似存储，运算后产生<strong>舍入误差（round-off error）</strong>。与"整数太大"的溢出（C）区分开。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q52（考点：CRD-2.I.4 溢出错误）</strong></p>
+<p>A computer program uses a fixed number of bits to represent integers. Which of the following errors is most likely to occur as a direct result of this representation?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">An overflow error could occur if the program attempts to perform an arithmetic operation whose result is too large.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">A round-off error could occur if the program attempts to repeatedly increment an integer variable inside a loop.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">A runtime error could occur if the program attempts to access an element in a list of integers whose value is equal to its index.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">A syntax error could occur if the program attempts to evaluate a mathematical expression that contains more than one operation.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：固定位数表示整数 → 结果太大即<strong>溢出</strong>。B 整数自增不产生舍入误差；C 描述的是"值=索引"的访问，不必然越界；D 多个运算的合法表达式没有语法错误。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q31（考点：CRD-2.I 逻辑错误：循环变量被重置）</strong></p>
+<p>The program below is intended to calculate the sum of the odd integers from 1 to n. Assume that n is an odd integer greater than 1. For example, if n is 5, the intended sum is 1 + 3 + 5 = 9. The program does not work as intended.</p>
+<pre><code>Line 1:  count ← 1
+Line 2:  sum ← 0
+Line 3:  REPEAT UNTIL(count &gt; n)
+Line 4:  {
+Line 5:      count ← 1
+Line 6:      sum ← sum + count
+Line 7:      count ← count + 2
+Line 8:  }
+Line 9:  DISPLAY(sum)</code></pre>
+<p>Which of the following changes should be made in order for the program to work as intended?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Interchanging lines 5 and 6</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Interchanging lines 6 and 7</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Removing line 1</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Removing line 5</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：Line 5 把 count 重置为 1，循环永不退出且 sum 不断加 1（死循环）。删去 Line 5 后程序即为标准的"1, 3, 5, …, n 求和"。<strong>Hand tracing 一遍</strong>（n=3）：删 Line 5 → count=1, sum=1 → count=3, sum=4 → 退出，输出 4 = 1+3 ✓。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q49（考点：CRD-2.F.3 用户测试与样本代表性）</strong></p>
+<p>The developers of a popular mobile application are redesigning the application's interface. The developers plan to release an early version of the new design to a group of ten volunteers. The application will track the amount of time the volunteers spend using the application before and after getting access to the new interface. Which of the following is most likely to be a challenge related to this strategy for gathering information about the effect of the new interface?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The data collected may be susceptible to overflow or round-off errors.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The data collected may not be representative of all users of the application.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The data collected may not be uniformly formatted.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The data collected may require an unreasonable amount of time to analyze.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：与 2026 Q25、2025 Q52 同源：<strong>10 名志愿者是小样本</strong>，收集的使用时长数据不能代表全体用户（not representative）。"数据格式不统一"（C）是自动化采集数据的典型干扰项——使用时长数据天然格式统一。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q50（考点：CRD-2.J 测试：找出"仍正确"的用例）</strong></p>
+<p>A teacher uses the table below to assign letter grades based on a numerical score.</p>
+<table>
+<tr><th>Numerical Score</th><th>90–100</th><th>80–89</th><th>70–79</th><th>60–69</th><th>0–59</th></tr>
+<tr><td>Letter Grade</td><td>A</td><td>B</td><td>C</td><td>D</td><td>F</td></tr>
+</table>
+<p>The procedure getGrade is intended to return a letter grade based on the values described in the table. The procedure does not work as intended.</p>
+<pre><code>PROCEDURE getGrade(score)
+{
+    grade ← "A"
+    IF(score &lt; 90)
+    {
+        grade ← "B"
+    }
+    ELSE
+    {
+        IF(score &lt; 80)
+        {
+            grade ← "C"
+        }
+        ELSE
+        {
+            IF(score &lt; 70)
+            {
+                grade ← "D"
+            }
+            ELSE
+            {
+                grade ← "F"
+            }
+        }
+    }
+    RETURN(grade)
+}</code></pre>
+<p>The procedure does not always work as intended, but it does work for some cases. For which of the following procedure calls is the correct letter grade returned?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">getGrade(95)</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">getGrade(85)</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">getGrade(65)</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">getGrade(55)</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：ELSE 分支内意味着 score ≥ 90，之后又判 <code>score &lt; 80</code>、<code>score &lt; 70</code> 永远为假 → 只有 A 和 F 可能被返回：score ≥ 90 → A ✓（碰巧正确）；score &lt; 90 → 恒为 B。逐项验证：95→A ✓、85→B ✓（本应 B，碰巧正确？不——85 &lt; 90 返回 B，恰为正确值！）、65→B ✗（应 D）、55→B ✗（应 F）。<br/><strong>注意</strong>：95 和 85 都"碰巧正确"，但题目要求选出<strong>一个</strong>最佳答案时，官方答案为 <strong>B</strong>——此类题务必用官方答案键校准，并学会 hand tracing 每个 IF/ELSE 路径。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q53（考点：CRD-2.I.3 运行时错误：越界）</strong></p>
+<p>A student wrote the following procedure, which takes as input the list of strings wordList and the string targetWord.</p>
+<pre><code>PROCEDURE findWord(wordList, targetWord)
+{
+    index ← 1
+    REPEAT UNTIL(wordList[index] = targetWord)
+    {
+        index ← index + 1
+    }
+    IF(index &lt; LENGTH(wordList))
+    {
+        RETURN(index)
+    }
+    ELSE
+    {
+        RETURN(-1)
+    }
+}</code></pre>
+<p>Which of the following best describes the result when targetWord does not appear in wordList?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The value -1 is returned.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The value of LENGTH(wordList) is returned.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The value of LENGTH(wordList) + 1 is returned.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Nothing is returned; an error occurs because the procedure attempts to access an element in wordList whose index is greater than the length of the list.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：目标词不存在时，UNTIL 条件永远不满足，index 一路加到超过列表长度，<code>wordList[index]</code> <strong>越界访问 → 运行时错误（run-time error）</strong>。程序根本走不到返回 -1 那一步。"先写保护再搜索"（循环条件加 <code>index ≤ LENGTH</code>）才是健壮写法。</p></blockquote></div></div>
+<h3 id="6-4">6.4 CED 官方样题（附官方考点标注，2023 CED Sample Exam Questions）</h3>
+<p>以下 3 道题选自 2023 CED 官方样题卷（Sample Exam Questions，共 18 题），其中这 3 题的官方考点标注直接对应 Big Idea 1。题目附完整题干、选项、答案与逐项解析。</p>
+<hr/>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>CED Q9（官方考点：Skill 4.C / CRD-2.J；本手册 §4.1）</strong></p>
+<p>The following code segment is intended to set <code>max</code> equal to the maximum value among the integer variables <code>x</code>, <code>y</code>, and <code>z</code>. The code segment does not work as intended in all cases.</p>
+<pre><code>IF (x &gt; y) AND (x &gt; z)
+{
+    max ← x
+}
+IF (y &gt; x) AND (y &gt; z)
+{
+    max ← y
+}
+ELSE
+{
+    max ← z
+}</code></pre>
+<p>Which of the following initial values for <code>x</code>, <code>y</code>, and <code>z</code> can be used to show that the code segment does not work as intended?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">x = 1, y = 2, z = 3</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">x = 1, y = 3, z = 2</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">x = 2, y = 3, z = 1</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">x = 3, y = 2, z = 1</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：本题考查<strong>用具体反例（defined inputs）证明程序存在缺陷</strong>。逐项 hand tracing：</p>
+<ul><li>(A) 1,2,3：IF1 假；IF2 中 y&gt;x 真、y&gt;z 假 → ELSE 执行 max←3 ✓ 正确。</li><li>(B) 1,3,2：IF1 假；IF2 中 3&gt;1 真、3&gt;2 真 → max←3 ✓ 正确。</li><li>(C) 2,3,1：IF1 假；IF2 中 3&gt;2 真、3&gt;1 真 → max←3 ✓ 正确。</li><li>(D) 3,2,1：IF1 中 3&gt;2 真、3&gt;1 真 → max←3；<strong>接着</strong> IF2 中 2&gt;3 假 → ELSE 执行 <strong>max←z=1</strong> ✗ 最大值被覆盖！</li></ul>
+<p><strong>易错点</strong>：两个 IF 是并列关系而非嵌套，ELSE 只属于第二个 IF。x 已被正确赋值为 3 后，仍会被 ELSE 强行改写为 1。此题是"用边界输入验证程序正确性"的经典范例——测试不是证明程序对，而是找出程序错的那一刻。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>CED Q11（官方考点：Skill 4.C / CRD-2.I.b；本手册 §4.2，与 AP Classroom 1.4 Q10 同型）</strong></p>
+<p>The following procedure is intended to return the number of times the value <code>val</code> appears in the list <code>myList</code>. The procedure does not work as intended.</p>
+<pre><code>Line 1:  PROCEDURE countNumOccurences(myList, val)
+Line 2:  {
+Line 3:      FOR EACH item IN myList
+Line 4:      {
+Line 5:          count ← 0
+Line 6:          IF(item = val)
+Line 7:          {
+Line 8:              count ← count + 1
+Line 9:          }
+Line 10:     }
+Line 11:     RETURN(count)
+Line 12: }</code></pre>
+<p>Which of the following changes can be made so that the procedure will work as intended?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Changing line 6 to <code>IF(item = count)</code></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Changing line 6 to <code>IF(myList[item] = val)</code></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Moving the statement in line 5 so that it appears between lines 2 and 3</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Moving the statement in line 11 so that it appears between lines 9 and 10</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：本题考查<strong>识别并纠正逻辑错误（logic error）</strong>。<code>count ← 0</code>（Line 5）写在 FOR EACH 循环<strong>内部</strong>，导致每次迭代都把 count 清零——最终 RETURN 的只是"最后一次循环的计数（0 或 1）"，而不是 val 出现的总次数。</p>
+<p>修复方法：把初始化语句 <code>count ← 0</code> 移到循环外、过程体内（即 Line 2 与 3 之间），让计数器只初始化一次。这就是选项 (C)。</p>
+<p>逐项排除：(A) 把 item 与 count 比较，逻辑彻底错误；(B) FOR EACH 语法中 item 本身就是元素值而非索引，<code>myList[item]</code> 属越界访问；(D) 把 RETURN 挪进循环会导致第一次比较后就提前返回。</p>
+<p><strong>套路总结</strong>：见"计数器结果不对"→ 先查初始化位置（应在循环外），再查自增位置（应在判断内）。这一模式与 AP Classroom 1.4 Q10、以及 2021 年 FRQ 都反复出现。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>CED Q14（官方考点：Skill 3.A / CRD-2.C；本手册 §2.2，Call Center 阅读材料题组）</strong></p>
+<p><strong>阅读材料</strong>（Questions 14–16 共用）：一家零售连锁店使用软件管理客户来电。系统最近完成升级。原系统要求客户用电话键盘交互；升级后系统改为<strong>语音</strong>交互。升级系统（原系统不）会把通话会话的全部信息存入数据库供日后参考，包括客户电话号码及客户提供的一切信息（姓名、地址、订单号、信用卡号等）。两个系统的流程图（原文有图）描述了各自的呼叫处理逻辑。</p>
+<p>Question 14: The upgraded system uses a directory containing additional information not supplied by the customer. The directory is used to help direct calls effectively. Which of the following is LEAST likely to be included in the directory?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">A list of common issues and whether each issue requires a human representative</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">A list of common keywords or phrases and a corresponding issue for each keyword or phrase</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">A list of computers the company owns and the computers' corresponding IP addresses</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">A list of human representatives and the corresponding department for each representative</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：本题考查<strong>识别程序运行所需的输入数据</strong>（CRD-2.C：程序如何使用输入完成功能）。升级系统的核心任务是"听懂客户语音描述的问题 → 判断是否需要人工 → 转接到对应部门"。要完成这条链路，directory（目录）必须含有：</p>
+<ul><li>(A) 问题→是否需人工 的映射 ✓ 用于分支判断；</li><li>(B) 关键词/短语→问题 的映射 ✓ 用于语音识别匹配；</li><li>(D) 人工客服→部门 的映射 ✓ 用于转接路由。</li></ul>
+<p>而 (C) <strong>公司自有电脑清单及 IP 地址</strong>与"转接来电"这一功能毫无关系——它是网络管理数据，不是本程序的输入。题眼 <strong>LEAST likely</strong>（最不可能）指向的就是与功能链路无关的干扰项。</p>
+<p><strong>方法</strong>：判断"某数据是否是程序输入"的唯一标准 = 删掉它后程序还能不能完成既定功能。这与 AP Classroom 1.2 Q7（同源场景）完全一致，也再现于 2026 年国际考的视频聊天应用题组。</p></blockquote></div></div>
+<h3 id="6-5">6.5 AP Classroom Topic Questions 精选（Big Idea 1 全套，附完整题目与逐题解析）</h3>
+<p>以下题目全部出自 AP Classroom 官方 Topic Questions（2021, College Board），按 Topic 分组。每题给出完整英文题干、四个选项、官方答案与中文解析。</p>
+<h4>Topic 1.1 Collaboration（4 题全收录）</h4>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q1（考点：CRD-1.A.1 多元背景团队的好处）</strong></p>
+<p>A company that develops educational software wants to assemble a collaborative team of developers from a variety of professional and cultural backgrounds. Which of the following is NOT considered a benefit of assembling such a team?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Collaboration that includes diverse backgrounds and perspectives can eliminate the need for software testing.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Collaboration that includes diverse backgrounds and perspectives can help the team anticipate the needs of a variety of software users.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Collaboration that includes diverse backgrounds and perspectives can help the team avoid bias.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Collaboration that includes diverse backgrounds and perspectives can reflect the strengths of the individual team members.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：题眼 <strong>NOT</strong>——选"不是好处"的那项。多元背景团队的三大真实好处：(B) 预判不同用户需求、(C) 避免偏见、(D) 发挥各成员所长，全部是 CRD-1.A.1 的原文表述。而 (A) "可以<strong>免去</strong>软件测试"用了绝对化词 eliminate——<strong>协作再好也替代不了测试</strong>，这是 CRD 概念题的头号陷阱词。凡选项出现 eliminate / remove the need for / no longer necessary，基本可判错。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q2（考点：CRD-1.A.2 协作开发创新的收益）</strong></p>
+<p>Which of the following is NOT a benefit of collaborating to develop a computing innovation?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Collaboration can decrease the size and complexity of tasks required of individual team members.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Collaboration can make it easier to find and correct errors during the development process.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Collaboration eliminates the need to resolve differences of opinion.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Collaboration facilitates multiple perspectives in developing ideas.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：又是 <strong>NOT</strong> 题 + eliminate 陷阱。(A) 分摊任务规模与复杂度、(B) 更容易发现和纠正错误、(D) 带来多元视角，都是协作的真实收益。(C) "消除解决意见分歧的需要"——恰恰相反，<strong>协作会带来分歧，解决分歧本身就是协作的一部分</strong>。与 Q1 呼应：CRD 概念题 80% 的错误选项靠"绝对化"一词即可锁定。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q3（考点：CRD-1.B 协作方式与工具）</strong></p>
+<p>Three students in different locations are collaborating on the development of an application. Which of the following strategies is LEAST likely to facilitate collaboration among the students?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Having all three students participate in frequent video chat sessions to discuss ideas about the project and to provide feedback on work done so far</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Having all three students use an online shared folder to contribute and discuss components to be considered for use in the application</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Having all three students write code independently and then having one student combine the code into a program</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Having all three students work in a shared document that each can edit to provide comments on the work in progress</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：题眼 <strong>LEAST likely</strong>（最不利于协作）。有效协作的共同特征 = <strong>持续沟通 + 共享工作区 + 互相反馈</strong>。(A) 视频会议、(B) 共享文件夹、(D) 可共同编辑的共享文档都满足；(C) 各写各的、最后一人机械合并——既无过程沟通，也无互相审阅，合并时极易产生冲突和冗余代码。2026 国际考再现此题（视频聊天场景 Q56–59），可见其经典程度。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q4（考点：CRD-1.A.3 让用户参与开发）</strong></p>
+<p>A company that develops mobile applications wants to involve users in the software development process. Which of the following best explains the benefit in having users participate?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Users can identify and correct errors they encounter when using released versions of the software.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Users can review the algorithms used in the software to help improve their efficiency.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Users can provide documentation for program code at the end of the software development process.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Users can provide feedback that can be used to incorporate a variety of perspectives into the software.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：用户参与开发的收益 = <strong>提供反馈、纳入多元视角</strong>（CRD-1.A.3 原文）。逐项排除：(A) 用户能"报告"问题，但"纠正错误"是开发者的事；(B) 普通用户不具备审查算法效率的能力；(C) 文档由开发者编写，不是用户的工作。本题与 2025 国际考 Q26（"收集目标用户反馈"）考点同源。</p></blockquote></div></div>
+<h4>Topic 1.2 Program Function and Purpose（精选 7 题）</h4>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q3（考点：CRD-2.C 识别程序所需输入；DineOutHelper 题组）</strong></p>
+<p><strong>阅读材料</strong>：DineOutHelper 是一款帮人群聚餐选餐厅的移动应用。每位用户建立含唯一用户名与忌口/饮食限制清单的个人档案，并可建立其他用户的联系人列表。组织者从自己的联系人列表勾选聚餐成员后，应用根据"餐厅能否满足所有成员的忌口与饮食限制"推荐一家或多家附近餐厅。假设 Alejandra 用 DineOutHelper 组织与 Brandon、Cynthia 的聚餐。</p>
+<p>Which of the following data are needed for DineOutHelper to recommend a restaurant for the group?</p>
+<p>I. Each group member's list of food allergies or dietary restrictions<br/>II. Alejandra's geographic location<br/>III. The usernames of the people on Brandon and Cynthia's contact lists</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">I and II only</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">I and III only</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">II and III only</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">I, II, and III</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：推荐餐厅的功能链 = 成员忌口（I，筛选餐厅）＋ Alejandra 位置（II，限定"附近"）。III 是 Brandon/Cynthia 的<strong>联系人</strong>用户名——聚餐成员是 Alejandra 从<strong>自己</strong>联系人列表勾选的，别人联系人列表与本功能无关（别人联系人里可能有谁，不影响餐厅推荐）。判断"是否需要某数据"的唯一标准：删掉它，功能是否还能完成。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q4（考点：CRD-2.C 数据来源辨析；DineOutHelper 题组）</strong></p>
+<p>Which of the following data is not provided by Alejandra but is necessary for DineOutHelper to recommend a restaurant for the group?</p>
+<p>I. Brandon's contact list<br/>II. Information about which restaurants Brandon and Cynthia have visited in the past<br/>III. Information about which food allergies and dietary restrictions can be accommodated at different restaurants near Alejandra</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">II only</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">III only</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">II and III only</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">I, II, and III</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：题眼双重限定："<strong>不由 Alejandra 提供</strong>"+"<strong>推荐餐厅所必需</strong>"。(III) 各餐厅可 accommodate 哪些忌口——这信息在餐厅一方，必须由应用/餐厅数据库提供， Alejandra 不会提供 ✓ 且必需 ✓。(I) Brandon 的联系人列表：既不必要也无从提供；(II) 两人<strong>过去去过哪些餐厅</strong>：与"能否满足忌口"的推荐逻辑无关（过去光顾 ≠ 能 accommodate）。<strong>干扰项套路</strong>：把"相关的数据"和"必需的输入"混在一起。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q5（考点：CRD-2.C 输入数据来源；RunRoutr 题组）</strong></p>
+<p><strong>阅读材料</strong>：RunRoutr 是健身追踪应用，为用户规划跑步路线以便结伴跑步。用户注册后建立用户名、个人档案与好友联系人列表。应用用手机 GPS 追踪用户位置、跑速与距离。跑步开始时用户指定期望距离，应用推荐路线；用户接受后，应用把路线分享给附近的"兼容用户"（互在联系人列表，或跑速相近）。免费版基于采集数据投放定向广告。</p>
+<p>Adrianna uses RunRoutr to suggest a running route. All compatible users near Adrianna receive a notification that shows her running route. Which of the following data is not obtained using data collected from Adrianna's smartphone but necessary for RunRoutr to share Adrianna's running route?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Adrianna's average running speed</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Adrianna's preferred running distance</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The current locations of other RunRoutr users</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The usernames on Adrianna's contact list</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：题眼："<strong>不是</strong>来自 Adrianna 手机、但分享路线所<strong>必需</strong>"。分享对象是"附近的兼容用户"→ 必须知道<strong>其他用户的位置</strong>才能判定"附近"——这数据只能来自<strong>其他用户</strong>各自的手机。(A)(B) 都来自 Adrianna 自己的手机；(D) 联系人列表是注册时录入的个人档案数据，不是实时从手机采集的传感器数据。2026 国际考的视频聊天场景题组再次考了"哪些数据来自哪个设备"这一辨析。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q6（考点：CRD-2.C 程序必需输入；RunRoutr 题组）</strong></p>
+<p>Which of the following data must be collected from a user's smartphone in order for RunRoutr to suggest a running route?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Available running routes near the user's home</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The current time</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The starting location of the user's previous run</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The user's geographic position</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：推荐跑步路线的起点 = <strong>用户当前地理位置</strong>（GPS）。(A) 家附近有没有路线——推荐的是"从当前位置出发"的路线，与家无关；(B) 当前时间不影响路线生成；(C) <strong>上一次</strong>跑步的起点——用户此刻可能身在别处，历史位置无用。抓功能动词 "suggest a running route"（此刻、从这里跑）即可锁定 (D)。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q7（考点：CRD-2.C 输入与功能匹配；Call Center 题组，与 CED Q14 同源）</strong></p>
+<p><strong>阅读材料</strong>：见 6.4 CED Q14 的 Call Center 阅读材料（零售连锁店电话客服系统，原系统键盘交互 → 升级系统语音交互，升级系统将通话信息存入数据库）。</p>
+<p>The upgraded system uses a directory containing additional information not supplied by the customer. The directory is used to help direct calls effectively. Which of the following is LEAST likely to be included in the directory?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">A list of common issues and whether each issue requires a human representative</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">A list of common keywords or phrases and a corresponding issue for each keyword or phrase</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">A list of computers the company owns and the computers' corresponding IP addresses</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">A list of human representatives and the corresponding department for each representative</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：与 CED Q14 互为同源题（ College Board 反复使用同一场景）。判断标准唯一："directory 里的数据要服务于'分流来电'"。(A)(B)(D) 分别支撑"判断是否需人工""语音关键词匹配""按部门转接"三个环节；(C) 公司电脑 IP 地址清单是网络运维数据，与客服分流毫无关系 → LEAST likely。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q8（考点：CRD-2.C 新增输入识别；Call Center 题组）</strong></p>
+<p>To direct a call to the appropriate destination, which of the following input data is needed by the upgraded system that was NOT needed by the original system?</p>
+<p>I. Audio signal of the customer's voice<br/>II. The customer's keypad selection<br/>III. The customer's phone number</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">I only</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">II only</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">I and III only</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">I, II, and III</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：题眼："升级系统需要、原系统<strong>不需要</strong>的输入"。两系统差异的根源 = 交互方式：键盘 → <strong>语音</strong>。所以升级系统新增的输入就是 <strong>I 客户语音的音频信号</strong>。II 恰好相反——按键选择是<strong>原系统</strong>的输入，升级系统不再需要；III 电话号码两套系统都可能用到（主叫识别），不是升级带来的差异。这类"对比两版本找新增输入"的题，答案永远藏在<strong>题干明确写出的系统差异句</strong>里。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q10（考点：CRD-2.C 输入来源常识）</strong></p>
+<p>A student is creating an application that allows customers to order food for delivery from a local restaurant. Which of the following is LEAST likely to be an input provided by a customer using the application?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The address where the order should be delivered</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The cost of a food item currently available for order</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The credit card or payment information for the purchaser</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The name of a food item to be included in the delivery</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：外卖下单场景中，顾客提供：送餐地址 (A)、支付信息 (C)、要点的菜品名 (D)。而 (B) <strong>菜品价格由餐厅设定</strong>，顾客只是价格的接受者——数据来源错位。此题把 CRD-2.C 的"输入来自谁"考成了生活常识，是入门送分题，但审题不细（漏看 LEAST）也会失分。</p></blockquote></div></div>
+<h4>Topic 1.3 Program Design and Development（精选 5 题）</h4>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q1（考点：CRD-2.E 迭代+增量开发的好处）</strong></p>
+<p>Which of the following best describes one of the benefits of using an iterative and incremental process of program development?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">It allows programmers to implement algorithmic solutions to otherwise unsolvable problems.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">It eliminates the need for programmers to test completed programs.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">It enables programmers to create programs that use the lowest-level abstractions available.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">It helps programmers identify errors as components are added to a working program.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：迭代+增量开发（iterative and incremental）的核心好处 = <strong>在向可运行程序逐步添加组件的过程中持续发现错误</strong>（CRD-2.E 原文）。(A) 开发方法论不能把"不可解"变"可解"；(B) 又见 eliminate——增量开发<strong>不替代</strong>测试，只是让测试更频繁更小规模；(C) 与抽象层次无关。三连排除后 (D) 唯一合理。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q2（考点：CRD-2.D 开发实践（多选组合））</strong></p>
+<p>Which of the following actions are generally helpful in program development?</p>
+<p>I. Consulting potential users of the program to identify their concerns<br/>II. Writing and testing small code segments before adding them to the program<br/>III. Collaborating with other individuals when developing a large program</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">I and II only</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">I and III only</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">II and III only</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">I, II, and III</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：三条<strong>全对</strong>：I 咨询潜在用户（需求调查 survey）✓、II 小段代码先测再并入（incremental）✓、III 大型项目协作开发（collaboration）✓——分别是 CRD-2.D 开发过程三大支柱。本题节奏是"送分组合题"，凡三条都符合 CED 原文的，选全对即可，不必强行排除。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q3（考点：CRD-2.G 为过程写文档）</strong></p>
+<p>In the following procedure, the parameter <code>max</code> is a positive integer.</p>
+<pre><code>PROCEDURE printNums(max)
+{
+    count ← 1
+    REPEAT UNTIL(count &gt; max)
+    {
+        DISPLAY(count)
+        count ← count + 2
+    }
+}</code></pre>
+<p>Which of the following is the most appropriate documentation to appear with the printNums procedure?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Prints all positive even integers that are less than or equal to max.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Prints all positive odd integers that are less than or equal to max.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Prints all positive even integers that are greater than max.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Prints all positive odd integers that are greater than max.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：好文档要说明过程<strong>做什么</strong>（what it does）及<strong>限制条件</strong>。hand tracing：count 从 1 开始，每次 +2 → 1, 3, 5, …，直到超过 max 停止 → 打印的是 <strong>≤ max 的全部正奇数</strong>。起点 1（奇数）+ 步长 2（保奇性）→ (B)。这类"读过程选文档"题的三步法：① 看初值定数列起点；② 看步长定奇偶；③ 看循环终止条件定范围（≤ 还是 &gt;）。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q5（考点：CRD-2.G 文档须写明参数约束）</strong></p>
+<p>In the following procedure, the parameter <code>numList</code> is a list of numbers and the parameters <code>j</code> and <code>k</code> are integers.</p>
+<pre><code>PROCEDURE swapListElements(numList, j, k)
+{
+    newList ← numList
+    newList[j] ← numList[k]
+    newList[k] ← numList[j]
+    RETURN(newList)
+}</code></pre>
+<p>Which of the following is the most appropriate documentation to appear with the swapListElements procedure?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Returns a copy of numList with the elements at indices j and k interchanged. The value of j must be between 0 and the value of k, inclusive.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Returns a copy of numList with the elements at indices j and k interchanged. The values of j and k must both be between 1 and LENGTH(numList), inclusive.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Interchanges the values of the parameters j and k. The value of j must be between 0 and the value of k, inclusive.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Interchanges the values of the parameters j and k. The values of j and k must both be between 1 and LENGTH(numList), inclusive.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：两个判断点：① 过程<strong>返回的是 numList 的副本</strong>（newList ← numList 复制后修改副本，原列表不变）→ 排除 (C)(D)（它们说"交换参数 j、k 的值"，完全误读）；② 索引 j、k 必须<strong>各自</strong>落在 1～LENGTH(numList) 范围内才不越界 → (B) 的约束描述正确，(A) 只约束 j ≤ k、漏掉了与列表长度的关系。<strong>AP 伪代码列表索引从 1 开始</strong>——这一细节决定 (B) 对 (A) 错。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q6（考点：CRD-2.G 程序文档的作用时机）</strong></p>
+<p>Which of the following is a true statement about program documentation?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Program documentation should not be changed after it is first written.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Program documentation is only needed for programs in development; it is not needed after a program is completed.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Program documentation is useful when programmers collaborate but not when a programmer works individually on a project.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Program documentation is useful during initial program development and also when modifications are made to existing programs.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：文档的生命周期 = <strong>初始开发 + 后续修改</strong>全程有用（CRD-2.G 原文）。(A) 文档应随程序演进而更新，不是一次定稿；(B) 程序完成后维护、升级仍需文档；(C) 独立开发者隔几个月回看自己的代码，同样需要文档。本题和 2026 国际考写作题 "another programmer modifies your procedure" 直接呼应——文档好的程序，别人改起来才安全。</p></blockquote></div></div>
+<h4>Topic 1.4 Identifying and Correcting Errors（精选 12 题）</h4>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q1（考点：CRD-2.I.1 溢出错误）</strong></p>
+<p>A video-streaming Web site keeps count of the number of times each video has been played since it was first added to the site. The count is updated each time a video is played and is displayed next to each video to show its popularity.</p>
+<p>At one time, the count for the most popular video was about two million. Sometime later, the same video displayed a seven-digit negative number as its count, while the counts for the other videos displayed correctly. Which of the following is the most likely explanation for the error?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The count for the video became larger than the maximum value allowed by the data type used to store the count.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The mathematical operations used to calculate the count caused a rounding error to occur.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The software used to update the count failed when too many videos were played simultaneously by too many users.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The software used to update the count contained a sampling error when using digital data to approximate the analog count.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：识别链条：<strong>整数计数 → 越加越大 → 突然变成（七位数）负数 = 超过数据类型上限 → 溢出错误（overflow error）</strong>。整数溢出的标志性症状就是"大正数瞬间变负数"（补码符号位被进位侵占）。(B) 舍入误差只影响小数精度，不会凭空变出负号；(C) 并发故障不会恰好只影响最热门的那一个视频；(D) 计数是离散数字量，不存在"模拟量近似"。判断口诀：<strong>整数爆表 = 溢出；小数失真 = 舍入</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q2（考点：CRD-2.I 逻辑表达式求值）</strong></p>
+<p>Central High School keeps a database of information about each student, including the numeric variables <code>numberOfAbsences</code> and <code>gradePointAverage</code>. The expression below is used to determine whether a student is eligible to receive an academic award.</p>
+<p><code>(numberOfAbsences ≤ 5) AND (gradePointAverage &gt; 3.5)</code></p>
+<p>Which of the following pairs of values indicates that a student is eligible to receive an academic award?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">numberOfAbsences = 3, gradePointAverage = 3.5</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">numberOfAbsences = 5, gradePointAverage = 3.8</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">numberOfAbsences = 6, gradePointAverage = 3.4</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">numberOfAbsences = 6, gradePointAverage = 3.6</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：AND 要求<strong>两侧同时为真</strong>。逐项代入：(A) 3≤5 ✓ 但 3.5&gt;3.5 ✗（注意 &gt; 是严格大于，3.5 不满足！）→ 假；(B) 5≤5 ✓ 且 3.8&gt;3.5 ✓ → <strong>真</strong>；(C) 6≤5 ✗ → 假；(D) 6≤5 ✗ → 假。两个易错点：<strong>边界值 5 要取到（≤）</strong>、<strong>3.5 恰好不满足（&gt; 严格大于）</strong>。边界值题务必逐字符核对不等号方向。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q3（考点：CRD-2.I.b 纠正：INSERT 与 APPEND）</strong></p>
+<p>Assume that the list <code>originalList</code> contains integer values and that the list <code>newList</code> is initially empty. The following code segment is intended to copy all even numbers from <code>originalList</code> to <code>newList</code> so that the numbers in <code>newList</code> appear in the same relative order as in <code>originalList</code>. The code segment may or may not work as intended.</p>
+<pre><code>Line 1: FOR EACH number IN originalList
+Line 2: {
+Line 3:     IF (number MOD 2 = 0)
+Line 4:     {
+Line 5:         INSERT (newList, 1, number)
+Line 6:     }
+Line 7: }</code></pre>
+<p>Which of the following changes, if any, can be made so that the code segment works as intended?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Changing line 1 to <code>FOR EACH number IN newList</code></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Changing line 3 to <code>IF (number MOD 2 = 1)</code></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Changing line 5 to <code>APPEND (newList, number)</code></span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">No change is needed; the code segment is correct as is.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：<code>INSERT(list, 1, value)</code> 是<strong>插到索引 1（最前面）</strong>——后出现的偶数总被插到最前 → newList 顺序与 originalList <strong>完全相反</strong>。要"保持相对顺序"，必须用 <code>APPEND</code>（追加到末尾）。(A) 遍历目标列表、循环体反而空转；(B) MOD 2 = 1 选中的是<strong>奇数</strong>，南辕北辙。记忆：<strong>保序复制用 APPEND，倒序才用 INSERT(·,1,·)</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q5（考点：CRD-2.J 测试的局限性）</strong></p>
+<p>A programmer wrote the program below. The program uses a list of numbers called numList. The program is intended to display the sum of the numbers in the list.</p>
+<p>In order to test the program, the programmer initializes numList to [0, 1, 4, 5]. The program displays 10, and the programmer concludes that the program works as intended.</p>
+<p>Which of the following is true?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">The conclusion is correct; the program works as intended.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">The conclusion is incorrect; the program does not display the correct value for the test case [0, 1, 4, 5].</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The conclusion is incorrect; using the test case [0, 1, 4, 5] is not sufficient to conclude the program is correct.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The conclusion is incorrect; using the test case [0, 1, 4, 5] only confirms that the program works for lists in increasing order.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：测试的基本哲学：<strong>一个测试用例通过 ≠ 程序正确</strong>。测试只能证明"在这个输入上输出符合预期"，永远不能穷尽所有输入。空列表、负数、重复值、乱序列表都可能触发新错误。(D) 的说法貌似有理（[0,1,4,5] 确实递增），但"仅确认递增列表"也是过度推断——一组用例连"递增列表"这个类别都无法穷尽。(A) 是典型幻觉，(B) 与题面矛盾（显示的 10 恰为 0+1+4+5）。CRD-2.J 的核心修养：<strong>测试提供信心，不提供证明</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="B,C"><div class="quiz-stem"><p><strong>Q6（考点：CRD-2.I.b 纠正：删除多余 RETURN，双选）</strong></p>
+<p>In the following procedure, the parameter <code>age</code> represents a person's age. The procedure is intended to return the name of the age group associated with <code>age</code>. People who are under 18 are considered minors, people who are 65 and older are considered senior citizens, and all other people are considered adults. The procedure does not work as intended.</p>
+<pre><code>Line 1:  PROCEDURE ageGroup(age)
+Line 2:  {
+Line 3:      result ← "adult"
+Line 4:      IF(age ≥ 65)
+Line 5:      {
+Line 6:          result ← "senior citizen"
+Line 7:      }
+Line 8:      RETURN(result)
+Line 9:
+Line 10:     result ← "adult"
+Line 11:     IF(age &lt; 18)
+Line 12:     {
+Line 13:         result ← "minor"
+Line 14:     }
+Line 15:     RETURN(result)
+Line 16: }</code></pre>
+<p>Removing which two lines of code will cause the procedure to work as intended?<br/>Select two answers.</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Line 3</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Line 8</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Line 10</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Line 15</span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B、C</p><blockquote><p><strong>解析</strong>：问题根源：<strong>Line 8 的 RETURN 会让程序在判完 "senior citizen" 后立刻返回</strong>，age &lt; 18 的判断（Line 10–15）永远执行不到——所有非老人都在 Line 8 返回 "adult"，未成年人被误判。正确做法是<strong>删除 Line 8 与 Line 10</strong>（选 B、C），删除后程序变为：</p>
+<pre><code>result ← "adult"
+IF(age ≥ 65) { result ← "senior citizen" }
+IF(age &lt; 18) { result ← "minor" }
+RETURN(result)</code></pre>
+<p>两个 IF 顺序判断、互不干扰，最后统一返回。验证：age=70 → senior ✓；age=10 → minor ✓；age=40 → adult（两 IF 都不触发）✓。</p>
+<p><strong>为什么不能删 Line 15（选项 D）</strong>：若删 Line 8 保留 Line 10，保留 Line 15 作出口看似可行；但同时还要删第二行——若删的是 Line 15，则程序无 RETURN 不返回值；若删的是 Line 10，即本答案 B+C。穷举验证六种组合，<strong>唯一使三档年龄全部正确的是删 Line 8 + Line 10</strong>。</p>
+<p><strong>此类"删行"题的通用解法</strong>：先找出"提前 RETURN"这类改变控制流的语句（必删候选），再模拟三组代表值（每档一个）验证剩余组合。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q7（考点：CRD-2.I.b 纠正：条件覆盖不全）</strong></p>
+<p>The following procedure is intended to return <code>true</code> if at least two of the three parameters are equal in value and is intended to return <code>false</code> otherwise.</p>
+<pre><code>PROCEDURE AnyPairs (x, y, z)
+{
+    IF (x = y)
+    {
+        RETURN (true)
+    }
+    ELSE
+    {
+        RETURN (y = z)
+    }
+}</code></pre>
+<p>For which of the following procedure calls does the procedure NOT return the intended value?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">AnyPairs ("bat", "cat", "rat")</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">AnyPairs ("bat", "bat", "rat")</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">AnyPairs ("bat", "cat", "bat")</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">AnyPairs ("bat", "cat", "cat")</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：程序只判了 <strong>x=y</strong> 和 <strong>y=z</strong> 两种配对，<strong>漏了 x=z</strong>！(C) <code>("bat", "cat", "bat")</code>：x=z="bat" 成立（至少两参数相等，应返回 true），但 x≠y → 走 ELSE → 返回 y=z 即 "cat"="bat" = <strong>false</strong> ✗。其余选项：(A) 无相等 → false ✓；(B) x=y → true ✓；(D) y=z → true ✓。<strong>检查条件覆盖类题的方法</strong>：列出所有配对组合（xy / xz / yz），逐一核对程序是否覆盖——漏哪补哪。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q8（考点：CRD-2.I.b 纠正：循环变量更新顺序）</strong></p>
+<p>Assume that the list of numbers <code>nums</code> has more than 10 elements. The program below is intended to compute and display the sum of the first 10 elements of <code>nums</code>.</p>
+<pre><code>Line 1: i ← 1
+Line 2: sum ← 0
+Line 3: REPEAT UNTIL (i &gt; 10)
+Line 4: {
+Line 5:     i ← i + 1
+Line 6:     sum ← sum + nums[i]
+Line 7: }
+Line 8: DISPLAY (sum)</code></pre>
+<p>Which change, if any, is needed for the program to work as intended?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Lines 1 and 2 should be interchanged.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Line 3 should be changed to <code>REPEAT UNTIL (i ≥ 10)</code>.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Lines 5 and 6 should be interchanged.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">No change is needed; the program works correctly.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：<strong>先自增、后使用</strong> → 第 1 轮就把 i 变成 2，加的是 nums[2]；最后一轮 i=10 时先自增到 11，加的是 nums[11]——<strong>第 11 个元素</strong>！结果加了 nums[2..11]，漏掉 nums[1]、多算 nums[11]。交换 Line 5/6 后：先用 nums[i]（i=1..10）再自增，恰好加前 10 项。<strong>铁律：REPEAT UNTIL + 索引访问的题，先查自增语句在循环体的位置</strong>——"先用后增"是标准写法。</p></blockquote></div></div>
+<div class="quiz" data-ans="A,C"><div class="quiz-stem"><p><strong>Q9（考点：CRD-2.I.b 纠正：双重计数，双选）</strong></p>
+<p>In mathematics, a perfect number is a type of integer. The procedure <code>IsPerfect (num)</code> returns true if num is a perfect number and returns false otherwise.</p>
+<p>The following program is intended to count and display the number of perfect numbers between the integers <code>start</code> and <code>end</code>, inclusive. Assume that <code>start</code> is less than <code>end</code>. The program does not work as intended.</p>
+<pre><code>Line 1:  currentNum ← start
+Line 2:  count ← 0
+Line 3:  REPEAT UNTIL (currentNum &gt; end)
+Line 4:  {
+Line 5:      count ← count + 1
+Line 6:      IF (IsPerfect (currentNum))
+Line 7:      {
+Line 8:          count ← count + 1
+Line 9:          currentNum ← currentNum + 1
+Line 10:     }
+Line 11:     currentNum ← currentNum + 1
+Line 12: }
+Line 13: DISPLAY (count)</code></pre>
+<p>Which two lines of code should be removed so that the program will work as intended?<br/>Select two answers.</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Line 5</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Line 8</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Line 9</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Line 11</span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A、C</p><blockquote><p><strong>解析</strong>：两处错误：① Line 5 <strong>无条件</strong>给 count+1——把每个数字都数了一遍（应只数完全数），必须删；② 若保留 Line 9，当数字是完全数时 currentNum 会被<strong>自增两次</strong>（Line 9 一次、Line 11 一次）→ 跳过下一个数字，必须删 Line 9。删除后逻辑干净：每个数检查 IsPerfect，是则 count+1（Line 8），最后统一在 Line 11 自增。<strong>双删题技巧</strong>：先删"无条件计数"类，再查"循环变量双重更新"。</p></blockquote></div></div>
+<div class="quiz" data-ans="C"><div class="quiz-stem"><p><strong>Q11（考点：CRD-2.I.b 纠正：返回值颠倒）</strong></p>
+<p>A list of numbers is considered increasing if each value after the first is greater than or equal to the preceding value. The following procedure is intended to return <code>true</code> if <code>numberList</code> is increasing and return <code>false</code> otherwise. Assume that <code>numberList</code> contains at least two elements.</p>
+<pre><code>Line 1:  PROCEDURE isIncreasing(numberList)
+Line 2:  {
+Line 3:      count ← 2
+Line 4:      REPEAT UNTIL(count &gt; LENGTH(numberList))
+Line 5:      {
+Line 6:          IF(numberList[count] &lt; numberList[count - 1])
+Line 7:          {
+Line 8:              RETURN(true)
+Line 9:          }
+Line 10:         count ← count + 1
+Line 11:     }
+Line 12:     RETURN(false)
+Line 13: }</code></pre>
+<p>Which of the following changes is needed for the program to work as intended?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">In line 3, 2 should be changed to 1.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">In line 6, &lt; should be changed to ≥.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Lines 8 and 12 should be interchanged.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Lines 10 and 11 should be interchanged.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：C</p><blockquote><p><strong>解析</strong>：语义写反了：发现 <code>numberList[count] &lt; numberList[count-1]</code>（<strong>递减/倒退</strong>）时应返回 <strong>false</strong>，程序却返回 true；全程无倒退时应返回 <strong>true</strong>，程序却在循环正常结束后返回 false。<strong>恰好是 true/false 两处互换</strong> → 交换 Line 8 与 Line 12。注意 (B) 的诱惑：改条件为 ≥ 后 Line 8 变成"发现非递减就返回 true"——第一对元素就提前返回，逻辑崩坏。<strong>"返回值颠倒"题的直接解法就是交换两个 RETURN</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q13（考点：CRD-2.I.b 纠正：IF/ELSE 分支颠倒）</strong></p>
+<p>In the following code segment, <code>score</code> and <code>penalty</code> are initially positive integers. The code segment is intended to reduce the value of <code>score</code> by <code>penalty</code>. However, if doing so would cause <code>score</code> to be negative, <code>score</code> should be assigned the value 0.</p>
+<p>For example, if score is 20 and penalty is 5, the code segment should set score to 15. If score is 20 and penalty is 30, score should be set to 0.</p>
+<p>The code segment does not work as intended.</p>
+<pre><code>Line 1: IF(score - penalty &lt; 0)
+Line 2: {
+Line 3:     score ← score - penalty
+Line 4: }
+Line 5: ELSE
+Line 6: {
+Line 7:     score ← 0
+Line 8: }</code></pre>
+<p>Which of the following changes can be made so that the code segment works as intended?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Changing line 1 to <code>IF(score &lt; 0)</code></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Changing line 1 to <code>IF(score + penalty &lt; 0)</code></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Changing line 7 to <code>score ← score + penalty</code></span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Interchanging lines 3 and 7</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：条件与动作<strong>接反了</strong>：<code>score - penalty &lt; 0</code>（会变负）时本应置 0，程序却去减 penalty；反之亦然。两个分支体互换（Line 3 ↔ Line 7）即可。验证：20, 5 → 条件 15&lt;0 假 → ELSE 执行 score←20−5=15 ✓；20, 30 → 条件 −10&lt;0 真 → score←0 ✓。(A)(B) 改条件但不换动作，仍有分支错位；(C) 让 ELSE 变成加法，南辕北辙。<strong>IF/ELSE 题先验证"条件为真时执行的动作"是否符合语义</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="A,C"><div class="quiz-stem"><p><strong>Q14（考点：CRD-2.I.b 反例识别，双选）</strong></p>
+<p>The following code segment is intended to remove all duplicate elements in the list <code>myList</code>. The procedure does not work as intended.</p>
+<pre><code>j ← LENGTH(myList)
+REPEAT UNTIL(j = 1)
+{
+    IF(myList[j] = myList[j - 1])
+    {
+        REMOVE(myList, j)
+    }
+    j ← j - 1
+}</code></pre>
+<p>For which of the following contents of <code>myList</code> will the procedure NOT produce the intended results?<br/>Select two answers.</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">[10, 10, 20, 20, 10, 10]</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">[30, 30, 30, 10, 20, 20]</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">[30, 50, 40, 10, 20, 40]</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">[50, 50, 50, 50, 50, 50]</span></li></ul><div class="quiz-bar"><span class="quiz-tip">多选题，共 2 项 — 点击任一选项查看答案</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A、C</p><blockquote><p><strong>解析</strong>：程序只比较<strong>相邻</strong>两个元素（myList[j] 与 myList[j−1]），相等才删——它只能去掉<strong>相邻重复</strong>。逐项分析：</p>
+<ul><li>(A) [10,10,20,20,10,10]：从右往左扫，删掉位置 6 的 10 → [..,10,20,20,10]，再比较 10 与 10 相等删一个……但<strong>位置 1-2 的 10 与位置 5-6 的 10 互不相邻</strong>，删完后中间隔着 20，10 这组"非相邻重复"无法全删 → 失效 ✗。</li><li>(B) [30,30,30,10,20,20]：30 三连相邻、20 两连相邻，从右向左逐个相邻比较+删除可全部去重 → 恰好成功 ✓。</li><li>(C) [30,50,40,10,20,40]：两个 40 <strong>不相邻</strong>（位置 3 与 6），程序永远不会把 30,50,40,10,20 中的 40 和末尾 40 认作重复 → 失效 ✗。</li><li>(D) 全 50：全程相邻相等，逐步删除至剩一个 → 成功 ✓。</li></ul>
+<p><strong>考点本质</strong>：识别算法的隐含前提（"重复必相邻"）。反例选择技巧：优先找<strong>相同元素被隔开</strong>的列表。</p></blockquote></div></div>
+<div class="quiz" data-ans="B"><div class="quiz-stem"><p><strong>Q15（考点：CRD-2.I.b 纠正：IF 应为 ELSE；模拟概率）</strong></p>
+<p>In a science experiment, result X is expected to occur 25% of the time and result Y is expected to occur the remaining 75% of the time. The following code segment is intended to simulate the experiment if there are 100 trials.</p>
+<pre><code>Line 1:  xCount ← 0
+Line 2:  yCount ← 0
+Line 3:  REPEAT 100 TIMES
+Line 4:  {
+Line 5:      IF(RANDOM(1, 4) = 1)
+Line 6:      {
+Line 7:          xCount ← xCount + 1
+Line 8:      }
+Line 9:      IF(RANDOM(1, 4) &gt; 1)
+Line 10:     {
+Line 11:         yCount ← yCount + 1
+Line 12:     }
+Line 13: }
+Line 14: DISPLAY("Result X occurred")
+Line 15: DISPLAY(xCount)
+Line 16: DISPLAY("times and result Y occurred")
+Line 17: DISPLAY(yCount)
+Line 18: DISPLAY("times.")</code></pre>
+<p>A programmer runs the code segment, and the following message is displayed.<br/>Result X occurred 24 times and result Y occurred 70 times.<br/>The result shows that 94 trials were counted, rather than the intended 100 trials. Which of the following changes to the code segment will ensure a correct simulation of the experiment?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Replacing line 9 with <code>IF(RANDOM(1, 4) ≥ 2)</code></span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Replacing line 9 with <code>ELSE</code></span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Interchanging lines 5 and 9</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Interchanging lines 7 and 11</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：B</p><blockquote><p><strong>解析</strong>：致命错误：<strong>两次独立调用 RANDOM</strong>。Line 5 与 Line 9 各摇一次骰子——两次都"不满足"时（如第一次摇到 3、第二次摇到 1），该试验<strong>既不计 X 也不计 Y</strong> → 总计数 &lt;100。且两次随机结果独立，X/Y 比例也不再是 25/75。修复：<strong>第二个 IF 改为 ELSE</strong>——同一次摇骰结果非 1 即归入 Y，每次试验必且仅计入一类，总次数恰为 100，比例 25/75。(A)(C)(D) 都保留两次 RANDOM 调用，本质缺陷不变。<strong>模拟概率题铁律：一次试验只允许一次随机调用，分支用 IF/ELSE 互斥覆盖</strong>。</p></blockquote></div></div>
+<div class="quiz" data-ans="D"><div class="quiz-stem"><p><strong>Q16（考点：CRD-2.I.b 纠正：死循环 / 循环变量缺失更新）</strong></p>
+<p>A student wrote the following program to remove all occurrences of the strings "the" and "a" from the list <code>wordList</code>.</p>
+<pre><code>Line 1: index ← LENGTH (wordList)
+Line 2: REPEAT UNTIL (index &lt; 1)
+Line 3: {
+Line 4:     IF ((wordList[index] = "the") OR (wordList[index] = "a"))
+Line 5:     {
+Line 6:         REMOVE (wordList, index)
+Line 7:     }
+Line 8: }</code></pre>
+<p>While debugging the program, the student realizes that the loop never terminates. Which of the following changes can be made so that the program works as intended?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">Inserting <code>index ← index + 1</code> between lines 6 and 7</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">Inserting <code>index ← index + 1</code> between lines 7 and 8</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">Inserting <code>index ← index - 1</code> between lines 6 and 7</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">Inserting <code>index ← index - 1</code> between lines 7 and 8</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：D</p><blockquote><p><strong>解析</strong>：循环体内<strong>没有任何更新 index 的语句</strong>，index 永远不变 → REPEAT UNTIL(index &lt; 1) 永远为假 → 死循环。必须插入 <code>index ← index - 1</code>。位置选择：应放在 IF 块<strong>之外</strong>（Line 7 与 8 之间）——若放在 IF 块内（Line 6 与 7 之间，选项 C），只有"当前元素是要删的词"时才更新 index，遇到不需要删的元素仍死循环。<strong>方向</strong>：从 LENGTH 往 1 走必须用自减；(A)(B) 自增会让 index 离终止条件越来越远。<strong>删除元素 + 从后往前遍历</strong>是 CRD 高频组合，其模板务必背熟。</p></blockquote></div></div>
+<div class="quiz" data-ans="A"><div class="quiz-stem"><p><strong>Q25（考点：CRD-2.I.1 溢出错误的判定）</strong></p>
+<p>A computer program uses 3 bits to represent integers. When the program adds the decimal (base 10) numbers 5 and 3, the result is 0. Which of the following is the best explanation for the result?</p>
+</div><ul class="quiz-opts"><li class="quiz-opt" data-key="A" tabindex="0" role="button"><span class="opt-key">A</span><span class="opt-text">An overflow error occurred.</span></li><li class="quiz-opt" data-key="B" tabindex="0" role="button"><span class="opt-key">B</span><span class="opt-text">A round-off error occurred.</span></li><li class="quiz-opt" data-key="C" tabindex="0" role="button"><span class="opt-key">C</span><span class="opt-text">The result was affected by lossy data compression.</span></li><li class="quiz-opt" data-key="D" tabindex="0" role="button"><span class="opt-key">D</span><span class="opt-text">The result was approximated by a floating-point representation.</span></li></ul><div class="quiz-bar"><span class="quiz-tip">点击选项作答，选后显示正确答案与解析</span><button class="quiz-reset" type="button">重做本题</button></div><div class="quiz-solution" hidden><p class="quiz-correct">正确答案：A</p><blockquote><p><strong>解析</strong>：3 bits 能表示的无符号整数范围是 0~7。5+3=8 <strong>超出上限</strong> → 溢出：二进制 101+011=1000，但只有 3 位，最高位 1 被丢弃，剩 000 = 0。这就是<strong>溢出错误（overflow error）</strong>的标准机制。(B) 舍入误差针对浮点小数；(C) 压缩损失与运算无关；(D) 3 bits 整数与浮点表示无关。与 1.4 Q1（播放量变负数）同考点：<strong>整数 + 超范围 = 溢出</strong>，是 CRD 每年必考的一分。</p></blockquote><blockquote><p>全套 1.1–1.4 共 40 余题均出自 AP Classroom 官方 Topic Questions（2021, College Board），答案已逐题与题目逻辑核对；本节收录的 28 题覆盖了全部高频题型，其余同型题目可按上述套路自行练习。</p></blockquote></div></div>
+<h2 id="7">7. Section II 写作题中的 Big Idea 1</h2>
+<p>2025 年起 Create PT 取消视频提交，改为提交<strong>程序代码 PDF + Personalized Project Reference（PPR）</strong>，考试当天完成 4 道写作题（占分约 30%）。其中两道直接出自 Big Idea 1：</p>
+<h3 id="7-1">7.1 Written Response 1（Program Design, Function and Purpose）</h3>
+<p><strong>高频问法（2026 国际考原题）：</strong></p>
+<ul><li>Describe the overall purpose of your program.（描述程序总体目的）</li><li>Describe the intended functionality of your program.（描述预期功能——输入是什么、输出是什么）</li><li>Describe a revision you could make to your program. Explain how <strong>feedback or testing</strong> could be used as part of a development process for this future revision.</li></ul>
+<p><strong>拿分要点：</strong></p>
+<ol><li>目的 = "解决 …… 问题 / 满足 …… 兴趣"，一句话点明<strong>为谁解决什么</strong>；</li><li>功能要写清<strong>输入 → 处理 → 输出</strong>链条；</li><li>修改 + 反馈/测试必须形成<strong>闭环</strong>："收集反馈/运行测试 → 发现问题 → 修订 → 再次验证"。</li></ol>
+<h3 id="7-2">7.2 Written Response 2(b)（Errors and Testing）</h3>
+<p><strong>高频问法（2026 国际考原题）：</strong></p>
+<ul><li>Suppose another programmer modifies your procedure to improve readability without changing behavior. <strong>Write a procedure call with specific argument value(s)</strong> that can be used to test whether the modified procedure still works as intended. Describe the behavior this call is testing. Explain how this call can be used to test this behavior.</li></ul>
+<p><strong>拿分要点：</strong></p>
+<ol><li>调用必须带<strong>具体实参</strong>（如 <code>findMin([7, 2, 9, 4])</code>）；</li><li>说明该调用针对哪一种<strong>预期行为</strong>（"列表无序时应返回最小值 2"）；</li><li>说明判定标准：运行后<strong>实际返回值 vs 预期值</strong>是否一致，不一致说明修改破坏了功能；</li><li>加分直觉：选<strong>边界/极端数据</strong>（空表、单元素、含重复最小值的列表）——正是 CRD-2.J.2 的"恰好在或略超出极值"。</li></ol>
+<hr/>
+<h2 id="8">8. 备考策略与应试技巧</h2>
+<ol><li><strong>概念题口诀</strong>：见到 <em>eliminate / remove the need for / no longer necessary</em> → 高度警惕，多为错误选项（协作不免测试与文档）。</li><li><strong>输入输出题三步法</strong>（§2.2）：先定功能 → 再问"缺了它行不行" → 最后分清数据来源（本设备/他人/程序生成）。</li><li><strong>错误类型题先问两个问题</strong>：程序能跑吗？（不能→语法错误）数值是整数还是小数？（整数超范围→溢出；小数偏差→舍入）。</li><li><strong>双选题（Select two answers）</strong>：CRD 双选题几乎总是一强一强配对（如协作的"多元才能 + 减少偏见"），先锁定两个最贴合 CRD-1/CRD-2 原文的选项，两个都选才得分、选一个不得分。</li><li><strong>代码纠错题必 hand tracing</strong>：拿选项里的具体值代进去，逐行填变量表；特别盯"循环变量更新位置"和"RETURN 的位置"。</li><li><strong>写作题提前准备</strong>：Create PT 阶段就写好"目的、功能（输入/输出）、一次修改经历、一组测试用例（含过程调用+预期结果）"的素材库，考试时直接套用 PPR 中的代码作答。</li></ol>
+<hr/>
+<p><em>参考资料：2023 AP CSP Course and Exam Description（College Board）；2024/2025/2026 国际考真题及官方答案；AP Classroom Topic Questions 1.1–1.4（2021, College Board）。</em></p>
+</div><script>
+(function(){
+  var nav = document.querySelector('.sidenav');
+  if(!nav) return;
+  var lis = nav.querySelectorAll('.rootnav > li');
+  Array.prototype.forEach.call(lis, function(li){
+    var trigger = li.querySelector('a.big');
+    var sub = li.querySelector('.subnav');
+    if(!trigger) return;
+    if(!sub || sub.children.length === 0){
+      if(sub) sub.parentNode.removeChild(sub);
+      li.classList.add('no-sub');
+      return;                       /* 无子节：点击直接跳转 */
+    }
+    trigger.addEventListener('click', function(e){
+      e.preventDefault();
+      var willOpen = !li.classList.contains('open');
+      li.classList.toggle('open');
+      if(willOpen){
+        var target = document.querySelector(trigger.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+      if(history.replaceState) history.replaceState(null,'',trigger.getAttribute('href'));
+    });
+  });
+  /* 若带了 hash（如从链接进入），自动展开对应大节 */
+  if(location.hash){
+    var tgt = document.querySelector(location.hash);
+    if(tgt){
+      var li = tgt.closest ? tgt.closest('li') : null;
+      while(li){
+        if(li.parentNode && li.parentNode.classList && li.parentNode.classList.contains('rootnav')){
+          li.classList.add('open'); break;
+        }
+        li = li.parentNode ? li.parentNode.closest('li') : null;
+      }
+    }
+  }
+})();
+</script>
+<script>
+(function(){
+  function keys(q){ return (q.getAttribute('data-ans')||'').toUpperCase().split(',').filter(Boolean); }
+  function answer(q, chosen){
+    if(q.classList.contains('answered')) return;
+    var ans = keys(q);
+    q.classList.add('answered');
+    var opts = q.querySelectorAll('.quiz-opt');
+    Array.prototype.forEach.call(opts, function(o){
+      if(ans.indexOf(o.getAttribute('data-key').toUpperCase()) >= 0) o.classList.add('right');
+    });
+    if(chosen && ans.indexOf(chosen.getAttribute('data-key').toUpperCase()) < 0){
+      chosen.classList.add('wrong');
+    }
+    var sol = q.querySelector('.quiz-solution'); if(sol) sol.hidden = false;
+    var tip = q.querySelector('.quiz-tip');
+    if(tip){
+      var picked = chosen ? chosen.getAttribute('data-key').toUpperCase() : '';
+      var right = ans.indexOf(picked) >= 0;
+      tip.textContent = right ? '回答正确 ✓' : (picked ? '回答错误 ✗ 正确答案为 ' + ans.join('、') : '已显示答案');
+    }
+  }
+  function resetQuiz(q){
+    q.classList.remove('answered');
+    Array.prototype.forEach.call(q.querySelectorAll('.quiz-opt'), function(o){
+      o.classList.remove('right'); o.classList.remove('wrong');
+    });
+    var sol = q.querySelector('.quiz-solution'); if(sol) sol.hidden = true;
+    var tip = q.querySelector('.quiz-tip');
+    if(tip) tip.textContent = keys(q).length > 1
+      ? '多选题，共 ' + keys(q).length + ' 项 — 点击任一选项查看答案'
+      : '点击选项作答，选后显示正确答案与解析';
+  }
+  function bind(){
+    Array.prototype.forEach.call(document.querySelectorAll('.quiz'), function(q){
+      Array.prototype.forEach.call(q.querySelectorAll('.quiz-opt'), function(o){
+        o.addEventListener('click', function(){ answer(q, o); });
+        o.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' ' || e.keyCode === 13 || e.keyCode === 32){
+            e.preventDefault(); answer(q, o);
+          }
+        });
+      });
+      var rb = q.querySelector('.quiz-reset');
+      if(rb) rb.addEventListener('click', function(e){ e.preventDefault(); resetQuiz(q); });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind);
+  else bind();
+})();
+</script>
+</body></html>
